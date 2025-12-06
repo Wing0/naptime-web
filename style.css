@@ -226,7 +226,7 @@ h4,
 /* Cards */
 .grid-3 {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     margin-top: 4rem;
 }
@@ -339,6 +339,10 @@ h4,
 /* Feature Graphics replaced by images */
 
 /* How It Works with connecting lines */
+.how-it-works {
+    padding-top: 8rem;
+}
+
 .steps-container {
     display: flex;
     justify-content: space-between;
