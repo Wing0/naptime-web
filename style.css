@@ -186,8 +186,16 @@ h4,
 .hero-subtitle {
     font-size: 1.25rem;
     color: var(--text-muted);
-    margin-bottom: 2.5rem;
+    margin-bottom: 1rem;
     max-width: 90%;
+}
+
+.hero-micro {
+    font-size: 0.95rem;
+    color: var(--secondary);
+    margin-bottom: 2.5rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
 }
 
 .hero-image {
