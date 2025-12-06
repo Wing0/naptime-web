@@ -230,6 +230,16 @@ h4,
     margin-top: 4rem;
 }
 
+.grid-3>.card:nth-child(4):last-child {
+    grid-column: 2 / 3;
+}
+
+@media (max-width: 900px) {
+    .grid-3>.card:nth-child(4):last-child {
+        grid-column: auto;
+    }
+}
+
 .card {
     background: var(--bg-card);
     padding: 2.5rem;
@@ -275,8 +285,21 @@ h4,
 .brand-icon {
     width: 80px;
     height: 80px;
-    opacity: 0.6;
-    filter: drop-shadow(0 4px 20px rgba(139, 45, 242, 0.3));
+    opacity: 0.8;
+    filter: drop-shadow(0 4px 20px rgba(139, 45, 242, 0.4));
+    margin-bottom: 1rem;
+}
+
+.brand-logo {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-main);
+    letter-spacing: -0.5px;
+}
+
+.brand-logo .dot {
+    color: var(--primary);
 }
 
 /* Features */
@@ -322,7 +345,7 @@ h4,
 .phone-frame-small {
     width: 260px;
     border-radius: 30px;
-    overflow: hidden;
+    overflow: visible;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
     position: relative;
 }
@@ -330,23 +353,23 @@ h4,
 .phone-frame-small::after {
     content: '';
     position: absolute;
-    bottom: -60%;
-    left: 10%;
-    right: 10%;
-    height: 40%;
-    background: linear-gradient(to bottom, rgba(139, 45, 242, 0.3), transparent);
-    filter: blur(30px);
-    opacity: 0.6;
+    bottom: -40px;
+    left: 5%;
+    right: 5%;
+    height: 30px;
+    background: radial-gradient(ellipse at center, rgba(139, 45, 242, 0.4) 0%, transparent 70%);
+    filter: blur(15px);
     z-index: -1;
 }
 
 .phone-frame-small img {
     width: 100%;
     display: block;
+    border-radius: 30px;
 }
 
 .store-badge {
-    height: 60px;
+    height: 90px;
     transition: transform 0.2s;
 }
 
