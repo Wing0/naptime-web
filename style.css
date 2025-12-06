@@ -523,3 +523,49 @@ h4,
     color: var(--text-main);
     text-decoration: underline;
 }
+
+/* Privacy First Section */
+.privacy-first {
+    padding: 6rem 0;
+    background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(139, 45, 242, 0.05) 50%, var(--bg-dark) 100%);
+}
+
+.privacy-content {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.privacy-intro {
+    font-size: 1.25rem;
+    color: var(--text-muted);
+    margin: 1rem auto 3rem;
+    font-weight: 600;
+}
+
+.privacy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.privacy-item {
+    text-align: center;
+}
+
+.privacy-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    filter: grayscale(0);
+}
+
+.privacy-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-main);
+}
+
+.privacy-item p {
+    color: var(--text-muted);
+    line-height: 1.6;
+}
