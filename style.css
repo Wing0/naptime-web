@@ -186,7 +186,7 @@ h4,
 .hero-subtitle {
     font-size: 1.25rem;
     color: var(--text-muted);
-    margin-bottom: 1rem;
+    margin-bottom: 2.5rem;
     max-width: 90%;
 }
 
@@ -209,7 +209,6 @@ h4,
     height: auto;
     border-radius: 30px;
     box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
-    border: 8px solid #2d2d2d;
     position: relative;
     z-index: 10;
 }
@@ -268,6 +267,18 @@ h4,
     text-align: center;
 }
 
+/* Brand Divider */
+.brand-divider {
+    padding: 4rem 0;
+}
+
+.brand-icon {
+    width: 80px;
+    height: 80px;
+    opacity: 0.6;
+    filter: drop-shadow(0 4px 20px rgba(139, 45, 242, 0.3));
+}
+
 /* Features */
 .features {
     padding: 8rem 0;
@@ -313,8 +324,20 @@ h4,
     border-radius: 30px;
     overflow: hidden;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
-    border: 6px solid #2d2d2d;
     position: relative;
+}
+
+.phone-frame-small::after {
+    content: '';
+    position: absolute;
+    bottom: -60%;
+    left: 10%;
+    right: 10%;
+    height: 40%;
+    background: linear-gradient(to bottom, rgba(139, 45, 242, 0.3), transparent);
+    filter: blur(30px);
+    opacity: 0.6;
+    z-index: -1;
 }
 
 .phone-frame-small img {
