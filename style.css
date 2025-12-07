@@ -224,23 +224,17 @@ h4,
 
 /* Cards */
 .grid-3 {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 2rem;
     margin-top: 4rem;
 }
 
-.grid-3>.card:nth-child(4):last-child {
-    grid-column: 2 / 3;
-}
-
-@media (max-width: 900px) {
-    .grid-3>.card:nth-child(4):last-child {
-        grid-column: auto;
-    }
-}
-
 .card {
+    flex: 1 1 300px;
+    max-width: 400px;
+
     background: var(--bg-card);
     padding: 2.5rem;
     border-radius: 24px;
@@ -318,9 +312,21 @@ h4,
     flex-direction: row-reverse;
 }
 
-.feature-content h3 {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
+.feature-content-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.feature-item h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.feature-item p {
+    font-size: 1.125rem;
+    color: var(--text-muted);
 }
 
 .feature-content p {
@@ -343,7 +349,8 @@ h4,
 }
 
 .phone-frame-small {
-    width: 260px;
+    width: 280px;
+    height: auto;
     border-radius: 30px;
     overflow: visible;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
