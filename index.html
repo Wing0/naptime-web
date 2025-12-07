@@ -33,6 +33,16 @@
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M9EH844KS8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-M9EH844KS8');
+    </script>
 </head>
 
 <body>
@@ -43,7 +53,9 @@
                 <li><a href="#features">Features</a></li>
                 <li><a href="#how-it-works">How It Works</a></li>
             </ul>
-            <a href="#download" class="btn btn-primary nav-cta">Get Naptime</a>
+            <a href="#download" class="btn btn-primary nav-cta"
+                onclick="gtag('event', 'click', {'event_category': 'CTA', 'event_label': 'Nav Get Naptime'})">Get
+                Naptime</a>
         </div>
     </nav>
 
@@ -55,7 +67,8 @@
                 <p class="hero-subtitle">Stop guessing. Start resting. The only alarm clock that waits until you're
                     asleep to start the timer.</p>
                 <div class="cta-group">
-                    <a href="#download" class="store-badge-link">
+                    <a href="#download" class="store-badge-link"
+                        onclick="gtag('event', 'click', {'event_category': 'CTA', 'event_label': 'Hero Play Store'})">
                         <img src="play_badge.png" alt="Get it on Google Play" class="store-badge">
                     </a>
                 </div>
@@ -263,7 +276,8 @@
         <div class="container text-center">
             <h2>Ready to Nap Smarter?</h2>
             <br>
-            <a href="#" class="store-badge-link">
+            <a href="#" class="store-badge-link"
+                onclick="gtag('event', 'click', {'event_category': 'CTA', 'event_label': 'Footer Play Store'})">
                 <img src="play_badge.png" alt="Get it on Google Play" class="store-badge">
             </a>
         </div>
@@ -286,6 +300,17 @@
             </div>
         </div>
     </footer>
+
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-content">
+            <p>We use cookies to improve your experience and measure website performance. <a href="privacy.html">Learn
+                    more</a>.</p>
+            <div class="cookie-actions">
+                <button id="cookie-deny" class="btn-cookie-deny">Decline</button>
+                <button id="cookie-accept" class="btn-cookie-accept">Accept</button>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
