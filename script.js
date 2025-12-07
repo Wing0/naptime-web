@@ -40,3 +40,46 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     document.head.appendChild(style);
 });
+
+// Cookie Consent Logic
+document.addEventListener('DOMContentLoaded', () => {
+    const cookieBanner = document.getElementById('cookie-banner');
+    const acceptBtn = document.getElementById('cookie-accept');
+    const denyBtn = document.getElementById('cookie-deny');
+
+    // Check if consent is already stored
+    const consent = localStorage.getItem('naptime_cookie_consent');
+
+    if (!consent) {
+        // Show banner after a short delay
+        setTimeout(() => {
+            cookieBanner.classList.add('visible');
+        }, 1000);
+    } else if (consent === 'granted') {
+        grantConsent();
+    }
+
+    acceptBtn.addEventListener('click', () => {
+        localStorage.setItem('naptime_cookie_consent', 'granted');
+        grantConsent();
+        hideBanner();
+    });
+
+    denyBtn.addEventListener('click', () => {
+        localStorage.setItem('naptime_cookie_consent', 'denied');
+        hideBanner();
+    });
+
+    function grantConsent() {
+        if (typeof gtag === 'function') {
+            gtag('consent', 'update', {
+                'ad_storage': 'granted',
+                'analytics_storage': 'granted'
+            });
+        }
+    }
+
+    function hideBanner() {
+        cookieBanner.classList.remove('visible');
+    }
+});
