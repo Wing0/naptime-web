@@ -121,12 +121,13 @@ h4,
 }
 
 .nav-cta {
-    display: none;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
 }
 
 @media (min-width: 768px) {
     .nav-cta {
-        display: inline-block;
         padding: 0.6rem 1.5rem;
         font-size: 0.9rem;
     }
