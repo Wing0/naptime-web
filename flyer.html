@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naptime Flyer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #8b2df2;
+            --text-dark: #1a0b2e;
+            --text-muted: #4a4a4a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: white;
+            color: var(--text-dark);
+            line-height: 1.5;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .flyer-page {
+            width: 210mm; /* A4 width */
+            min-height: 297mm; /* A4 height */
+            margin: 0 auto;
+            background: white;
+            padding: 4rem 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 4rem;
+            color: var(--text-dark);
+        }
+
+        .logo .dot {
+            color: var(--primary);
+        }
+
+        .headline {
+            font-family: 'Outfit', sans-serif;
+            font-size: 5rem;
+            line-height: 1.1;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #1a0b2e 0%, #8b2df2 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subhead {
+            font-size: 1.8rem;
+            color: var(--text-muted);
+            margin-bottom: 4rem;
+            max-width: 80%;
+            font-weight: 500;
+        }
+
+        .benefit-box {
+            border: 3px solid #f3f3f3;
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 4rem;
+            max-width: 85%;
+        }
+
+        .benefit-text {
+            font-size: 1.4rem;
+            color: var(--text-dark);
+        }
+
+        .highlight {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .qr-section {
+            margin-top: auto;
+            margin-bottom: 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .qr-frame {
+            padding: 1rem;
+            border: 2px solid var(--text-dark);
+            border-radius: 20px;
+            background: white;
+        }
+
+        .qr-code {
+            width: 250px;
+            height: 250px;
+            display: block;
+        }
+
+        .cta {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .note {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        .footer {
+            font-size: 1rem;
+            color: #999;
+            margin-top: 2rem;
+        }
+
+        @media print {
+            body { 
+                margin: 0; 
+            }
+            .flyer-page {
+                width: 100%;
+                height: 100vh;
+                margin: 0;
+                padding: 2rem;
+                border: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="flyer-page">
+        <div class="logo">Naptime<span class="dot">.</span></div>
+        
+        <h1 class="headline">Nap Smarter.</h1>
+        <p class="subhead">Using the napping room?<br>Make every minute count.</p>
+        
+        <div class="benefit-box">
+            <p class="benefit-text">
+                Naptime is an intelligent alarm app for Android that waits until you're <span class="highlight">actually asleep</span> to start the timer—preventing grogginess and maximizing your rest.
+            </p>
+        </div>
+
+        <div class="qr-section">
+            <div class="qr-frame">
+                <!-- Generates a QR code pointing to the Early Access page -->
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://naptime.info/early-access.html&color=1a0b2e" alt="Scan for Early Access" class="qr-code">
+            </div>
+            <div>
+                <p class="cta">Scan to join the Beta</p>
+                <p class="note">Android Only • Early Access</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p style="margin-bottom: 0.5rem; color: var(--text-dark); font-weight: 500;">Developed by Oskari, a regular user of this napping room 👋</p>
+            www.naptime.info
+        </div>
+    </div>
+</body>
+</html>
