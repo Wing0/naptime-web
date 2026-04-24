@@ -108,6 +108,15 @@ h4,
     box-shadow: 0 8px 30px rgba(139, 45, 242, 0.6);
 }
 
+.btn-disabled {
+    cursor: default;
+}
+
+.btn-disabled:hover {
+    transform: none;
+    box-shadow: 0 4px 20px rgba(139, 45, 242, 0.4);
+}
+
 .btn-secondary {
     background: transparent;
     border: 1px solid rgba(255, 255, 255, 0.2);
