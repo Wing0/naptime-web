@@ -98,7 +98,12 @@
             </div>
             <div class="hero-image">
                 <div class="phone-mockup">
-                    <img src="hero_bed_2.png" alt="Naptime App on Bed" class="app-screen">
+                    <picture>
+                        <source srcset="hero_bed_2_960.jpg 960w, hero_bed_2_1440.jpg 1440w"
+                            sizes="(max-width: 900px) 90vw, 560px" type="image/jpeg">
+                        <img src="hero_bed_2_960.jpg" alt="Naptime App on Bed" class="app-screen" width="960"
+                            height="574" decoding="async" fetchpriority="high">
+                    </picture>
                     <div class="glow-effect"></div>
                 </div>
             </div>
@@ -154,7 +159,8 @@
                 </div>
                 <div class="feature-visual graphic-1">
                     <div class="phone-frame-small">
-                        <img src="screenshot_monitoring.png" alt="Sleep Tracking Interface">
+                        <img src="screenshot_monitoring.png" alt="Sleep Tracking Interface" loading="lazy"
+                            decoding="async" width="424" height="885">
                     </div>
                 </div>
             </div>
@@ -175,7 +181,8 @@
                 </div>
                 <div class="feature-visual graphic-3">
                     <div class="phone-frame-small">
-                        <img src="screenshot_nap_analytics.png" alt="Analytics Interface">
+                        <img src="screenshot_nap_analytics.png" alt="Analytics Interface" loading="lazy"
+                            decoding="async" width="424" height="885">
                     </div>
                 </div>
             </div>
@@ -236,7 +243,7 @@
 
     <section class="brand-divider">
         <div class="container text-center">
-            <img src="naptime_icon_transparent.png" alt="Naptime" class="brand-icon">
+            <img src="naptime_icon_transparent.png" alt="Naptime" class="brand-icon" loading="lazy" decoding="async">
             <div class="brand-logo">Naptime<span class="dot">.</span></div>
         </div>
     </section>
