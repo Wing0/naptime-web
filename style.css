@@ -1,11 +1,14 @@
 :root {
     --bg-dark: #0f0518;
-    --bg-card: #1a0b2e;
+    --bg-card: #17131f;
+    --bg-panel: #111722;
     --primary: #8b2df2;
     --primary-glow: #b249f8;
     --secondary: #00f0ff;
+    --accent-warm: #ffab40;
     --text-main: #ffffff;
     --text-muted: #a39eb5;
+    --border-subtle: rgba(255, 255, 255, 0.08);
     --gradient-1: linear-gradient(135deg, #8b2df2 0%, #4c1d95 100%);
     --gradient-text: linear-gradient(to right, #fff, #c4b5fd);
 
@@ -51,7 +54,7 @@ h4,
     padding: 1.5rem 0;
     background: rgba(15, 5, 24, 0.8);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid var(--border-subtle);
 }
 
 .nav-container {
@@ -149,17 +152,8 @@ h4,
     overflow: hidden;
 }
 
-/* Background blob */
 .hero::before {
-    content: '';
-    position: absolute;
-    top: -20%;
-    right: -10%;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(139, 45, 242, 0.2) 0%, rgba(15, 5, 24, 0) 70%);
-    z-index: -1;
-    filter: blur(60px);
+    content: none;
 }
 
 .hero-container {
@@ -247,15 +241,15 @@ h4,
 
     background: var(--bg-card);
     padding: 2.5rem;
-    border-radius: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid var(--border-subtle);
     transition: transform 0.3s;
 }
 
 .card:hover {
-    transform: translateY(-10px);
-    background: linear-gradient(180deg, rgba(26, 11, 46, 1) 0%, rgba(35, 15, 60, 1) 100%);
-    border-color: rgba(139, 45, 242, 0.2);
+    transform: translateY(-4px);
+    background: #1d1828;
+    border-color: rgba(0, 240, 255, 0.2);
 }
 
 .card .icon {
@@ -309,6 +303,7 @@ h4,
 /* Features */
 .features {
     padding: 8rem 0;
+    background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(17, 23, 34, 0.72) 48%, var(--bg-dark) 100%);
 }
 
 .feature-row {
@@ -396,7 +391,7 @@ h4,
 
 .download-section {
     padding: 6rem 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid var(--border-subtle);
 }
 
 /* Feature Graphics replaced by images */
@@ -445,7 +440,7 @@ h4,
 /* Smart Wake */
 .smart-wake {
     padding: 6rem 0;
-    background: linear-gradient(180deg, var(--bg-dark) 0%, #230f3c 100%);
+    background: var(--bg-panel);
     text-align: center;
 }
 
@@ -457,7 +452,7 @@ h4,
 /* Footer */
 .footer {
     padding: 4rem 0 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid var(--border-subtle);
 }
 
 .footer-brand h3 {
@@ -471,7 +466,7 @@ h4,
 .copyright {
     margin-top: 3rem;
     padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid var(--border-subtle);
     text-align: center;
     color: rgba(255, 255, 255, 0.3);
     font-size: 0.9rem;
@@ -526,7 +521,7 @@ h4,
 /* Science Section */
 .science-backed {
     padding: 6rem 0;
-    background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(139, 45, 242, 0.03) 50%, var(--bg-dark) 100%);
+    background: var(--bg-dark);
 }
 
 .science-header {
@@ -553,16 +548,16 @@ h4,
     max-width: 400px;
     background: var(--bg-card);
     padding: 2.5rem;
-    border-radius: 24px;
-    border: 1px solid rgba(139, 45, 242, 0.15);
+    border-radius: 8px;
+    border: 1px solid var(--border-subtle);
     transition: all 0.3s;
     text-align: center;
 }
 
 .science-card:hover {
     transform: translateY(-5px);
-    border-color: rgba(139, 45, 242, 0.4);
-    box-shadow: 0 20px 40px rgba(139, 45, 242, 0.15);
+    border-color: rgba(0, 240, 255, 0.22);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.18);
 }
 
 .science-icon {
@@ -577,7 +572,7 @@ h4,
     font-family: var(--font-heading);
     line-height: 1.2;
     margin-bottom: 1.5rem;
-    background: linear-gradient(135deg, #00f0ff, #8b2df2);
+    background: linear-gradient(135deg, var(--secondary), var(--accent-warm));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -605,7 +600,7 @@ h4,
 /* Privacy First Section */
 .privacy-first {
     padding: 6rem 0;
-    background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(139, 45, 242, 0.05) 50%, var(--bg-dark) 100%);
+    background: var(--bg-panel);
 }
 
 .privacy-content {
