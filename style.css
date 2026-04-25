@@ -379,9 +379,9 @@ h4,
 .tag-pill {
     display: inline-flex;
     align-items: center;
-    border: 1px solid rgba(0, 240, 255, 0.35);
+    border: 1px solid var(--primary);
     border-radius: 999px;
-    color: var(--secondary);
+    color: var(--text-main);
     font-size: 0.85rem;
     margin-bottom: 1.5rem;
     padding: 0.35rem 0.75rem;
@@ -467,6 +467,7 @@ h4,
 
 .phone-frame-small {
     width: 280px;
+    max-width: 100%;
     height: auto;
     border-radius: 30px;
     overflow: visible;
@@ -488,8 +489,11 @@ h4,
 
 .phone-frame-small img {
     width: 100%;
+    height: auto;
     display: block;
     border-radius: 30px;
+    aspect-ratio: 424 / 885;
+    object-fit: cover;
 }
 
 .store-badge {
@@ -640,6 +644,12 @@ h4,
 
     .comparison-grid {
         grid-template-columns: 1fr;
+        max-width: 480px;
+        margin: 0 auto;
+    }
+
+    .comparison-item.featured {
+        order: -1;
     }
 
     .feature-visual {
