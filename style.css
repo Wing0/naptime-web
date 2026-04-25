@@ -351,6 +351,54 @@ h4,
     font-family: var(--font-heading);
 }
 
+.tag-analytics {
+    padding: 6rem 0;
+}
+
+.tag-header p {
+    color: var(--text-muted);
+    font-size: 1.125rem;
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.tag-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.tag-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.tag-pill {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid rgba(0, 240, 255, 0.35);
+    border-radius: 999px;
+    color: var(--secondary);
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+    padding: 0.35rem 0.75rem;
+}
+
+.tag-card strong {
+    display: block;
+    color: var(--text-main);
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    margin-bottom: 0.75rem;
+}
+
+.tag-card p {
+    color: var(--text-muted);
+}
+
 .features {
     padding: 8rem 0;
     background: linear-gradient(180deg, var(--bg-dark) 0%, rgba(17, 23, 34, 0.72) 48%, var(--bg-dark) 100%);
@@ -554,6 +602,10 @@ h4,
 
     .sleep-system-copy p {
         margin: 0 auto;
+    }
+
+    .tag-grid {
+        grid-template-columns: 1fr;
     }
 
     .feature-visual {
