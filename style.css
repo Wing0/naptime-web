@@ -642,9 +642,6 @@ h4,
         grid-template-columns: 1fr;
     }
 
-    .comparison-item.featured {
-        order: -1;
-    }
 
     .feature-visual {
         width: 100%;
@@ -768,9 +765,6 @@ h4,
     padding: 2rem;
 }
 
-.comparison-item.featured {
-    border-color: rgba(0, 240, 255, 0.35);
-}
 
 .comparison-item h3 {
     font-size: 1.35rem;
