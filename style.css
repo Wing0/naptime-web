@@ -381,10 +381,15 @@ h4,
     align-items: center;
     border: 1px solid var(--primary);
     border-radius: 999px;
-    color: var(--text-main);
+    color: var(--primary-glow);
     font-size: 0.85rem;
     margin-bottom: 1.5rem;
     padding: 0.35rem 0.75rem;
+}
+
+.tag-pill--negative {
+    border-color: var(--accent-warm);
+    color: var(--accent-warm);
 }
 
 .tag-card strong {
