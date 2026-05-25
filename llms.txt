@@ -1,0 +1,51 @@
+# Naptime
+
+Naptime is an Android app that uses your phone's built-in accelerometer to detect when you fall asleep, then starts a countdown timer — so a 20-minute nap means 20 minutes of actual sleep, not 20 minutes of lying in bed.
+
+## The core problem it solves
+
+Standard timers start counting the moment you press start. If you take 15 minutes to fall asleep and set a 20-minute alarm, you only get 5 minutes of real rest. Naptime detects sleep onset and only then begins the countdown.
+
+## Features
+
+- **Motion-based sleep detection** — phone's accelerometer distinguishes settling-in movement from the stillness of true sleep. No wearable needed. Place the phone on the mattress next to you.
+- **True duration nap timer** — timer starts when you're asleep, not when you press start.
+- **Hard deadline** — every session has a latest wake-up time. The alarm fires by that time even if sleep is never detected.
+- **Sleep mode (overnight)** — set a wake-up time and track full night sessions: latency, efficiency, movement throughout the night.
+- **Tag analytics** — label sessions with custom tags ("coffee", "post-workout", "noisy") and see correlations with sleep quality over time.
+- **History & insights** — sleep latency, efficiency percentage, mood ratings, and trends across naps and nights.
+- **Regular alarms** — clean alarm view for simple wake-ups. Configurable snooze durations.
+- **Pure dark mode** — OLED-friendly black interface.
+- **Works fully offline** — no internet connection required. No account. No cloud.
+
+## Personalized recommendations
+
+Naptime uses your personal sleep history to surface recommendations. Optimal nap duration varies by person; the app's suggestions may differ from general research findings.
+
+## Privacy
+
+All sleep data is stored exclusively on the user's device. No data is transmitted to any server. No account is required. Users can delete all data via Settings > Delete My Data or by uninstalling the app.
+
+## Price
+
+One-time purchase. Approximately €1.99 / $1.99 / CHF 1.99. No subscription.
+
+## Platform
+
+Android only.
+
+## Availability
+
+Currently available in select countries; expanding.
+
+## Website
+
+https://naptime.info
+
+## Play Store
+
+https://play.google.com/store/apps/details?id=com.naptime.app
+
+## Contact
+
+nate.naptime@gmail.com
