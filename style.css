@@ -826,6 +826,48 @@ h4,
     line-height: 1.6;
 }
 
+/* FAQ Section */
+.faq {
+    padding: 6rem 0;
+    background: var(--bg-dark);
+}
+
+.faq-header {
+    margin-bottom: 4rem;
+}
+
+.faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.faq-item:first-child {
+    border-top: 1px solid var(--border-subtle);
+}
+
+.faq-q {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 0.75rem;
+    font-family: var(--font-heading);
+}
+
+.faq-a {
+    color: var(--text-muted);
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
+.faq-a strong {
+    color: var(--text-main);
+}
+
 /* Cookie Banner */
 .cookie-banner {
     position: fixed;
