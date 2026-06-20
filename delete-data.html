@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Your Data - Naptime Free</title>
+    <meta name="description" content="How to request deletion of your data in the free edition of the Naptime app.">
+    <link rel="canonical" href="https://naptime.info/delete-data.html">
+    <meta name="robots" content="noindex, follow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <style>
+        .privacy-content {
+            padding: 8rem 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .privacy-content h1 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .privacy-content h2 {
+            font-size: 1.5rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .privacy-content p,
+        .privacy-content ul,
+        .privacy-content ol {
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .privacy-content ul,
+        .privacy-content ol {
+            padding-left: 1.5rem;
+        }
+
+        .privacy-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .steps {
+            counter-reset: step;
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .steps li {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 1.25rem;
+            min-height: 2rem;
+        }
+
+        .steps li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: -0.1rem;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            background: var(--gradient-text);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .callout {
+            border: 1px solid var(--primary);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin: 2rem 0;
+            background: rgba(127, 127, 255, 0.06);
+        }
+
+        .callout p:last-child {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">Naptime<span class="dot">.</span></a>
+        </div>
+    </nav>
+
+    <section class="privacy-content">
+        <div class="container">
+            <a href="index.html" class="back-link">← Back to Home</a>
+
+            <h1>Delete Your Data</h1>
+            <p>This page explains how to request deletion of the data collected by <strong>Naptime</strong> (the free,
+                donation-supported edition of the Naptime app). For full details on what we collect and why, see our
+                <a href="privacy-free.html" style="color: var(--primary);">Naptime Free Privacy Policy</a>.</p>
+
+            <div class="callout">
+                <p><strong>Important:</strong> Please delete your data <em>before</em> uninstalling the app. The deletion
+                    is performed from within the app, so uninstalling first removes the controls needed to request
+                    server-side deletion. See the note at the bottom of this page if you have already uninstalled.</p>
+            </div>
+
+            <h2>How to request deletion</h2>
+            <p>Naptime Free does not require an account, and your data is associated only with an anonymous, randomly
+                generated installation identifier. You do not need to know or provide this identifier — the app handles
+                it for you. To delete your data:</p>
+            <ol class="steps">
+                <li>Open the <strong>Naptime</strong> app on your device.</li>
+                <li>Go to <strong>Settings</strong>.</li>
+                <li>Tap <strong>"Delete my data"</strong>.</li>
+                <li>Confirm by typing <strong>DELETE</strong> when prompted.</li>
+            </ol>
+            <p>This single action erases your data both <strong>on your device</strong> and <strong>on our
+                    servers</strong>. No further steps are required.</p>
+
+            <h2>What is deleted</h2>
+            <p>On your device, the following is permanently removed:</p>
+            <ul>
+                <li>All nap and sleep session records and history.</li>
+                <li>App settings, alarm and snooze state, and tags.</li>
+                <li>Crash logs and the consent and installation-identifier records.</li>
+                <li>Any session data files (e.g. CSV exports) created by the app in your Downloads folder.</li>
+            </ul>
+            <p>On our servers, the same action permanently and irreversibly removes all data associated with your
+                installation identifier, including:</p>
+            <ul>
+                <li>All uploaded nap and sleep sessions and their movement statistics.</li>
+                <li>All crash and diagnostic records.</li>
+                <li>All metadata linked to your installation identifier.</li>
+            </ul>
+
+            <h2>What is kept</h2>
+            <p>Data that has already been irreversibly aggregated or anonymized into a pooled dataset before your
+                deletion request can no longer be linked to your installation identifier, and therefore cannot be
+                individually separated out or removed. This residual data contains no information that identifies you.</p>
+
+            <h2>Data retention period</h2>
+            <p>We retain the data associated with your installation identifier until you delete it as described above;
+                there is no fixed expiry. Once you request deletion, the records associated with your installation
+                identifier are removed from our active systems and cannot be recovered. We do not currently keep
+                backups of this data; should we introduce backups in the future, deleted data will be purged from them
+                within 30 days.</p>
+
+            <h2>If you have already uninstalled the app</h2>
+            <p>Because Naptime Free never collects your name, email address, or any other personal identifier, data on
+                our servers is anonymous and cannot be traced back to you once the app — and the installation identifier
+                it stored — has been removed from your device. Reinstalling the app generates a new identifier and does
+                not reconnect you to the previous data. As a result, any residual data is already anonymous and cannot
+                be linked to you as an individual.</p>
+            <p>If you have questions or need assistance, contact us at
+                <a href="mailto:nate.naptime@gmail.com" style="color: var(--primary);">nate.naptime@gmail.com</a>.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links"
+                style="margin-bottom: 1rem; display: flex; flex-wrap: wrap; gap: 1.25rem; justify-content: center;">
+                <a href="privacy.html"
+                    style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">Privacy Policy</a>
+                <a href="privacy-free.html"
+                    style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">Privacy Policy (Free)</a>
+                <a href="delete-data.html"
+                    style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">Delete Your Data</a>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Naptime App. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
