@@ -4,24 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Naptime: Smart Nap Timer & Sleep Tracker for Android</title>
+    <title>{{PAGE_TITLE}}</title>
     <meta name="description"
         content="Naptime is the first alarm clock that starts your timer after you fall asleep. Smart nap timer, night sleep tracking, and tag analytics. Android only, works fully offline.">
     <meta name="keywords"
         content="nap app, power nap, sleep tracker, smart alarm, nap timer, sleep efficiency, android alarm, sleep inertia, polyphasic sleep, best nap length, wake up refreshed">
-    <link rel="canonical" href="https://naptime.info/">
+    <link rel="canonical" href="{{CANONICAL_URL}}">
 
     <!-- Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
-      "name": "Naptime",
+      "name": "{{PAGE_NAME}}",
       "operatingSystem": "Android",
       "applicationCategory": "HealthApplication",
       "offers": {
         "@type": "Offer",
-        "price": "1.99",
+        "price": "{{PRICE}}",
         "priceCurrency": "USD"
       },
       "description": "The intelligent alarm clock for power nappers. Naptime uses motion detection to wake you up at the optimal time.",
@@ -36,16 +36,16 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://naptime.info/">
-    <meta property="og:title" content="Naptime - Intelligent Power Napping">
+    <meta property="og:url" content="{{OG_URL}}">
+    <meta property="og:title" content="{{PAGE_NAME}} - Intelligent Power Napping">
     <meta property="og:description"
         content="The first alarm clock that knows when you're actually asleep. Get exactly 20 minutes of rest, guaranteed.">
     <meta property="og:image" content="https://naptime.info/hero_bed.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://naptime.info/">
-    <meta property="twitter:title" content="Naptime - Intelligent Power Napping">
+    <meta property="twitter:url" content="{{OG_URL}}">
+    <meta property="twitter:title" content="{{PAGE_NAME}} - Intelligent Power Napping">
     <meta property="twitter:description"
         content="The first alarm clock that knows when you're actually asleep. Get exactly 20 minutes of rest, guaranteed.">
     <meta property="twitter:image" content="https://naptime.info/hero_bed.png">
@@ -100,7 +100,7 @@
     </script>
 
     <!-- FAQPage Schema -->
-    
+    <!-- PAID_ONLY -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -173,7 +173,7 @@
       ]
     }
     </script>
-    
+    <!-- /PAID_ONLY -->
 
     <!-- Google Consent Mode -->
     <script>
@@ -197,7 +197,7 @@
                 <li><a href="#features">Features</a></li>
                 <li><a href="#how-it-works">How It Works</a></li>
             </ul>
-            <a href="https://play.google.com/store/apps/details?id=com.naptime.app" class="btn btn-primary nav-cta" target="_blank" rel="noopener">Get it on Android</a>
+            <a href="{{STORE_URL}}" class="btn btn-primary nav-cta" target="_blank" rel="noopener">Get it on Android</a>
         </div>
     </nav>
 
@@ -208,7 +208,7 @@
                 <p class="hero-subtitle">Stop guessing. Start resting. The first alarm clock that waits until you're
                     asleep to start the timer.</p>
                 <div class="cta-group">
-                    <a href="https://play.google.com/store/apps/details?id=com.naptime.app" target="_blank" rel="noopener">
+                    <a href="{{STORE_URL}}" target="_blank" rel="noopener">
                         <img src="play_badge.png" alt="Get it on Google Play" class="store-badge">
                     </a>
                     <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted); opacity: 0.8;">Available in Finland, Ireland, Slovenia &amp; Switzerland</p>
@@ -528,12 +528,12 @@
                     <h3 class="faq-q">Will the alarm fire even if I never fall asleep?</h3>
                     <p class="faq-a">Yes. Every session has a hard deadline. If you set a 20-minute nap with a 1:00 PM cutoff, the alarm fires at 1:00 PM regardless of whether sleep was detected. You will never sleep through a commitment.</p>
                 </div>
-                
+                <!-- PAID_ONLY -->
                 <div class="faq-item">
                     <h3 class="faq-q">Where does my sleep data go?</h3>
                     <p class="faq-a">It stays on your device. Naptime never transmits sleep data to any server. No account is required, and no data is shared with third parties. To delete everything, use the <strong>Delete My Data</strong> button in Settings or uninstall the app.</p>
                 </div>
-                
+                <!-- /PAID_ONLY -->
                 <div class="faq-item">
                     <h3 class="faq-q">How should I place my phone?</h3>
                     <p class="faq-a">Place your phone face-up on the mattress next to you — close enough that your body movements transfer through the mattress to the phone. It does not need to touch you directly. Avoid placing it on a hard surface like a nightstand.</p>
@@ -550,7 +550,7 @@
         </div>
     </section>
 
-    
+    <!-- PAID_ONLY -->
     <section class="privacy-first">
         <div class="container">
             <div class="privacy-content text-center">
@@ -577,14 +577,14 @@
             </div>
         </div>
     </section>
-    
+    <!-- /PAID_ONLY -->
 
     <section class="download-section">
         <div class="container download-content text-center">
             <span class="badge">Now Available</span>
             <h2>Get the Sleep You Actually Asked For</h2>
-            <p>Smart naps, night sleep tracking, tag analytics, and regular alarms. Private by design and built for Android.</p>
-            <a href="https://play.google.com/store/apps/details?id=com.naptime.app" target="_blank" rel="noopener">
+            <p>{{DOWNLOAD_TAGLINE}}</p>
+            <a href="{{STORE_URL}}" target="_blank" rel="noopener">
                 <img src="play_badge.png" alt="Get it on Google Play" class="store-badge">
             </a>
             <p style="margin-top: 1.25rem; font-size: 0.875rem; color: var(--text-muted);">Currently available in Finland, Ireland, Slovenia &amp; Switzerland &mdash; expanding soon.</p>
@@ -599,17 +599,20 @@
                     <p>The intelligent alarm for power nappers.</p>
                 </div>
                 <div class="footer-links" style="margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 1.25rem;">
-                    
+                    <!-- PAID_ONLY -->
                     <a href="privacy.html"
                         style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">Privacy Policy</a>
                     <a href="privacy-free.html"
                         style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">Privacy Policy (Free)</a>
-                    
-                    
+                    <!-- /PAID_ONLY -->
+                    <!-- FREE_ONLY -->
+                    <a href="privacy-free.html"
+                        style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">Privacy Policy</a>
+                    <!-- /FREE_ONLY -->
                     <a href="delete-data.html"
                         style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">Delete Your Data</a>
-                    <a href="/free.html"
-                        style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">Naptime Free</a>
+                    <a href="{{CROSSLINK_URL}}"
+                        style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">{{CROSSLINK_LABEL}}</a>
                 </div>
             </div>
             <div class="copyright">
