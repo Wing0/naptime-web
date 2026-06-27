@@ -1,4 +1,4 @@
-const ENABLE_FREE_EXPERIMENT = false;
+const ENABLE_FREE_EXPERIMENT = true;
 
 const FREE_EXPERIMENT = {
   name: "free_landing_v1",

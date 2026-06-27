@@ -60,13 +60,13 @@ If using an API token instead of browser login, set `CLOUDFLARE_API_TOKEN` in yo
 
 ## Current live state
 
-Cloudflare DNS is active and the Worker has been deployed to the `free.html` routes, but experiment routing is intentionally disabled in `worker/src/index.js` with:
+Cloudflare DNS is active and the Worker has been deployed to the `free.html` routes, but experiment routing is enabled in `worker/src/index.js` with:
 
 ```js
-const ENABLE_FREE_EXPERIMENT = false;
+const ENABLE_FREE_EXPERIMENT = true;
 ```
 
-Keep it disabled until the experiment pages under `/experiments/` are published to the live GitHub Pages branch. When those pages are live, switch the flag to `true`, deploy again, and test forced variants before sending paid traffic.
+The `/experiments/` pages must remain published on the live GitHub Pages branch. After changing variants or weights, deploy again and test forced variants before sending paid traffic.
 ## Testing Variants
 
 Force a variant with:
@@ -85,5 +85,4 @@ Fast rollback options:
 1. Disable/remove the Worker route in Cloudflare dashboard.
 2. Deploy this Worker with the route commented out in `wrangler.toml`.
 3. In an emergency, switch DNS records from Proxied to DNS only; this bypasses Cloudflare proxy features but keeps DNS hosted there.
-
 
