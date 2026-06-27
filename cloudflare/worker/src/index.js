@@ -16,6 +16,11 @@ export default {
   async fetch(request) {
     const url = new URL(request.url);
 
+    if (url.hostname === "www.naptime.info") {
+      url.hostname = "naptime.info";
+      return Response.redirect(url.toString(), 301);
+    }
+
     if (!ENABLE_FREE_EXPERIMENT || !isFreeLandingPath(url.pathname)) {
       return fetch(request);
     }
