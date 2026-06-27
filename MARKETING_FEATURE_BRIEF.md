@@ -138,6 +138,32 @@ Create distinct positioning candidates, not minor button-color variants. Good ca
 
 Across all candidates, keep the core lane visible: Naptime is the practical sleep-start alarm for true-duration naps. Night tracking, tags, and insights support that promise; they should not bury it.
 
+
+## Paid Page Candidate Strategy
+
+Paid-page variants should sell the launched paid app, not the free closed test.
+
+Primary paid value:
+
+- True-duration smart naps.
+- All session data stays on-device.
+- Pay once, no account, no sleep-data donation.
+
+Paid page positioning must still keep the same competitive lane:
+
+- Not a broad sleep suite.
+- Not an audio relaxation app.
+- A practical sleep-start alarm for true-duration naps, with night tracking and insights as supporting value.
+
+Good paid-page candidate angles:
+
+- "The private smart nap alarm."
+- "Get the full nap you paid for, with no data uploads."
+- "A calmer alternative to complex sleep trackers."
+- "Sleep insights without an account or wearable."
+- "One-time purchase, on-device sleep history."
+
+Paid CTA should point to the paid Play Store listing. If candidate pages use static experiment links, use `https://play.google.com/store/apps/details?id=com.naptime.app`.
 ## Website Constraints
 
 This repo is a static GitHub Pages site.
