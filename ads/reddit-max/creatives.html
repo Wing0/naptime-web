@@ -370,6 +370,146 @@
     .sleep-start .step:nth-child(3) {
       display: none;
     }
+    body.ratio-4x3 .creative {
+      width: 1200px;
+      height: 900px;
+    }
+
+    body.ratio-4x3 .inner {
+      inset: 56px 64px;
+      gap: 26px;
+    }
+
+    body.ratio-4x3 .brand {
+      font-size: 31px;
+    }
+
+    body.ratio-4x3 .badge {
+      height: 48px;
+      padding: 0 20px;
+      font-size: 21px;
+    }
+
+    body.ratio-4x3 .copy {
+      max-width: 860px;
+    }
+
+    body.ratio-4x3 h1 {
+      font-size: 69px;
+      line-height: 0.98;
+      max-width: 790px;
+    }
+
+    body.ratio-4x3 p {
+      margin-top: 18px;
+      font-size: 29px;
+      line-height: 1.14;
+      max-width: 700px;
+    }
+
+    body.ratio-4x3 .cta {
+      min-height: 66px;
+      padding: 0 28px;
+      font-size: 26px;
+    }
+
+    body.ratio-4x3 .fine {
+      font-size: 20px;
+      max-width: 430px;
+    }
+
+    body.ratio-4x3 .phone {
+      right: 76px;
+      bottom: 126px;
+      width: 240px;
+      height: 480px;
+      border-radius: 42px;
+      border-width: 11px;
+    }
+
+    body.ratio-4x3 .screen {
+      inset: 38px 18px 22px;
+      border-radius: 28px;
+      padding: 38px 18px;
+    }
+
+    body.ratio-4x3 .timer {
+      font-size: 54px;
+    }
+
+    body.ratio-4x3 .state {
+      font-size: 20px;
+    }
+
+    body.ratio-4x3 .bars {
+      left: 22px;
+      right: 22px;
+      bottom: 38px;
+      height: 120px;
+    }
+
+    body.ratio-4x3 .sleep-start .copy {
+      padding-right: 260px;
+    }
+
+    body.ratio-4x3 .timeline {
+      margin-top: 28px;
+      grid-template-columns: 230px 230px;
+      gap: 16px;
+    }
+
+    body.ratio-4x3 .step {
+      min-height: 118px;
+      border-radius: 26px;
+      padding: 20px;
+    }
+
+    body.ratio-4x3 .step strong {
+      font-size: 25px;
+    }
+
+    body.ratio-4x3 .step small {
+      margin-top: 10px;
+      font-size: 18px;
+    }
+
+    body.ratio-4x3 .equation {
+      margin-top: 34px;
+      gap: 16px;
+    }
+
+    body.ratio-4x3 .pill {
+      padding: 18px 24px;
+      border-radius: 22px;
+      font-size: 28px;
+    }
+
+    body.ratio-4x3 .setup {
+      margin-top: 30px;
+      max-width: 690px;
+      gap: 14px;
+    }
+
+    body.ratio-4x3 .setup div {
+      min-height: 74px;
+      border-radius: 22px;
+      font-size: 23px;
+    }
+
+    body.ratio-4x3 .trust-list {
+      margin-top: 28px;
+      gap: 12px;
+    }
+
+    body.ratio-4x3 .trust-list div {
+      font-size: 25px;
+      gap: 14px;
+    }
+
+    body.ratio-4x3 .check {
+      width: 38px;
+      height: 38px;
+    }
     @media print {
       body {
         padding: 0;
@@ -471,6 +611,7 @@
   <script>
     const params = new URLSearchParams(window.location.search);
     const selected = params.get("creative");
+    if (params.get("ratio") === "4x3") document.body.classList.add("ratio-4x3");
     if (selected) {
       document.body.style.padding = "0";
       document.body.style.background = "#ffffff";
@@ -481,6 +622,7 @@
     }
   </script></body>
 </html>
+
 
 
 

@@ -135,5 +135,13 @@ If Reddit Max can rotate multiple assets, include all four. If budget is tight, 
 
 ## Export Notes
 
-`creatives.html` contains four square 1200 by 1200 artboards designed for Reddit feed testing. Export each `.creative` element as PNG at 1200 by 1200.
+Recommended upload format: 4:3 landscape at 1200 by 900. These files are exported under `export/*-1200x900.png`.
+
+Square 1200 by 1200 exports are also kept under `export/*-1200x1200.png` for placements that prefer square inventory.
+
+`creatives.html` contains both formats:
+
+- Square preview/export: `creatives.html?creative=sleep-start`
+- 4:3 preview/export: `creatives.html?ratio=4x3&creative=sleep-start`
+
 
