@@ -36,14 +36,16 @@ curl.exe -I https://www.naptime.info/
 
 This Worker keeps GitHub Pages as the origin and only changes selected requests before they reach GitHub Pages.
 
-Initial route recommendation:
+Current route setup:
 
 | Route | Purpose |
 |---|---|
-| `naptime.info/free.html*` | A/B test Naptime Free landing variants |
-| `www.naptime.info/free.html*` | Same test for www traffic |
+| `naptime.info/android*` | Paid Reddit Max landing-page experiment |
+| `www.naptime.info/android*` | Canonicalizes to apex, then serves paid experiment |
+| `naptime.info/free.html*` | Free route kept as pass-through safety |
+| `www.naptime.info/free.html*` | Canonicalizes to apex; Free experiment is currently disabled |
 
-After the first test works, add routes for paid pages or early-access pages.
+Recommended paid campaign URL: `https://naptime.info/android`.
 
 ## Local Wrangler Commands
 
@@ -60,23 +62,26 @@ If using an API token instead of browser login, set `CLOUDFLARE_API_TOKEN` in yo
 
 ## Current live state
 
-Cloudflare DNS is active and the Worker has been deployed to the `free.html` routes, but experiment routing is enabled in `worker/src/index.js` with:
+Cloudflare DNS is active and the Worker is deployed for paid Reddit Max testing.
+
+Current flags in `worker/src/index.js`:
 
 ```js
-const ENABLE_FREE_EXPERIMENT = true;
+const ENABLE_FREE_EXPERIMENT = false;
+const ENABLE_PAID_EXPERIMENT = true;
 ```
 
-The `/experiments/` pages must remain published on the live GitHub Pages branch. After changing variants or weights, deploy again and test forced variants before sending paid traffic.
+Paid campaign pages are served through `https://naptime.info/android`. Free routing is intentionally pass-through because Naptime Free is not released yet.
 ## Testing Variants
 
-Force a variant with:
+Force a paid variant with:
 
-- `https://naptime.info/free.html?nt_variant=sleep-start`
-- `https://naptime.info/free.html?nt_variant=full-nap`
-- `https://naptime.info/free.html?nt_variant=tester-trust`
-- `https://naptime.info/free.html?nt_variant=no-wearable`
+- `https://naptime.info/android?nt_paid_variant=sleep-start`
+- `https://naptime.info/android?nt_paid_variant=private`
+- `https://naptime.info/android?nt_paid_variant=deadline`
+- `https://naptime.info/android?nt_paid_variant=full-nap`
 
-The Worker sets a sticky cookie named `nt_free_landing_v1`, so normal visitors keep seeing the same variant.
+The Worker sets a sticky cookie named `nt_paid_landing_v1`, so normal visitors keep seeing the same paid variant.
 
 ## Rollback
 
@@ -85,4 +90,5 @@ Fast rollback options:
 1. Disable/remove the Worker route in Cloudflare dashboard.
 2. Deploy this Worker with the route commented out in `wrangler.toml`.
 3. In an emergency, switch DNS records from Proxied to DNS only; this bypasses Cloudflare proxy features but keeps DNS hosted there.
+
 

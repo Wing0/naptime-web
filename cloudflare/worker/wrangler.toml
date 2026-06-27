@@ -13,4 +13,11 @@ zone_name = "naptime.info"
 [[routes]]
 pattern = "www.naptime.info/free.html*"
 zone_name = "naptime.info"
+[[routes]]
+pattern = "naptime.info/android*"
+zone_name = "naptime.info"
+
+[[routes]]
+pattern = "www.naptime.info/android*"
+zone_name = "naptime.info"
 
