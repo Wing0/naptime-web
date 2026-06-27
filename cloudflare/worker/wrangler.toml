@@ -1,0 +1,14 @@
+name = "naptime-experiments"
+main = "src/index.js"
+compatibility_date = "2026-06-27"
+
+# Deploy from this directory or pass:
+# npm exec wrangler -- deploy --config cloudflare/worker/wrangler.toml
+
+[[routes]]
+pattern = "naptime.info/free.html*"
+zone_name = "naptime.info"
+
+[[routes]]
+pattern = "www.naptime.info/free.html*"
+zone_name = "naptime.info"
