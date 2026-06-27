@@ -1,3 +1,5 @@
+const ENABLE_FREE_EXPERIMENT = false;
+
 const FREE_EXPERIMENT = {
   name: "free_landing_v1",
   cookie: "nt_free_landing_v1",
@@ -14,7 +16,7 @@ export default {
   async fetch(request) {
     const url = new URL(request.url);
 
-    if (!isFreeLandingPath(url.pathname)) {
+    if (!ENABLE_FREE_EXPERIMENT || !isFreeLandingPath(url.pathname)) {
       return fetch(request);
     }
 
@@ -89,3 +91,4 @@ function buildCookie(experiment, value) {
     "Secure",
   ].join("; ");
 }
+

@@ -1,4 +1,5 @@
 name = "naptime-experiments"
+account_id = "2e1b26a7137fe907288ca360f1744d0d"
 main = "src/index.js"
 compatibility_date = "2026-06-27"
 
@@ -12,3 +13,4 @@ zone_name = "naptime.info"
 [[routes]]
 pattern = "www.naptime.info/free.html*"
 zone_name = "naptime.info"
+
