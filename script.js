@@ -47,6 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const acceptBtn = document.getElementById('cookie-accept');
     const denyBtn = document.getElementById('cookie-deny');
 
+    if (!cookieBanner || !acceptBtn || !denyBtn) return;
+
     // Check if consent is already stored
     const consent = localStorage.getItem('naptime_cookie_consent');
 
@@ -71,9 +73,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function grantConsent() {
-        if (typeof gtag === 'function') {
+        if (window.naptimeAnalytics) {
+            window.naptimeAnalytics.updateConsent('granted');
+        } else if (typeof gtag === 'function') {
             gtag('consent', 'update', {
                 'ad_storage': 'granted',
+                'ad_user_data': 'granted',
+                'ad_personalization': 'granted',
                 'analytics_storage': 'granted'
             });
         }
@@ -83,3 +89,5 @@ document.addEventListener('DOMContentLoaded', () => {
         cookieBanner.classList.remove('visible');
     }
 });
+
+
