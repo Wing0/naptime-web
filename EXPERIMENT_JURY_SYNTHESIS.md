@@ -84,6 +84,20 @@ Concern:
 
 - Rest Ledger may convert a more thoughtful audience but could dilute the unique nap-timer hook above the fold.
 
+### 6. Competitor Positioning Reviewer
+
+Wants: a lane that is not already owned by Sleep as Android or Pzizz.
+
+Most persuaded by:
+
+- Sleep-Start Alarm
+- Full Nap Mode
+- No Wearable
+
+Concern:
+
+- If Naptime leads with generic sleep tracking, it risks sounding like a smaller Sleep as Android. If it leads with relaxation, it risks sounding like a smaller Pzizz. Lead with true-duration naps and sleep-start timing.
+
 ## Scorecard
 
 Scores are 1-5, where 5 is strongest.
@@ -95,6 +109,14 @@ Scores are 1-5, where 5 is strongest.
 | Trustworthy Tester | 4 | 5 | 5 | 4 | 5 | 3 | 26 |
 | No Wearable | 4 | 5 | 4 | 4 | 4 | 4 | 25 |
 | Rest Ledger | 3 | 4 | 3 | 4 | 3 | 5 | 22 |
+
+Competitor-positioning adjustment:
+
+- **Sleep-Start Alarm** remains the clearest owner of the unique lane.
+- **Full Nap Mode** is the strongest outcome-led version of the same lane.
+- **No Wearable** helps distinguish Naptime from wearable-heavy tracking suites.
+- **Trustworthy Tester** is the strongest near-term acquisition page, but should still mention the sleep-start timer above privacy detail.
+- **Rest Ledger** should be reserved for later lifecycle/email positioning unless its hero keeps the nap-timer hook explicit.
 
 ## Final 5 Candidates
 
@@ -121,6 +143,7 @@ Why keep it:
 - It is the simplest explanation of the product.
 - It makes the difference from a normal timer obvious.
 - It works for both paid and free.
+- It avoids competing head-on with Sleep as Android's broad sleep-suite position or Pzizz's audio relaxation position.
 
 ### Candidate B: Full Nap Mode
 
@@ -141,6 +164,7 @@ Why keep it:
 
 - It sells the user benefit, not the mechanism.
 - It handles the emotional frustration well.
+- It makes Naptime's lane concrete: protect the actual sleep duration, not just track or soothe sleep.
 
 ### Candidate C: Trustworthy Free Tester
 
@@ -184,6 +208,7 @@ Why keep it:
 
 - It creates a strong hardware-free contrast.
 - It pairs well with privacy and simplicity messaging.
+- It gives a clean alternative to wearable-heavy sleep tracking without promising a full sleep lab.
 
 ### Candidate E: Rest Ledger
 
@@ -205,6 +230,18 @@ Why keep it:
 
 - It broadens Naptime beyond one nap feature.
 - It may support retention and paid conversion better than immediate closed-test acquisition.
+- It should be treated as a supporting story, not the main competitive wedge.
+
+
+## Positioning Guardrail
+
+For public pages, the first screen should answer:
+
+> Why not just use a timer, Sleep as Android, or Pzizz?
+
+Recommended answer:
+
+> A timer starts too early. Sleep suites track everything. Audio apps help you relax. Naptime does one practical thing first: it starts your nap timer after sleep begins, then wakes you by your deadline.
 
 ## Recommended Test Order
 

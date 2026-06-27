@@ -10,6 +10,30 @@ Naptime is an Android alarm and sleep app. Its core promise:
 
 If a user sets a 20-minute nap but spends 15 minutes falling asleep, a normal timer gives only 5 minutes of real rest. Naptime uses the phone's accelerometer on the mattress to detect sleep onset, then starts the countdown so the user gets the planned sleep duration.
 
+## Competitive Lane
+
+Naptime should not be positioned as a generic sleep app.
+
+- Sleep as Android owns the broad Android sleep-suite lane: sleep tracking, smart wake-up, anti-snoring, wearables, integrations, and advanced settings.
+- Pzizz owns the audio relaxation lane: voice, music, and soundscapes to help users fall asleep, nap, or focus.
+- Naptime owns the true-duration nap lane: the alarm/timer starts counting after sleep begins.
+
+Simple comparison:
+
+| App | Core Job |
+|---|---|
+| Pzizz | Helps you fall asleep with audio |
+| Sleep as Android | Tracks sleep and wakes you intelligently |
+| Naptime | Starts your nap timer after sleep begins |
+
+Preferred contrast copy:
+
+- "Not another sleep dashboard."
+- "Not an audio relaxation app."
+- "A practical smart nap alarm that protects the sleep time you asked for."
+
+Keep competitors out of public-facing page copy unless explicitly creating comparison pages. Use the distinction to sharpen Naptime's own words.
+
 ## Current Release State
 
 - Paid app: launched in selected countries.
@@ -111,6 +135,8 @@ Create distinct positioning candidates, not minor button-color variants. Good ca
 - "A smarter power nap without a wearable."
 - "Nap and night sleep insights in one calm Android app."
 - "Free tester-first version: help shape a better sleep alarm."
+
+Across all candidates, keep the core lane visible: Naptime is the practical sleep-start alarm for true-duration naps. Night tracking, tags, and insights support that promise; they should not bury it.
 
 ## Website Constraints
 
