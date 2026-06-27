@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naptime Landing Page Candidates</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <style>
+        .experiment-list {
+            padding: 8rem 0 4rem;
+        }
+
+        .candidate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .candidate-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 8px;
+            padding: 1.25rem;
+        }
+
+        .candidate-card a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="experiment-list">
+        <div class="container">
+            <span class="badge">Experiment Branch</span>
+            <h1>Landing Page Candidates</h1>
+            <p class="hero-subtitle">Five distinct Naptime positioning candidates synthesized from parallel agent proposals.</p>
+
+            <div class="candidate-grid">
+                <div class="candidate-card">
+                    <h2>Full Nap Mode</h2>
+                    <p>Core promise: get the full nap you asked for.</p>
+                    <a href="candidate-full-nap.html">Open candidate</a>
+                </div>
+                <div class="candidate-card">
+                    <h2>Sleep-Start Alarm</h2>
+                    <p>Clearest expression of the unique mechanism.</p>
+                    <a href="candidate-sleep-start.html">Open candidate</a>
+                </div>
+                <div class="candidate-card">
+                    <h2>No Wearable</h2>
+                    <p>Smart power naps using only the phone.</p>
+                    <a href="candidate-no-wearable.html">Open candidate</a>
+                </div>
+                <div class="candidate-card">
+                    <h2>Rest Ledger</h2>
+                    <p>Connect naps, nights, tags, and ratings.</p>
+                    <a href="candidate-rest-ledger.html">Open candidate</a>
+                </div>
+                <div class="candidate-card">
+                    <h2>Trustworthy Tester</h2>
+                    <p>Closed-testing acquisition with privacy up front.</p>
+                    <a href="candidate-trustworthy-tester.html">Open candidate</a>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
