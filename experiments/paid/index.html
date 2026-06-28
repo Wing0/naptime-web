@@ -15,7 +15,8 @@
         });
         gtag('js', new Date());
         gtag('config', 'G-M9EH844KS8', {
-            anonymize_ip: true
+            anonymize_ip: true,
+            send_page_view: false
         });
     </script>
 <meta charset="UTF-8">
@@ -29,6 +30,7 @@
         .candidate-card { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 1.25rem; }
         .candidate-card a { color: var(--secondary); text-decoration: none; font-weight: 700; }
     </style>
+    <script src="/analytics.js" defer></script>
 </head>
 <body>
     <main class="experiment-list">
@@ -47,4 +49,5 @@
     </main>
 </body>
 </html>
+
 

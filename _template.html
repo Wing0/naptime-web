@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-page-flavor="{{PAGE_FLAVOR}}" data-variant="{{CONTENT_VARIANT}}">
 
 <head>
     <!-- Google tag (gtag.js) -->
@@ -200,12 +200,12 @@
 <body>
     <nav class="navbar">
         <div class="container nav-container">
-            <a href="#" class="logo">Naptime<span class="dot">.</span></a>
+            <a href="#" class="logo" data-cta-location="nav-logo">Naptime<span class="dot">.</span></a>
             <ul class="nav-links">
-                <li><a href="#features">Features</a></li>
-                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#features" data-cta-location="nav">Features</a></li>
+                <li><a href="#how-it-works" data-cta-location="nav">How It Works</a></li>
             </ul>
-            <a href="{{STORE_URL}}" class="btn btn-primary nav-cta" target="_blank" rel="noopener">Get it on Android</a>
+            <a href="{{STORE_URL}}" class="btn btn-primary nav-cta" target="_blank" rel="noopener" data-analytics-event="play_store_click" data-cta-location="nav">Get it on Android</a>
         </div>
     </nav>
 
@@ -216,7 +216,7 @@
                 <p class="hero-subtitle">Stop guessing. Start resting. The first alarm clock that waits until you're
                     asleep to start the timer.</p>
                 <div class="cta-group">
-                    <a href="{{STORE_URL}}" target="_blank" rel="noopener">
+                    <a href="{{STORE_URL}}" target="_blank" rel="noopener" data-analytics-event="play_store_click" data-cta-location="hero">
                         <img src="play_badge.png" alt="Get it on Google Play" class="store-badge">
                     </a>
                     <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted); opacity: 0.8;">Available in Finland, Ireland, Slovenia &amp; Switzerland</p>
@@ -594,7 +594,7 @@
             <span class="badge">Now Available</span>
             <h2>Get the Sleep You Actually Asked For</h2>
             <p>{{DOWNLOAD_TAGLINE}}</p>
-            <a href="{{STORE_URL}}" target="_blank" rel="noopener">
+            <a href="{{STORE_URL}}" target="_blank" rel="noopener" data-analytics-event="play_store_click" data-cta-location="download-section">
                 <img src="play_badge.png" alt="Get it on Google Play" class="store-badge">
             </a>
             <p style="margin-top: 1.25rem; font-size: 0.875rem; color: var(--text-muted);">Currently available in Finland, Ireland, Slovenia &amp; Switzerland &mdash; expanding soon.</p>
@@ -646,4 +646,5 @@
 </body>
 
 </html>
+
 

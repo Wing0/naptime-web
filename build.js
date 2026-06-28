@@ -11,6 +11,8 @@ const variants = [
     vars: {
       PAGE_TITLE:        'Naptime: Smart Nap Timer & Sleep Tracker for Android',
       PAGE_NAME:         'Naptime',
+      PAGE_FLAVOR:       'paid-main',
+      CONTENT_VARIANT:   'main-paid',
       CANONICAL_URL:     'https://naptime.info/',
       OG_URL:            'https://naptime.info/',
       STORE_URL:         'https://play.google.com/store/apps/details?id=com.naptime.app',
@@ -27,6 +29,8 @@ const variants = [
     vars: {
       PAGE_TITLE:        'Naptime Free: Smart Nap Timer & Sleep Tracker for Android',
       PAGE_NAME:         'Naptime Free',
+      PAGE_FLAVOR:       'free-main',
+      CONTENT_VARIANT:   'main-free',
       CANONICAL_URL:     'https://naptime.info/free.html',
       OG_URL:            'https://naptime.info/free.html',
       STORE_URL:         'https://play.google.com/store/apps/details?id=com.naptime.app.free',

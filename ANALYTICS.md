@@ -2,6 +2,8 @@
 
 The website uses a consent-aware GA4 setup. The canonical Google tag is loaded directly in the page `<head>` so Google Analytics can detect it normally. `analytics.js` handles consent updates, custom page views, and CTA events.
 
+All tracked HTML pages load one Google tag and one `analytics.js` helper. Automatic GA page views are disabled with `send_page_view: false`; `analytics.js` sends the page view so every page view can include Naptime-specific flavor and variant fields.
+
 Current Measurement ID:
 
 - `G-M9EH844KS8`
@@ -24,21 +26,44 @@ If this is not the correct GA4 web stream for Naptime, update the Google tag sni
 `analytics.js` sends a manual `page_view` with:
 
 - `content_variant`
+- `landing_variant`
 - `page_flavor`
 - `traffic_source`
+- UTM params when present
 
-CTA links marked with `data-analytics-event` send events. Current paid campaign pages emit:
+Links are tracked automatically on pages that load `analytics.js`. Important CTA links can still set `data-analytics-event` and `data-cta-location` for clearer event names and placement labels.
+
+Pages can declare tracking metadata on the `<html>` element:
+
+```html
+<html data-page-flavor="paid-campaign" data-variant="sleep-start">
+```
+
+When metadata is missing, `analytics.js` infers a useful `page_flavor` and `content_variant` from the URL path, so experiment and static pages are still distinguishable in GA.
+
+Current event names include:
 
 - `play_store_click`
 - `learn_more_click`
+- `navigation_click`
+- `anchor_navigation`
+- `outbound_click`
+- `consent_choice`
 
 Useful event params:
 
 - `content_variant`
+- `landing_variant`
 - `page_flavor`
 - `cta_location`
 - `destination`
+- `destination_host`
 - `link_text`
+- `link_type`
+- `utm_source`
+- `utm_medium`
+- `utm_campaign`
+- `utm_content`
 
 ## Paid Reddit Max URLs
 
