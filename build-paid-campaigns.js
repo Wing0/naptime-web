@@ -241,16 +241,16 @@ const variants = [
     variant: 'caffeine-alternative',
     bodyClass: 'theme-caffeine',
     title: 'Naptime for Android - Recharge without another caffeine hit',
-    description: 'A private Android smart nap alarm for people who want a short reset instead of another coffee or energy drink.',
+    description: 'A private Android smart nap alarm for people who want a short reset that supports focus and memory without another caffeine hit.',
     h1: 'Recharge without another caffeine hit.',
-    subhead: 'When your energy dips, a short nap can be cleaner than stacking coffee or energy drinks. Naptime helps you turn a small break into actual sleep.',
+    subhead: 'When your energy dips, a short nap can support focus and memory without leaning on another coffee or energy drink. Naptime helps you turn a small break into actual sleep.',
     image: '/hero_bed_2_960.jpg',
     secondaryImage: '/screenshot_monitoring.png',
-    sectionH2: 'A calmer reset for the afternoon slump',
-    sectionBody: 'Caffeine can keep you going, but it can also linger. Naptime is for the moments when you would rather rest briefly, wake on time, and continue without guessing whether you actually slept.',
+    sectionH2: 'A reset that works with your brain',
+    sectionBody: 'Short naps are linked with better alertness, mood, and memory. Naptime is for the moments when you would rather rest briefly, wake on time, and continue without guessing whether you actually slept.',
     useCaseH2: 'Use rest as the first option',
-    useCaseBody: 'Try it before a late coffee, between study blocks, after lunch, or before an evening shift when you need a reset that does not push against bedtime.',
-    comparisonH2: 'Different tool, different kind of energy',
+    useCaseBody: 'Try it before a late coffee, between study blocks, after lunch, or before an evening shift when you want focus without pushing against bedtime.',
+    comparisonH2: 'Different tool, steadier focus',
     finalH2: 'Make your next break restore you.',
     flow: [
       'Choose a short nap and a latest wake time.',
@@ -258,7 +258,7 @@ const variants = [
       'Naptime starts counting once sleep is detected.'
     ],
     features: [
-      ['Nap before stimulant', 'Give your body a chance to recover before reaching for another coffee or energy drink.'],
+      ['Focus without another hit', 'Give your brain a real rest window before reaching for another coffee or energy drink.'],
       ['Wake without drift', 'A hard cutoff helps a quick reset stay compatible with work, class, and bedtime.']
     ]
   }
