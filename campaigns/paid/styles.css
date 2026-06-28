@@ -18,6 +18,7 @@ body::before { content: ""; position: fixed; inset: 0; z-index: -1; background: 
 .theme-private::before { background: radial-gradient(circle at 15% 18%, rgba(122,242,183,.28), transparent 27%), radial-gradient(circle at 88% 80%, rgba(139,45,242,.42), transparent 28%), linear-gradient(145deg, #06110d, #10091b 62%, #08050d); }
 .theme-deadline::before { background: radial-gradient(circle at 13% 78%, rgba(114,215,255,.32), transparent 26%), radial-gradient(circle at 88% 18%, rgba(139,45,242,.44), transparent 31%), linear-gradient(145deg, #050b13, #10101d 60%, #07050e); }
 .theme-warm::before { background: radial-gradient(circle at 12% 12%, rgba(255,211,106,.30), transparent 24%), radial-gradient(circle at 86% 82%, rgba(139,45,242,.46), transparent 30%), linear-gradient(145deg, #100a05, #13091b 58%, #07050d); }
+.theme-caffeine::before { background: radial-gradient(circle at 16% 14%, rgba(122,242,183,.28), transparent 25%), radial-gradient(circle at 90% 82%, rgba(255,211,106,.24), transparent 28%), linear-gradient(145deg, #06100d, #15100b 58%, #08050d); }
 a { color: inherit; }
 .site-nav { min-height: 76px; padding: 0 5vw; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); background: rgba(9,7,15,.82); backdrop-filter: blur(14px); position: sticky; top: 0; z-index: 10; }
 .brand { font-family: Outfit, sans-serif; font-size: 1.45rem; font-weight: 800; text-decoration: none; }

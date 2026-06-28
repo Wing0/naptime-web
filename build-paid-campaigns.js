@@ -235,6 +235,32 @@ const variants = [
       ['Sleep-start countdown', 'Your nap starts after sleep begins, not while you are still awake.'],
       ['One-time purchase', 'No subscription, no account, and no anonymous session uploads in the paid app.']
     ]
+  },
+  {
+    file: 'caffeine-alternative.html',
+    variant: 'caffeine-alternative',
+    bodyClass: 'theme-caffeine',
+    title: 'Naptime for Android - Recharge without another caffeine hit',
+    description: 'A private Android smart nap alarm for people who want a short reset instead of another coffee or energy drink.',
+    h1: 'Recharge without another caffeine hit.',
+    subhead: 'When your energy dips, a short nap can be cleaner than stacking coffee or energy drinks. Naptime helps you turn a small break into actual sleep.',
+    image: '/hero_bed_2_960.jpg',
+    secondaryImage: '/screenshot_monitoring.png',
+    sectionH2: 'A calmer reset for the afternoon slump',
+    sectionBody: 'Caffeine can keep you going, but it can also linger. Naptime is for the moments when you would rather rest briefly, wake on time, and continue without guessing whether you actually slept.',
+    useCaseH2: 'Use rest as the first option',
+    useCaseBody: 'Try it before a late coffee, between study blocks, after lunch, or before an evening shift when you need a reset that does not push against bedtime.',
+    comparisonH2: 'Different tool, different kind of energy',
+    finalH2: 'Make your next break restore you.',
+    flow: [
+      'Choose a short nap and a latest wake time.',
+      'Put your phone on the mattress.',
+      'Naptime starts counting once sleep is detected.'
+    ],
+    features: [
+      ['Nap before stimulant', 'Give your body a chance to recover before reaching for another coffee or energy drink.'],
+      ['Wake without drift', 'A hard cutoff helps a quick reset stay compatible with work, class, and bedtime.']
+    ]
   }
 ];
 
@@ -258,6 +284,7 @@ body::before { content: ""; position: fixed; inset: 0; z-index: -1; background: 
 .theme-private::before { background: radial-gradient(circle at 15% 18%, rgba(122,242,183,.28), transparent 27%), radial-gradient(circle at 88% 80%, rgba(139,45,242,.42), transparent 28%), linear-gradient(145deg, #06110d, #10091b 62%, #08050d); }
 .theme-deadline::before { background: radial-gradient(circle at 13% 78%, rgba(114,215,255,.32), transparent 26%), radial-gradient(circle at 88% 18%, rgba(139,45,242,.44), transparent 31%), linear-gradient(145deg, #050b13, #10101d 60%, #07050e); }
 .theme-warm::before { background: radial-gradient(circle at 12% 12%, rgba(255,211,106,.30), transparent 24%), radial-gradient(circle at 86% 82%, rgba(139,45,242,.46), transparent 30%), linear-gradient(145deg, #100a05, #13091b 58%, #07050d); }
+.theme-caffeine::before { background: radial-gradient(circle at 16% 14%, rgba(122,242,183,.28), transparent 25%), radial-gradient(circle at 90% 82%, rgba(255,211,106,.24), transparent 28%), linear-gradient(145deg, #06100d, #15100b 58%, #08050d); }
 a { color: inherit; }
 .site-nav { min-height: 76px; padding: 0 5vw; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); background: rgba(9,7,15,.82); backdrop-filter: blur(14px); position: sticky; top: 0; z-index: 10; }
 .brand { font-family: Outfit, sans-serif; font-size: 1.45rem; font-weight: 800; text-decoration: none; }

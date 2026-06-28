@@ -20,10 +20,11 @@ const PAID_EXPERIMENT = {
   overrideParam: "nt_paid_variant",
   maxAgeSeconds: 60 * 60 * 24 * 30,
   variants: [
-    { id: "sleep-start", weight: 35, path: "/campaigns/paid/sleep-start.html" },
-    { id: "private", weight: 25, path: "/campaigns/paid/private.html" },
-    { id: "deadline", weight: 20, path: "/campaigns/paid/deadline.html" },
-    { id: "full-nap", weight: 20, path: "/campaigns/paid/full-nap.html" },
+    { id: "sleep-start", weight: 30, path: "/campaigns/paid/sleep-start.html" },
+    { id: "private", weight: 22, path: "/campaigns/paid/private.html" },
+    { id: "deadline", weight: 18, path: "/campaigns/paid/deadline.html" },
+    { id: "full-nap", weight: 18, path: "/campaigns/paid/full-nap.html" },
+    { id: "caffeine-alternative", weight: 12, path: "/campaigns/paid/caffeine-alternative.html" },
   ],
 };
 

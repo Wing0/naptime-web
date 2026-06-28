@@ -80,6 +80,7 @@ https://naptime.info/android?nt_paid_variant=sleep-start
 https://naptime.info/android?nt_paid_variant=private
 https://naptime.info/android?nt_paid_variant=deadline
 https://naptime.info/android?nt_paid_variant=full-nap
+https://naptime.info/android?nt_paid_variant=caffeine-alternative
 ```
 
 The Cloudflare Worker sets sticky cookie `nt_paid_landing_v1`.
