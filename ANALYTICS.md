@@ -1,12 +1,16 @@
 # Analytics Setup
 
-The website uses a consent-aware GA4 setup. The canonical Google tag is loaded directly in the page `<head>` so Google Analytics can detect it normally. `analytics.js` handles consent updates, custom page views, and CTA events.
+The website uses a consent-aware GA4 and Reddit Pixel setup. The canonical Google tag is loaded directly in the page `<head>` so Google Analytics can detect it normally. `analytics.js` handles consent updates, custom page views, CTA events, and Reddit Pixel events.
 
 All tracked HTML pages load one Google tag and one `analytics.js` helper. Automatic GA page views are disabled with `send_page_view: false`; `analytics.js` sends the page view so every page view can include Naptime-specific flavor and variant fields.
 
 Current Measurement ID:
 
 - `G-M9EH844KS8`
+
+Current Reddit Pixel ID:
+
+- `a2_izauxup9ioln`
 
 If this is not the correct GA4 web stream for Naptime, update the Google tag snippets in `_template.html`, `build-paid-campaigns.js`, and static pages such as `early-access.html`.
 
@@ -19,6 +23,7 @@ If this is not the correct GA4 web stream for Naptime, update the Google tag sni
   - `ad_personalization`
 - The cookie banner stores consent in `localStorage` as `naptime_cookie_consent`.
 - On accept, `analytics.js` updates Google Consent Mode to granted.
+- On accept, `analytics.js` initializes Reddit Pixel and sends the current page visit if it has not already been sent to Reddit.
 - On decline, the site remains usable and consent remains denied.
 
 ## Events
@@ -49,6 +54,12 @@ Current event names include:
 - `anchor_navigation`
 - `outbound_click`
 - `consent_choice`
+
+Reddit Pixel mapping:
+
+- `page_view` -> Reddit `PageVisit`
+- `play_store_click` -> Reddit `Lead`
+- `learn_more_click`, `navigation_click`, `anchor_navigation`, `outbound_click` -> Reddit `Custom`
 
 Useful event params:
 

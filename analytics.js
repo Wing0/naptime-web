@@ -1,5 +1,9 @@
 (function () {
   const consentKey = "naptime_cookie_consent";
+  const redditPixelId = "a2_izauxup9ioln";
+  let redditPixelReady = false;
+  let pageViewTracked = false;
+  let redditPageVisitSent = false;
 
   window.dataLayer = window.dataLayer || [];
   window.gtag = window.gtag || function gtag(){ window.dataLayer.push(arguments); };
@@ -28,9 +32,16 @@
       ad_personalization: granted ? "granted" : "denied",
       analytics_storage: granted ? "granted" : "denied"
     });
+    if (granted) {
+      initRedditPixel();
+      if (pageViewTracked && !redditPageVisitSent) {
+        sendRedditPageVisit();
+      }
+    }
   }
 
   function sendPageView() {
+    pageViewTracked = true;
     trackEvent("page_view", {
       page_title: document.title,
       page_location: location.href,
@@ -116,9 +127,80 @@
   }
 
   function trackEvent(name, params) {
-    gtag("event", name, Object.assign(commonParams(), params || {}, {
+    const eventParams = Object.assign(commonParams(), params || {}, {
       transport_type: "beacon"
-    }));
+    });
+    gtag("event", name, eventParams);
+    trackRedditEvent(name, eventParams);
+  }
+
+  function initRedditPixel() {
+    if (redditPixelReady) return;
+    if (!window.rdt) {
+      const rdt = window.rdt = function () {
+        rdt.sendEvent ? rdt.sendEvent.apply(rdt, arguments) : rdt.callQueue.push(arguments);
+      };
+      rdt.callQueue = [];
+      const script = document.createElement("script");
+      script.async = true;
+      script.src = "https://www.redditstatic.com/ads/pixel.js";
+      const firstScript = document.getElementsByTagName("script")[0];
+      firstScript.parentNode.insertBefore(script, firstScript);
+    }
+    window.rdt("init", redditPixelId);
+    redditPixelReady = true;
+  }
+
+  function trackRedditEvent(name, params) {
+    if (!redditPixelReady || typeof window.rdt !== "function") return;
+    if (name === "page_view") {
+      sendRedditPageVisit(params);
+      return;
+    }
+    if (name === "play_store_click") {
+      window.rdt("track", "Lead", redditPayload("play_store_click", params));
+      return;
+    }
+    if (name === "learn_more_click" || name === "navigation_click" || name === "anchor_navigation" || name === "outbound_click") {
+      window.rdt("track", "Custom", redditPayload(name, params));
+    }
+  }
+
+  function sendRedditPageVisit(params) {
+    if (!redditPixelReady || typeof window.rdt !== "function" || redditPageVisitSent) return;
+    redditPageVisitSent = true;
+    window.rdt("track", "PageVisit", redditPayload("page_view", params || Object.assign(commonParams(), {
+      page_title: document.title,
+      engagement_target: "page",
+      traffic_source: getParam("utm_source") || "direct"
+    })));
+  }
+
+  function redditPayload(eventName, params) {
+    return {
+      customEventName: eventName,
+      conversionId: buildConversionId(eventName, params),
+      content_variant: params.content_variant || "",
+      landing_variant: params.landing_variant || "",
+      page_flavor: params.page_flavor || "",
+      cta_location: params.cta_location || "",
+      destination: params.destination || "",
+      link_type: params.link_type || "",
+      utm_source: params.utm_source || "",
+      utm_medium: params.utm_medium || "",
+      utm_campaign: params.utm_campaign || "",
+      utm_content: params.utm_content || ""
+    };
+  }
+
+  function buildConversionId(eventName, params) {
+    return [
+      "nt",
+      eventName,
+      params.content_variant || "default",
+      params.cta_location || params.engagement_target || "page",
+      Date.now()
+    ].join("_");
   }
 
   function commonParams() {
