@@ -68,9 +68,9 @@ const template = `<!doctype html>
     </section>
 
     <section class="signal-strip" aria-label="Product highlights">
-      <div><strong>Sleep-first timer</strong><span>The countdown begins after sleep is detected.</span></div>
-      <div><strong>Phone only</strong><span>No wearable or account needed.</span></div>
-      <div><strong>Hard cutoff</strong><span>Wake by your latest safe time.</span></div>
+      <div><strong>Sleep-first timer</strong><p>The countdown begins after sleep is detected.</p></div>
+      <div><strong>Phone only</strong><p>No wearable or account needed.</p></div>
+      <div><strong>Hard cutoff</strong><p>Wake by your latest safe time.</p></div>
     </section>
 
     <section class="story-section">
@@ -309,8 +309,9 @@ h1 { font-size: clamp(3rem, 7vw, 6.6rem); line-height: .94; letter-spacing: 0; m
 .signal-strip, .story-section, .use-case-band, .comparison-band, .final-cta { max-width: 1180px; margin: 0 auto; padding-left: 5vw; padding-right: 5vw; }
 .signal-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; padding-top: 1rem; padding-bottom: 4.5rem; }
 .signal-strip div { border-top: 1px solid var(--line); padding-top: 1rem; }
-.signal-strip strong, .signal-strip span { display: block; }
-.signal-strip span, .feature-card p, .comparison-copy p, .story-copy p, .use-case-copy p { color: var(--muted); }
+.signal-strip strong { display: block; }
+.signal-strip p { margin: .25rem 0 0; }
+.signal-strip p, .feature-card p, .comparison-copy p, .story-copy p, .use-case-copy p { color: var(--muted); }
 .story-section { display: grid; grid-template-columns: .95fr 1.05fr; gap: 3rem; align-items: center; padding-top: 4rem; padding-bottom: 5rem; border-top: 1px solid var(--line); }
 .story-copy h2, .use-case-copy h2, .comparison-copy h2, .final-cta h2 { font-size: clamp(2rem, 4vw, 3.6rem); line-height: 1; margin: 0 0 1rem; }
 .flow-list { margin: 2rem 0 0; padding: 0; list-style: none; display: grid; gap: .8rem; counter-reset: flow; }
