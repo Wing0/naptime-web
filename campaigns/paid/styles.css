@@ -14,11 +14,14 @@
 * { box-sizing: border-box; }
 html, body { max-width: 100%; overflow-x: hidden; }
 body { margin: 0; color: var(--text); background: var(--bg); line-height: 1.5; }
-body::before { content: ""; position: fixed; inset: 0; z-index: -1; background: radial-gradient(circle at 12% 16%, rgba(139,45,242,.42), transparent 28%), radial-gradient(circle at 92% 8%, rgba(114,215,255,.22), transparent 25%), linear-gradient(145deg, #07050d, #13091c 58%, #07050d); }
-.theme-private::before { background: radial-gradient(circle at 15% 18%, rgba(122,242,183,.28), transparent 27%), radial-gradient(circle at 88% 80%, rgba(139,45,242,.42), transparent 28%), linear-gradient(145deg, #06110d, #10091b 62%, #08050d); }
-.theme-deadline::before { background: radial-gradient(circle at 13% 78%, rgba(114,215,255,.32), transparent 26%), radial-gradient(circle at 88% 18%, rgba(139,45,242,.44), transparent 31%), linear-gradient(145deg, #050b13, #10101d 60%, #07050e); }
-.theme-warm::before { background: radial-gradient(circle at 12% 12%, rgba(255,211,106,.30), transparent 24%), radial-gradient(circle at 86% 82%, rgba(139,45,242,.46), transparent 30%), linear-gradient(145deg, #100a05, #13091b 58%, #07050d); }
-.theme-caffeine::before { background: radial-gradient(circle at 16% 14%, rgba(122,242,183,.28), transparent 25%), radial-gradient(circle at 90% 82%, rgba(255,211,106,.24), transparent 28%), linear-gradient(145deg, #06100d, #15100b 58%, #08050d); }
+body::before { content: ""; position: fixed; inset: 0; z-index: -1; background: var(--campaign-bg); }
+.theme-electric, .theme-private, .theme-deadline, .theme-warm, .theme-caffeine {
+  --campaign-bg: radial-gradient(circle at 12% 16%, rgba(139,45,242,.46), transparent 29%), radial-gradient(circle at 88% 12%, rgba(114,73,255,.24), transparent 27%), radial-gradient(circle at 70% 88%, rgba(122,242,183,.10), transparent 26%), linear-gradient(145deg, #07050d, #13091c 58%, #07050d);
+}
+.theme-private { --campaign-bg: radial-gradient(circle at 14% 18%, rgba(139,45,242,.44), transparent 28%), radial-gradient(circle at 86% 78%, rgba(122,89,255,.30), transparent 30%), radial-gradient(circle at 74% 16%, rgba(122,242,183,.10), transparent 24%), linear-gradient(145deg, #07050d, #13091c 60%, #07050d); }
+.theme-deadline { --campaign-bg: radial-gradient(circle at 14% 78%, rgba(139,45,242,.44), transparent 28%), radial-gradient(circle at 88% 18%, rgba(114,73,255,.30), transparent 31%), radial-gradient(circle at 72% 82%, rgba(114,215,255,.12), transparent 24%), linear-gradient(145deg, #07050d, #120b1d 60%, #07050d); }
+.theme-warm { --campaign-bg: radial-gradient(circle at 12% 12%, rgba(139,45,242,.44), transparent 28%), radial-gradient(circle at 86% 82%, rgba(116,63,219,.36), transparent 31%), radial-gradient(circle at 76% 12%, rgba(255,211,106,.12), transparent 24%), linear-gradient(145deg, #08050d, #15091d 58%, #07050d); }
+.theme-caffeine { --campaign-bg: radial-gradient(circle at 16% 14%, rgba(139,45,242,.44), transparent 28%), radial-gradient(circle at 90% 82%, rgba(122,89,255,.32), transparent 30%), radial-gradient(circle at 76% 16%, rgba(122,242,183,.12), transparent 24%), linear-gradient(145deg, #07050d, #12091b 58%, #07050d); }
 a { color: inherit; }
 .site-nav { min-height: 76px; padding: 0 5vw; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); background: rgba(9,7,15,.82); backdrop-filter: blur(14px); position: sticky; top: 0; z-index: 10; }
 .brand { font-family: Outfit, sans-serif; font-size: 1.45rem; font-weight: 800; text-decoration: none; }
