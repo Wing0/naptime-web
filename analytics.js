@@ -5,25 +5,9 @@
   window.dataLayer = window.dataLayer || [];
   window.gtag = window.gtag || function gtag(){ window.dataLayer.push(arguments); };
 
-  gtag("consent", "default", {
-    ad_storage: "denied",
-    ad_user_data: "denied",
-    ad_personalization: "denied",
-    analytics_storage: "denied",
-    wait_for_update: 500
-  });
-
-  gtag("js", new Date());
-  gtag("config", measurementId, {
-    anonymize_ip: true,
-    send_page_view: false
-  });
-
   if (localStorage.getItem(consentKey) === "granted") {
     updateConsent("granted");
   }
-
-  loadGoogleTag(measurementId);
 
   document.addEventListener("DOMContentLoaded", function () {
     sendPageView();
@@ -35,15 +19,6 @@
     updateConsent,
     sendPageView
   };
-
-  function loadGoogleTag(id) {
-    if (document.querySelector("script[data-naptime-gtag]")) return;
-    const script = document.createElement("script");
-    script.async = true;
-    script.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(id);
-    script.dataset.naptimeGtag = "true";
-    document.head.appendChild(script);
-  }
 
   function updateConsent(state) {
     const granted = state === "granted";

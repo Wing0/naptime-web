@@ -1,12 +1,12 @@
 # Analytics Setup
 
-The website uses a consent-aware GA4 setup in `analytics.js`.
+The website uses a consent-aware GA4 setup. The canonical Google tag is loaded directly in the page `<head>` so Google Analytics can detect it normally. `analytics.js` handles consent updates, custom page views, and CTA events.
 
 Current Measurement ID:
 
 - `G-M9EH844KS8`
 
-If this is not the correct GA4 web stream for Naptime, update the fallback ID in `analytics.js` or define `window.NAPTIME_GA_MEASUREMENT_ID` before loading `analytics.js`.
+If this is not the correct GA4 web stream for Naptime, update the Google tag snippets in `_template.html`, `build-paid-campaigns.js`, and static pages such as `early-access.html`.
 
 ## Consent Behavior
 

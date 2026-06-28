@@ -7,6 +7,25 @@ const playUrl = 'https://play.google.com/store/apps/details?id=com.naptime.app';
 const template = `<!doctype html>
 <html lang="en" data-page-flavor="paid-campaign" data-variant="__VARIANT__">
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M9EH844KS8"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      analytics_storage: 'denied',
+      wait_for_update: 500
+    });
+    gtag('js', new Date());
+    gtag('config', 'G-M9EH844KS8', {
+      anonymize_ip: true,
+      send_page_view: false
+    });
+  </script>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>__TITLE__</title>
@@ -327,7 +346,7 @@ for (const variant of variants) {
   fs.writeFileSync(path.join(outDir, variant.file), html);
 }
 
-const index = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Naptime paid campaign variants</title><link rel="stylesheet" href="/campaigns/paid/styles.css"></head><body><main class="final-cta"><h1>Naptime paid campaign pages</h1><div class="feature-pair">${variants.map(v => `<a class="btn secondary" href="/campaigns/paid/${v.file}">${v.variant}</a>`).join('')}</div></main></body></html>`;
+const index = `<!doctype html><html lang="en"><head><script async src="https://www.googletagmanager.com/gtag/js?id=G-M9EH844KS8"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});gtag('js',new Date());gtag('config','G-M9EH844KS8',{anonymize_ip:true});</script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Naptime paid campaign variants</title><link rel="stylesheet" href="/campaigns/paid/styles.css"></head><body><main class="final-cta"><h1>Naptime paid campaign pages</h1><div class="feature-pair">${variants.map(v => `<a class="btn secondary" href="/campaigns/paid/${v.file}">${v.variant}</a>`).join('')}</div></main></body></html>`;
 fs.writeFileSync(path.join(outDir, 'index.html'), index);
 console.log('Built paid campaign pages');
 
