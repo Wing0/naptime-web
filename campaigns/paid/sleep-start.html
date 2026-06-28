@@ -20,18 +20,17 @@
 <body class="theme-electric">
   <header class="site-nav">
     <a class="brand" href="/" data-analytics-event="learn_more_click" data-cta-location="nav">Naptime<span>.</span></a>
-    <nav>
-      <a href="/" data-analytics-event="learn_more_click" data-cta-location="nav">Learn more</a>
-      <a class="nav-download" href="https://play.google.com/store/apps/details?id=com.naptime.app" data-analytics-event="play_store_click" data-cta-location="nav" target="_blank" rel="noopener">Download for Android</a>
+    <nav class="nav-actions">
+      <a class="nav-cta secondary" href="/" data-analytics-event="learn_more_click" data-cta-location="nav">Learn more</a>
+      <a class="nav-cta primary nav-download" href="https://play.google.com/store/apps/details?id=com.naptime.app" data-analytics-event="play_store_click" data-cta-location="nav" target="_blank" rel="noopener">Download for Android</a>
     </nav>
   </header>
 
   <main>
     <section class="hero">
       <div class="hero-copy">
-        <p class="eyebrow">Private smart nap alarm</p>
         <h1>The alarm that starts after you fall asleep.</h1>
-        <p class="subhead">Set a 20-minute nap. Naptime waits until sleep is detected, then starts the countdown, so settling in does not steal the rest you planned.</p>
+        <p class="subhead">Set a 20-minute nap. Naptime starts the countdown after sleep is detected, so settling in does not steal the rest you planned.</p>
         <div class="cta-row">
           <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.naptime.app" data-analytics-event="play_store_click" data-cta-location="hero" target="_blank" rel="noopener">Download for Android</a>
           <a class="btn secondary" href="/" data-analytics-event="learn_more_click" data-cta-location="hero">Learn more</a>
@@ -43,35 +42,50 @@
       </div>
     </section>
 
-    <section class="proof-strip" aria-label="Product highlights">
-      <div><strong>Timer waits</strong><span>Countdown starts after sleep begins.</span></div>
-      <div><strong>No wearable</strong><span>Use your Android phone on the mattress.</span></div>
-      <div><strong>Deadline-safe</strong><span>Alarm still fires by your cutoff.</span></div>
+    <section class="signal-strip" aria-label="Product highlights">
+      <div><strong>Sleep-first timer</strong><span>The countdown begins after sleep is detected.</span></div>
+      <div><strong>Phone only</strong><span>No wearable or account needed.</span></div>
+      <div><strong>Hard cutoff</strong><span>Wake by your latest safe time.</span></div>
     </section>
 
     <section class="story-section">
       <div class="story-copy">
-        <h2>Built for the moment normal timers get wrong</h2>
-        <p>Most nap timers start when you tap Start. Naptime starts when movement suggests you have actually fallen asleep, then wakes you by duration or by your latest safe deadline.</p>
+        <h2>Built for the part normal timers miss</h2>
+        <p>Most nap timers start when you tap Start. Naptime listens for the stillness of sleep, then wakes you by your chosen nap length or your latest safe deadline.</p>
+        <ol class="flow-list">
+          <li>Choose your nap length and latest wake time.</li>
+          <li>Place your phone on the mattress.</li>
+          <li>Naptime starts the countdown when sleep is detected.</li>
+        </ol>
       </div>
-      <div class="feature-stack">
+      <div class="secondary-visual" aria-hidden="true">
+        <img src="/screenshot_monitoring.png" alt="" loading="lazy" decoding="async">
+      </div>
+    </section>
+
+    <section class="use-case-band">
+      <div class="use-case-copy">
+        <h2>For short rest that needs to stay short</h2>
+        <p>Use it between classes, before a meeting, after a rough night, or anywhere you want real rest without guessing how long it took to fall asleep.</p>
+      </div>
+      <div class="feature-pair">
         <article class="feature-card"><h3>True-duration naps</h3><p>A 20-minute nap means roughly 20 minutes asleep, not 20 minutes since you opened the app.</p></article>
-        <article class="feature-card"><h3>Hard latest wake-up</h3><p>Protect lunch breaks, pre-meeting rests, and shift windows with a strict cutoff.</p></article>
-        <article class="feature-card"><h3>All data on-device</h3><p>The paid app does not send anonymous session uploads.</p></article>
+        <article class="feature-card"><h3>On-device paid app</h3><p>No account, no subscription, and no anonymous session uploads in the paid version.</p></article>
       </div>
     </section>
 
     <section class="comparison-band">
-      <h2>A focused alternative to generic sleep apps</h2>
-      <div class="comparison-grid">
-        <div><span>Regular timer</span><strong>Starts too early</strong><p>It counts down while you are still settling in.</p></div>
-        <div><span>Audio sleep app</span><strong>Helps you relax</strong><p>Useful, but it does not protect actual nap duration.</p></div>
-        <div class="featured"><span>Naptime</span><strong>Starts after sleep</strong><p>You get the rest window you actually asked for.</p></div>
+      <div class="comparison-copy">
+        <h2>A focused alternative to generic sleep apps</h2>
+        <p>Regular timers are fine when awake time does not matter. Naptime is for short rest windows where falling asleep late should not erase the nap.</p>
+      </div>
+      <div class="comparison-rail" aria-label="Regular timer compared with Naptime">
+        <div><span>Regular timer</span><strong>Starts when you tap Start.</strong></div>
+        <div class="featured"><span>Naptime</span><strong>Starts after sleep begins.</strong></div>
       </div>
     </section>
 
     <section class="final-cta">
-      <p class="eyebrow">Try the paid Android app</p>
       <h2>Get the sleep time you actually asked for.</h2>
       <div class="cta-row center">
         <a class="btn primary" href="https://play.google.com/store/apps/details?id=com.naptime.app" data-analytics-event="play_store_click" data-cta-location="final" target="_blank" rel="noopener">Download for Android</a>
