@@ -99,7 +99,7 @@ const template = `<!doctype html>
     <section class="comparison-band">
       <div class="comparison-copy">
         <h2>__COMPARISON_H2__</h2>
-        <p>Regular timers are fine when awake time does not matter. Naptime is for short rest windows where falling asleep late should not erase the nap.</p>
+        <p>__COMPARISON_BODY__</p>
       </div>
       <div class="comparison-rail" aria-label="Regular timer compared with Naptime">
         <div><span>Regular timer</span><strong>Starts when you tap Start.</strong></div>
@@ -136,17 +136,18 @@ const variants = [
     file: 'sleep-start.html',
     variant: 'sleep-start',
     bodyClass: 'theme-electric',
-    title: 'Naptime for Android - The alarm that starts after you fall asleep',
+    title: 'Naptime for Android - The nap alarm that starts after you fall asleep',
     description: 'A private Android smart nap alarm that starts the countdown after sleep begins, so your planned nap is actual rest time.',
-    h1: 'The alarm that starts after you fall asleep.',
-    subhead: 'Set a 20-minute nap. Naptime starts the countdown after sleep is detected, so settling in does not steal the rest you planned.',
+    h1: 'The timer starts after sleep begins.',
+    subhead: 'Set a 20-minute nap. Naptime starts timing after sleep is detected, so settling in does not steal the rest you planned.',
     image: '/hero_bed_2_960.jpg',
     secondaryImage: '/screenshot_monitoring.png',
     sectionH2: 'Built for the part normal timers miss',
-    sectionBody: 'Most nap timers start when you tap Start. Naptime listens for the stillness of sleep, then wakes you by your chosen nap length or your latest safe deadline.',
+    sectionBody: 'Most nap timers start when you tap Start. Naptime uses your phone motion on the mattress to detect sleep, then wakes you by your chosen nap length or your latest safe time.',
     useCaseH2: 'For short rest that needs to stay short',
     useCaseBody: 'Use it between classes, before a meeting, after a rough night, or anywhere you want real rest without guessing how long it took to fall asleep.',
-    comparisonH2: 'A focused alternative to generic sleep apps',
+    comparisonH2: 'Built around one missed moment',
+    comparisonBody: 'Relaxation apps can help you wind down, and regular timers are predictable. Naptime focuses on the timing mistake that ruins short naps: counting awake minutes as sleep.',
     finalH2: 'Get the sleep time you actually asked for.',
     flow: [
       'Choose your nap length and latest wake time.',
@@ -162,17 +163,18 @@ const variants = [
     file: 'private.html',
     variant: 'private',
     bodyClass: 'theme-private',
-    title: 'Naptime for Android - Private sleep insights, no account',
+    title: 'Naptime for Android - Private nap insights, no account',
     description: 'Paid Android nap and sleep tracking with all session data kept on your device. No account, no wearable, no anonymous uploads.',
-    h1: 'Sleep insights without an account or wearable.',
-    subhead: 'Naptime helps you time naps around when sleep begins, then keeps your nap and night history privately on your Android device.',
+    h1: 'Private nap insights without an account.',
+    subhead: 'Naptime helps you time naps around when sleep begins, then keeps your nap and night history on your Android device.',
     image: '/screenshot_nap_analytics.png',
     secondaryImage: '/feat_analytics.png',
-    sectionH2: 'Private by purchase, practical by design',
-    sectionBody: 'Tags, ratings, latency, efficiency, and night sleep trends help you understand your rest without creating a cloud sleep profile.',
+    sectionH2: 'Insight without a cloud sleep profile',
+    sectionBody: 'Tags, ratings, latency, efficiency, and night sleep trends help you understand your rest without creating another account or syncing sleep history to a server.',
     useCaseH2: 'Your sleep notes should not need a login',
     useCaseBody: 'Track what changed: coffee, stress, workouts, noise, room temperature, or anything else you suspect affects rest.',
-    comparisonH2: 'Insight without another account',
+    comparisonH2: 'A calmer way to learn from rest',
+    comparisonBody: 'Broad sleep platforms often assume accounts, dashboards, and cloud sync. The paid Naptime app keeps the loop simple: record rest, tag what mattered, review it locally.',
     finalH2: 'Own your rest data from the first nap.',
     flow: [
       'Start a nap or night session.',
@@ -190,15 +192,16 @@ const variants = [
     bodyClass: 'theme-deadline',
     title: 'Naptime for Android - Smart naps with a hard wake deadline',
     description: 'A deadline-safe Android nap alarm for lunch breaks, shift work, study sessions, and pre-meeting recovery.',
-    h1: 'A smarter nap that still respects your calendar.',
-    subhead: 'Naptime can wait for sleep before counting down, but it still wakes you by your hard cutoff if sleep takes too long.',
+    h1: 'Nap safely inside your schedule.',
+    subhead: 'Naptime starts timing after sleep is detected, but still wakes you by your hard cutoff if sleep takes too long.',
     image: '/naptime_hero_mockup.png',
     secondaryImage: '/feat_alarm.png',
     sectionH2: 'For naps that cannot accidentally expand',
-    sectionBody: 'Use Naptime when you want real rest but still need to be back for a meeting, class, pickup, shift, or training block.',
+    sectionBody: 'Use Naptime when you want real sleep but still need to be back for a meeting, class, pickup, shift, or training block.',
     useCaseH2: 'A nap alarm with boundaries',
     useCaseBody: 'You can let the app protect your sleep time without giving it permission to overrun the rest of your day.',
     comparisonH2: 'Smart timing, strict boundary',
+    comparisonBody: 'A normal timer protects the end time but may waste the nap. Naptime protects the sleep window while still respecting the latest time you can wake up.',
     finalH2: 'Rest better without gambling with your schedule.',
     flow: [
       'Set the nap you want.',
@@ -217,7 +220,7 @@ const variants = [
     title: 'Naptime for Android - Stop losing nap time while awake',
     description: 'A paid Android smart nap alarm that protects your planned rest duration and keeps session data on-device.',
     h1: 'Stop losing nap time while you are still awake.',
-    subhead: 'If it takes 15 minutes to fall asleep, a normal timer burns most of your break. Naptime starts counting after sleep begins.',
+    subhead: 'If it takes 15 minutes to fall asleep, a normal timer burns most of your break. Naptime starts timing after sleep begins.',
     image: '/hero_bed_2_960.jpg',
     secondaryImage: '/feat_tracking.png',
     sectionH2: 'A tiny upgrade to a very common failure',
@@ -225,6 +228,7 @@ const variants = [
     useCaseH2: 'Better than guessing what happened',
     useCaseBody: 'See latency, sleep efficiency, tags, and how you felt afterward, so your ideal nap length becomes personal instead of theoretical.',
     comparisonH2: 'Simple promise, real difference',
+    comparisonBody: 'Regular timers are fine when awake time does not matter. Naptime is for short rest windows where falling asleep late should not erase the nap.',
     finalH2: 'Make short rest less accidental.',
     flow: [
       'Pick the rest you want.',
@@ -242,7 +246,7 @@ const variants = [
     bodyClass: 'theme-caffeine',
     title: 'Naptime for Android - Recharge without another caffeine hit',
     description: 'A private Android smart nap alarm for people who want a short reset that supports focus and memory without another caffeine hit.',
-    h1: 'Recharge without another caffeine hit.',
+    h1: 'Recharge without more caffeine.',
     subhead: 'When your energy dips, a short nap can support focus and memory without leaning on another coffee or energy drink. Naptime helps you turn a small break into actual sleep.',
     image: '/hero_bed_2_960.jpg',
     secondaryImage: '/screenshot_monitoring.png',
@@ -251,11 +255,12 @@ const variants = [
     useCaseH2: 'Use rest as the first option',
     useCaseBody: 'Try it before a late coffee, between study blocks, after lunch, or before an evening shift when you want focus without pushing against bedtime.',
     comparisonH2: 'Different tool, steadier focus',
+    comparisonBody: 'Coffee and energy drinks can help, but rest solves a different problem. Naptime gives you a structured way to try a short sleep reset before adding another stimulant.',
     finalH2: 'Make your next break restore you.',
     flow: [
       'Choose a short nap and a latest wake time.',
       'Put your phone on the mattress.',
-      'Naptime starts counting once sleep is detected.'
+      'Naptime starts timing once sleep is detected.'
     ],
     features: [
       ['Focus without another hit', 'Give your brain a real rest window before reaching for another coffee or energy drink.'],
@@ -296,7 +301,7 @@ a { color: inherit; }
 .nav-cta { min-height: 42px; display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; padding: 0 1rem; text-decoration: none; font-weight: 800; border: 1px solid var(--line); }
 .nav-cta.primary { background: #fff; color: #10091b; border-color: #fff; }
 .nav-cta.secondary { color: #fff; background: rgba(255,255,255,.08); }
-.hero { min-height: calc(100vh - 76px); display: grid; grid-template-columns: minmax(0,1.05fr) minmax(320px,.95fr); gap: 4rem; align-items: center; padding: 5rem 5vw 4rem; max-width: 1440px; margin: 0 auto; }
+.hero { min-height: calc(88vh - 76px); display: grid; grid-template-columns: minmax(0,1.05fr) minmax(320px,.95fr); gap: 4rem; align-items: center; padding: 4.5rem 5vw 3.5rem; max-width: 1440px; margin: 0 auto; }
 h1, h2, h3, strong { font-family: Outfit, sans-serif; }
 h1 { font-size: clamp(3rem, 7vw, 6.6rem); line-height: .94; letter-spacing: 0; margin: 0 0 1.4rem; max-width: 850px; overflow-wrap: break-word; }
 .subhead { color: var(--muted); font-size: clamp(1.15rem, 2vw, 1.55rem); max-width: 760px; margin: 0 0 2rem; }
@@ -307,7 +312,7 @@ h1 { font-size: clamp(3rem, 7vw, 6.6rem); line-height: .94; letter-spacing: 0; m
 .btn.secondary { color: #fff; background: rgba(255,255,255,.08); }
 .privacy-line { color: var(--soft); font-size: .96rem; margin: 1.3rem 0 0; }
 .hero-copy { min-width: 0; }
-.hero-visual { min-height: 440px; min-width: 0; display: grid; place-items: center; }
+.hero-visual { min-height: 360px; min-width: 0; display: grid; place-items: center; }
 .hero-visual img { width: min(100%, 560px); max-height: 650px; object-fit: contain; border-radius: 28px; box-shadow: 0 28px 90px rgba(0,0,0,.46); }
 .signal-strip, .story-section, .use-case-band, .comparison-band, .final-cta { max-width: 1180px; margin: 0 auto; padding-left: 5vw; padding-right: 5vw; }
 .signal-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; padding-top: 1rem; padding-bottom: 4.5rem; }
@@ -344,7 +349,7 @@ h1 { font-size: clamp(3rem, 7vw, 6.6rem); line-height: .94; letter-spacing: 0; m
 .btn-cookie-accept, .btn-cookie-deny { border-radius: 999px; padding: .65rem 1rem; font-weight: 800; cursor: pointer; }
 .btn-cookie-accept { background: #fff; color: #10091b; border: 0; }
 .btn-cookie-deny { background: transparent; color: #fff; border: 1px solid var(--line); }
-@media (max-width: 860px) { .site-nav { padding: 0 .9rem; gap: .75rem; } .brand { font-size: 1.25rem; flex: 0 0 auto; } .nav-actions { min-width: 0; gap: .5rem; } .nav-cta { padding: 0 .8rem; font-size: .88rem; } .nav-download { max-width: 42vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } .hero { grid-template-columns: minmax(0, 1fr); min-height: auto; padding: 3rem 1rem; gap: 2rem; overflow: hidden; } .hero-copy { width: 100%; overflow: hidden; } h1 { font-size: clamp(2.25rem, 10.4vw, 2.85rem); line-height: 1.04; max-width: 10.5ch; } .subhead { font-size: 1.02rem; max-width: 32ch; } .privacy-line { max-width: 34ch; } .hero-visual { min-height: 0; } .signal-strip, .story-section, .use-case-band, .comparison-band, .feature-pair, .comparison-rail { grid-template-columns: 1fr; } .comparison-rail div + div { border-left: 0; border-top: 1px solid var(--line); } .story-section, .use-case-band, .comparison-band, .final-cta, .signal-strip { padding-left: 1rem; padding-right: 1rem; } .cookie-content { flex-direction: column; align-items: stretch; } }
+@media (max-width: 860px) { .site-nav { padding: 0 .9rem; gap: .75rem; } .brand { font-size: 1.25rem; flex: 0 0 auto; } .nav-actions { min-width: 0; gap: .5rem; } .nav-cta { padding: 0 .8rem; font-size: .88rem; } .nav-download { max-width: 42vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } .hero { grid-template-columns: minmax(0, 1fr); min-height: auto; padding: 2.6rem 1rem 2.2rem; gap: 1.25rem; overflow: hidden; } .hero-copy { width: 100%; overflow: hidden; } h1 { font-size: clamp(2.25rem, 10.4vw, 2.85rem); line-height: 1.04; max-width: 11.5ch; } .subhead { font-size: 1.02rem; max-width: 34ch; } .privacy-line { max-width: 34ch; } .hero-visual { min-height: 0; } .hero-visual img { width: min(100%, 380px); max-height: min(34vh, 330px); } .signal-strip, .story-section, .use-case-band, .comparison-band, .feature-pair, .comparison-rail { grid-template-columns: 1fr; } .comparison-rail div + div { border-left: 0; border-top: 1px solid var(--line); } .story-section, .use-case-band, .comparison-band, .final-cta, .signal-strip { padding-left: 1rem; padding-right: 1rem; } .cookie-content { flex-direction: column; align-items: stretch; } }
 @media (max-width: 520px) { .site-nav { min-height: 68px; justify-content: flex-start; position: sticky; } .nav-actions { position: absolute; right: .9rem; top: 50%; transform: translateY(-50%); } .nav-cta.secondary { display: none; } .nav-cta.nav-download { font-size: 0 !important; width: auto; max-width: none; min-width: 84px; padding-left: .95rem; padding-right: .95rem; flex: 0 0 auto; } .nav-cta.nav-download::after { content: "Android"; font-size: .88rem; } }`;
 
 fs.writeFileSync(path.join(outDir, 'styles.css'), css);
@@ -369,6 +374,7 @@ for (const variant of variants) {
     __USE_CASE_BODY__: variant.useCaseBody,
     __FEATURES__: features,
     __COMPARISON_H2__: variant.comparisonH2,
+    __COMPARISON_BODY__: variant.comparisonBody,
     __FINAL_H2__: variant.finalH2,
   };
   for (const [key, value] of Object.entries(replacements)) {
