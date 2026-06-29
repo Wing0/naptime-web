@@ -169,11 +169,7 @@
   function sendRedditPageVisit(params) {
     if (!redditPixelReady || typeof window.rdt !== "function" || redditPageVisitSent) return;
     redditPageVisitSent = true;
-    window.rdt("track", "PageVisit", redditPayload("page_view", params || Object.assign(commonParams(), {
-      page_title: document.title,
-      engagement_target: "page",
-      traffic_source: getParam("utm_source") || "direct"
-    })));
+    window.rdt("track", "PageVisit");
   }
 
   function redditPayload(eventName, params) {

@@ -57,7 +57,7 @@ Current event names include:
 
 Reddit Pixel mapping:
 
-- `page_view` -> Reddit `PageVisit`
+- `page_view` -> Reddit `PageVisit` with no custom metadata. Reddit diagnostics reject unsupported metadata such as `customEventName` on this standard event.
 - `play_store_click` -> Reddit `Lead`
 - `learn_more_click`, `navigation_click`, `anchor_navigation`, `outbound_click` -> Reddit `Custom`
 
