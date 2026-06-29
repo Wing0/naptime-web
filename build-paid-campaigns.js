@@ -168,7 +168,7 @@ const variants = [
     h1: 'Private nap insights without an account.',
     subhead: 'Naptime helps you time naps around when sleep begins, then keeps your nap and night history on your Android device.',
     image: '/screenshot_nap_analytics.png',
-    secondaryImage: '/feat_analytics.png',
+    secondaryImage: '/screenshot_monitoring.png',
     sectionH2: 'Insight without a cloud sleep profile',
     sectionBody: 'Tags, ratings, latency, efficiency, and night sleep trends help you understand your rest without creating another account or syncing sleep history to a server.',
     useCaseH2: 'Your sleep notes should not need a login',
