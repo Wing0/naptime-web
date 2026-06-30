@@ -22,9 +22,11 @@ If this is not the correct GA4 web stream for Naptime, update the Google tag sni
   - `ad_user_data`
   - `ad_personalization`
 - The cookie banner stores consent in `localStorage` as `naptime_cookie_consent`.
+- The banner is managed by `analytics.js`, not `script.js`, so consent state and tracking stay in one place.
 - On accept, `analytics.js` updates Google Consent Mode to granted.
+- On accept, `analytics.js` sends a fresh granted `page_view` with `consent_refresh: granted_after_accept`, so first-time accepted visits are visible in GA Real-time without requiring a reload.
 - On accept, `analytics.js` initializes Reddit Pixel and sends the current page visit if it has not already been sent to Reddit.
-- On decline, the site remains usable and consent remains denied.
+- On decline, the site remains usable and consent remains denied. The banner may reappear on a later page load until analytics is accepted, which keeps testing and consent recovery straightforward.
 
 ## Events
 
