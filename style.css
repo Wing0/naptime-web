@@ -876,7 +876,7 @@ h4,
 /* Cookie Banner */
 .cookie-banner {
     position: fixed;
-    bottom: -100px;
+    bottom: 0;
     left: 0;
     right: 0;
     background: rgba(18, 18, 20, 0.95);
@@ -884,11 +884,12 @@ h4,
     padding: 1rem 0;
     z-index: 1000;
     backdrop-filter: blur(10px);
-    transition: bottom 0.5s ease-out;
+    transform: translateY(calc(100% + 1rem));
+    transition: transform 0.5s ease-out;
 }
 
 .cookie-banner.visible {
-    bottom: 0;
+    transform: translateY(0);
 }
 
 .cookie-content {
