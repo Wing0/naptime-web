@@ -42,6 +42,7 @@
 
   function sendPageView() {
     pageViewTracked = true;
+    setUserProperties();
     trackEvent("page_view", {
       page_title: document.title,
       page_location: location.href,
@@ -52,6 +53,7 @@
   }
 
   function sendGrantedPageView() {
+    setUserProperties();
     trackEvent("page_view", {
       page_title: document.title,
       page_location: location.href,
@@ -59,6 +61,14 @@
       engagement_target: "page",
       traffic_source: getParam("utm_source") || "direct",
       consent_refresh: "granted_after_accept"
+    });
+  }
+
+  function setUserProperties() {
+    gtag("set", "user_properties", {
+      experiment_name: getExperimentName(),
+      landing_variant: getContentVariant(),
+      page_flavor: getPageFlavor()
     });
   }
 
@@ -227,12 +237,18 @@
   }
 
   function commonParams() {
+    const contentVariant = getContentVariant();
+    const pageFlavor = getPageFlavor();
     return {
-      content_variant: getContentVariant(),
-      landing_variant: getContentVariant(),
-      page_flavor: getPageFlavor(),
+      experiment_name: getExperimentName(),
+      experiment_variant: contentVariant,
+      content_variant: contentVariant,
+      landing_variant: contentVariant,
+      landing_page_flavor: pageFlavor,
+      page_flavor: pageFlavor,
       page_path: location.pathname,
       page_location: location.href,
+      served_path: getServedPath(),
       nt_paid_variant: getParam("nt_paid_variant") || "",
       nt_variant: getParam("nt_variant") || "",
       utm_source: getParam("utm_source") || "",
@@ -262,6 +278,22 @@
     if (path.includes("free")) return "free-static";
     if (path === "/" || path.endsWith("/index.html")) return "paid-main";
     return "static";
+  }
+
+  function getExperimentName() {
+    const pageFlavor = getPageFlavor();
+    if (pageFlavor === "paid-campaign" || getParam("nt_paid_variant")) return "paid_reddit_landing_v1";
+    if (pageFlavor === "free-experiment" || getParam("nt_variant")) return "free_landing_v1";
+    return pageFlavor;
+  }
+
+  function getServedPath() {
+    const path = location.pathname;
+    if (path === "/android" || path === "/android.html") {
+      const variant = getContentVariant();
+      if (variant) return `/campaigns/paid/${variant}.html`;
+    }
+    return path;
   }
 
   function getLinkText(element) {

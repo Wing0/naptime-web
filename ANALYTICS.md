@@ -65,9 +65,13 @@ Reddit Pixel mapping:
 
 Useful event params:
 
+- `experiment_name`
+- `experiment_variant`
 - `content_variant`
 - `landing_variant`
+- `landing_page_flavor`
 - `page_flavor`
+- `served_path`
 - `cta_location`
 - `destination`
 - `destination_host`
@@ -77,6 +81,13 @@ Useful event params:
 - `utm_medium`
 - `utm_campaign`
 - `utm_content`
+
+Recommended GA4 custom definitions:
+
+- Event-scoped custom dimensions: `experiment_name`, `experiment_variant`, `landing_variant`, `landing_page_flavor`, `served_path`, `cta_location`, `destination_host`, `link_type`.
+- User-scoped custom dimensions: `experiment_name`, `landing_variant`, `page_flavor`.
+
+The `/android` Worker serves one concrete paid campaign HTML file per visitor. `analytics.js` reads that page's `data-variant` and sends it as `experiment_variant`, `content_variant`, and `landing_variant` on every event, plus as the `landing_variant` user property.
 
 ## Paid Reddit Max URLs
 
