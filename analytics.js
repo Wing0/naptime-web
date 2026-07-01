@@ -15,13 +15,13 @@
   document.addEventListener("DOMContentLoaded", function () {
     sendPageView();
     bindTrackedLinks();
-    bindConsentBanner();
   });
 
   window.naptimeAnalytics = {
     event: trackEvent,
     updateConsent,
-    sendPageView
+    sendPageView,
+    consentChoice: recordConsentChoice
   };
 
   function updateConsent(state) {
@@ -88,42 +88,16 @@
     });
   }
 
-  function bindConsentBanner() {
-    const banner = document.getElementById("cookie-banner");
-    const accept = document.getElementById("cookie-accept");
-    const deny = document.getElementById("cookie-deny");
-    if (!banner || !accept || !deny) return;
-
-    if (localStorage.getItem(consentKey) !== "granted") {
-      window.setTimeout(function () {
-        banner.classList.add("visible");
-      }, 600);
-    }
-
-    if (accept) {
-      accept.addEventListener("click", function () {
-        localStorage.setItem(consentKey, "granted");
-        updateConsent("granted");
-        trackEvent("consent_choice", {
-          consent_choice: "accept",
-          cta_location: "cookie-banner",
-          engagement_target: "consent"
-        });
-        sendGrantedPageView();
-        banner.classList.remove("visible");
-      });
-    }
-    if (deny) {
-      deny.addEventListener("click", function () {
-        localStorage.setItem(consentKey, "denied");
-        updateConsent("denied");
-        trackEvent("consent_choice", {
-          consent_choice: "decline",
-          cta_location: "cookie-banner",
-          engagement_target: "consent"
-        });
-        banner.classList.remove("visible");
-      });
+  function recordConsentChoice(state) {
+    const granted = state === "granted";
+    updateConsent(state);
+    trackEvent("consent_choice", {
+      consent_choice: granted ? "accept" : "decline",
+      cta_location: "cookie-banner",
+      engagement_target: "consent"
+    });
+    if (granted) {
+      sendGrantedPageView();
     }
   }
 

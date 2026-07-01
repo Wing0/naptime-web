@@ -41,3 +41,34 @@ document.addEventListener('DOMContentLoaded', () => {
     document.head.appendChild(style);
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    const consentKey = 'naptime_cookie_consent';
+    const banner = document.getElementById('cookie-banner');
+    const accept = document.getElementById('cookie-accept');
+    const deny = document.getElementById('cookie-deny');
+
+    if (!banner || !accept || !deny) return;
+
+    if (localStorage.getItem(consentKey) !== 'granted') {
+        setTimeout(() => {
+            banner.classList.add('visible');
+        }, 600);
+    }
+
+    accept.addEventListener('click', () => {
+        localStorage.setItem(consentKey, 'granted');
+        if (window.naptimeAnalytics) {
+            window.naptimeAnalytics.consentChoice('granted');
+        }
+        banner.classList.remove('visible');
+    });
+
+    deny.addEventListener('click', () => {
+        localStorage.setItem(consentKey, 'denied');
+        if (window.naptimeAnalytics) {
+            window.naptimeAnalytics.consentChoice('denied');
+        }
+        banner.classList.remove('visible');
+    });
+});
+
