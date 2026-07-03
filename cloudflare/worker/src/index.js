@@ -104,7 +104,14 @@ async function routeExperiment(request, url, experiment, env, ctx) {
   const originUrl = new URL(request.url);
   originUrl.pathname = variant.path;
 
-  const originRequest = new Request(originUrl, request);
+  const originHeaders = new Headers(request.headers);
+  originHeaders.set("cache-control", "no-cache");
+  const originRequest = new Request(originUrl, {
+    method: request.method,
+    headers: originHeaders,
+    body: request.body,
+    redirect: request.redirect,
+  });
   const response = await fetch(originRequest);
   const headers = new Headers(response.headers);
 
