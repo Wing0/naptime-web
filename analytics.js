@@ -4,6 +4,7 @@
   let redditPixelReady = false;
   let pageViewTracked = false;
   let redditPageVisitSent = false;
+  let cloudflarePageViewSent = false;
 
   window.dataLayer = window.dataLayer || [];
   window.gtag = window.gtag || function gtag(){ window.dataLayer.push(arguments); };
@@ -141,8 +142,50 @@
     const eventParams = Object.assign(commonParams(), params || {}, {
       transport_type: "beacon"
     });
+    trackCloudflareEvent(name, eventParams);
     gtag("event", name, eventParams);
     trackRedditEvent(name, eventParams);
+  }
+
+  function trackCloudflareEvent(name, params) {
+    if (name === "page_view" && cloudflarePageViewSent) return;
+    if (name === "page_view") cloudflarePageViewSent = true;
+
+    const payload = {
+      event: name,
+      experiment_name: params.experiment_name,
+      experiment_variant: params.experiment_variant,
+      content_variant: params.content_variant,
+      landing_variant: params.landing_variant,
+      landing_page_flavor: params.landing_page_flavor,
+      page_flavor: params.page_flavor,
+      page_path: params.page_path,
+      served_path: params.served_path,
+      utm_source: params.utm_source,
+      utm_medium: params.utm_medium,
+      utm_campaign: params.utm_campaign,
+      utm_id: params.utm_id,
+      utm_content: params.utm_content,
+      cta_location: params.cta_location,
+      destination_host: params.destination_host,
+      destination_path: getDestinationPath(params.destination),
+      link_text: (params.link_text || "").slice(0, 80),
+      link_type: params.link_type,
+      rdt_cid: getParam("rdt_cid") ? "present" : "missing"
+    };
+    const body = JSON.stringify(payload);
+
+    if (navigator.sendBeacon) {
+      const sent = navigator.sendBeacon("/__nt_event", new Blob([body], { type: "application/json" }));
+      if (sent) return;
+    }
+
+    fetch("/__nt_event", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body,
+      keepalive: true
+    }).catch(function () {});
   }
 
   function initRedditPixel() {
@@ -228,6 +271,7 @@
       utm_source: getParam("utm_source") || "",
       utm_medium: getParam("utm_medium") || "",
       utm_campaign: getParam("utm_campaign") || "",
+      utm_id: getParam("utm_id") || "",
       utm_content: getParam("utm_content") || "",
       utm_term: getParam("utm_term") || ""
     };
@@ -276,5 +320,14 @@
 
   function getParam(name) {
     return new URLSearchParams(location.search).get(name);
+  }
+
+  function getDestinationPath(destination) {
+    if (!destination) return "";
+    try {
+      return new URL(destination, location.href).pathname;
+    } catch (error) {
+      return "";
+    }
   }
 })();

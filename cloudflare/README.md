@@ -42,6 +42,8 @@ Current route setup:
 |---|---|
 | `naptime.info/android*` | Paid Reddit Max landing-page experiment |
 | `www.naptime.info/android*` | Canonicalizes to apex, then serves paid experiment |
+| `naptime.info/__nt_event*` | First-party browser event collection for page views and clicks |
+| `www.naptime.info/__nt_event*` | Canonicalizes to apex for browser event collection |
 | `naptime.info/free.html*` | Free route kept as pass-through safety |
 | `www.naptime.info/free.html*` | Canonicalizes to apex; Free experiment is currently disabled |
 
@@ -52,9 +54,9 @@ Recommended paid campaign URL: `https://naptime.info/android`.
 Install/use Wrangler from the web repo root:
 
 ```powershell
-npm exec wrangler -- --version
-npm exec wrangler -- login
-npm exec wrangler -- deploy --config cloudflare/worker/wrangler.toml
+npx wrangler --version
+npx wrangler login
+npx wrangler deploy --config cloudflare/worker/wrangler.toml
 ```
 
 If using an API token instead of browser login, set `CLOUDFLARE_API_TOKEN` in your shell. The token should be scoped to this zone and allow Workers script deployment and route management.
@@ -75,7 +77,7 @@ Paid campaign pages are served through `https://naptime.info/android`. Free rout
 
 ## Landing Arrival Tracking
 
-The Worker records paid `/android*` experiment requests before GA4, Reddit Pixel, or cookie consent can affect measurement. This is intended to debug Reddit clicks vs GA4 sessions.
+The Worker records paid `/android*` experiment requests before GA4, Reddit Pixel, or cookie consent can affect measurement. It also accepts first-party browser events at `/__nt_event` from `analytics.js` for page views, landing clicks, and Play Store clicks.
 
 Durable tracking uses Workers Analytics Engine:
 
@@ -94,6 +96,32 @@ The custom Analytics Engine/log payload intentionally excludes IP addresses, raw
 - `rdt_cid` presence (`present` or `missing`)
 - country and Cloudflare colo
 - device bucket and browser bucket
+- click CTA location, link type, destination host, and destination path for browser click events
+
+Analytics Engine blob column map:
+
+| Blob | Field |
+|---|---|
+| `blob1` | event |
+| `blob2` | host |
+| `blob3` | page path |
+| `blob4` | experiment |
+| `blob5` | variant |
+| `blob6` | source |
+| `blob7` | medium |
+| `blob8` | campaign |
+| `blob9` | campaign ID |
+| `blob10` | ad content |
+| `blob11` | `rdt_cid` presence |
+| `blob12` | traffic bucket |
+| `blob13` | country |
+| `blob14` | Cloudflare colo |
+| `blob15` | device bucket |
+| `blob16` | browser bucket |
+| `blob17` | CTA location |
+| `blob18` | link type |
+| `blob19` | destination host |
+| `blob20` | destination path |
 
 Tail live arrivals from `cloudflare/worker/`:
 

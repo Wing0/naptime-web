@@ -25,3 +25,11 @@ zone_name = "naptime.info"
 pattern = "www.naptime.info/android*"
 zone_name = "naptime.info"
 
+[[routes]]
+pattern = "naptime.info/__nt_event*"
+zone_name = "naptime.info"
+
+[[routes]]
+pattern = "www.naptime.info/__nt_event*"
+zone_name = "naptime.info"
+

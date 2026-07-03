@@ -37,6 +37,10 @@ export default {
       return Response.redirect(url.toString(), 301);
     }
 
+    if (isEventPath(url.pathname)) {
+      return handleClientEvent(request, url, env);
+    }
+
     if (ENABLE_PAID_EXPERIMENT && isPaidLandingPath(url.pathname)) {
       return routeExperiment(request, url, PAID_EXPERIMENT, env, ctx);
     }
@@ -55,6 +59,43 @@ function isPaidLandingPath(pathname) {
 
 function isFreeLandingPath(pathname) {
   return pathname === "/free.html" || pathname === "/free";
+}
+
+function isEventPath(pathname) {
+  return pathname === "/__nt_event";
+}
+
+async function handleClientEvent(request, url, env) {
+  if (request.method === "OPTIONS") {
+    return new Response(null, { status: 204 });
+  }
+
+  if (request.method !== "POST") {
+    return new Response("Method not allowed", { status: 405 });
+  }
+
+  const contentLength = Number(request.headers.get("content-length") || 0);
+  if (contentLength > 8192) {
+    return new Response("Payload too large", { status: 413 });
+  }
+
+  let payload = {};
+  try {
+    payload = await request.json();
+  } catch {
+    return new Response("Bad request", { status: 400 });
+  }
+
+  const event = buildClientEvent(request, url, payload);
+  console.log(JSON.stringify(event));
+  writeAnalyticsEvent(env, event);
+
+  return new Response(null, {
+    status: 204,
+    headers: {
+      "cache-control": "no-store",
+    },
+  });
 }
 
 async function routeExperiment(request, url, experiment, env, ctx) {
@@ -83,35 +124,7 @@ function logLandingEvent(request, url, experiment, variant, env, ctx) {
   console.log(JSON.stringify(event));
 
   if (env?.LANDING_ANALYTICS) {
-    try {
-      env.LANDING_ANALYTICS.writeDataPoint({
-        indexes: [`${event.experiment}|${event.source || "none"}`],
-        blobs: [
-          event.event,
-          event.host,
-          event.path,
-          event.experiment,
-          event.variant,
-          event.source,
-          event.medium,
-          event.campaign,
-          event.campaignId,
-          event.adContent,
-          event.rdtCid,
-          event.traffic,
-          event.country,
-          event.colo,
-          event.device,
-          event.browser,
-        ],
-        doubles: [1],
-      });
-    } catch (error) {
-      console.log(JSON.stringify({
-        event: "landing_analytics_error",
-        message: error?.message || "unknown_error",
-      }));
-    }
+    writeAnalyticsEvent(env, event);
   }
 
   if (env?.LANDING_COUNTS) {
@@ -147,7 +160,96 @@ function buildLandingEvent(request, url, experiment, variant) {
     colo: cf.colo || "",
     device: getDeviceBucket(userAgent),
     browser: getBrowserBucket(userAgent),
+    ctaLocation: "",
+    linkType: "",
+    destinationHost: "",
+    destinationPath: "",
   };
+}
+
+function buildClientEvent(request, url, payload) {
+  const userAgent = request.headers.get("user-agent") || "";
+  const cf = request.cf || {};
+  const source = cleanValue(payload.utm_source || payload.source || "");
+  const hasRdtCid = payload.rdt_cid === "present" || payload.rdtCid === "present" || Boolean(payload.rdt_cid);
+
+  return {
+    event: cleanValue(payload.event || "client_event"),
+    host: url.hostname,
+    path: cleanPath(payload.page_path || payload.path || ""),
+    experiment: cleanValue(payload.experiment_name || ""),
+    variant: cleanValue(payload.landing_variant || payload.content_variant || payload.experiment_variant || ""),
+    source,
+    medium: cleanValue(payload.utm_medium || ""),
+    campaign: cleanValue(payload.utm_campaign || ""),
+    campaignId: cleanValue(payload.utm_id || ""),
+    adContent: cleanValue(payload.utm_content || ""),
+    rdtCid: hasRdtCid ? "present" : "missing",
+    traffic: source === "reddit" || hasRdtCid ? "reddit_related" : "non_reddit",
+    country: cf.country || "",
+    colo: cf.colo || "",
+    device: getDeviceBucket(userAgent),
+    browser: getBrowserBucket(userAgent),
+    ctaLocation: cleanValue(payload.cta_location || ""),
+    linkType: cleanValue(payload.link_type || ""),
+    destinationHost: cleanValue(payload.destination_host || ""),
+    destinationPath: cleanPath(payload.destination_path || ""),
+  };
+}
+
+function writeAnalyticsEvent(env, event) {
+  if (!env?.LANDING_ANALYTICS) return;
+
+  try {
+    env.LANDING_ANALYTICS.writeDataPoint({
+      indexes: [`${event.experiment || "none"}|${event.source || "none"}`],
+      blobs: [
+        event.event,
+        event.host,
+        event.path,
+        event.experiment,
+        event.variant,
+        event.source,
+        event.medium,
+        event.campaign,
+        event.campaignId,
+        event.adContent,
+        event.rdtCid,
+        event.traffic,
+        event.country,
+        event.colo,
+        event.device,
+        event.browser,
+        event.ctaLocation,
+        event.linkType,
+        event.destinationHost,
+        event.destinationPath,
+      ],
+      doubles: [1],
+    });
+  } catch (error) {
+    console.log(JSON.stringify({
+      event: "landing_analytics_error",
+      message: error?.message || "unknown_error",
+    }));
+  }
+}
+
+function cleanValue(value) {
+  return String(value || "")
+    .replace(/[\r\n\t]/g, " ")
+    .slice(0, 180);
+}
+
+function cleanPath(value) {
+  const cleaned = cleanValue(value);
+  if (!cleaned) return "";
+  try {
+    const parsed = new URL(cleaned, "https://naptime.info");
+    return parsed.pathname;
+  } catch {
+    return cleaned.startsWith("/") ? cleaned.split("?")[0] : "";
+  }
 }
 
 async function incrementLandingCounters(namespace, event) {
