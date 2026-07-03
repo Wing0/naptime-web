@@ -1,5 +1,6 @@
 (function () {
   const consentKey = "naptime_cookie_consent";
+  const attributionKey = "naptime_session_attribution";
   const redditPixelId = "a2_izauxup9ioln";
   let redditPixelReady = false;
   let pageViewTracked = false;
@@ -14,6 +15,7 @@
   }
 
   document.addEventListener("DOMContentLoaded", function () {
+    persistAttribution();
     sendPageView();
     bindTrackedLinks();
   });
@@ -265,6 +267,7 @@
   function commonParams() {
     const contentVariant = getContentVariant();
     const pageFlavor = getPageFlavor();
+    const attribution = getAttribution();
     return {
       experiment_name: getExperimentName(),
       experiment_variant: contentVariant,
@@ -277,12 +280,12 @@
       served_path: getServedPath(),
       nt_paid_variant: getParam("nt_paid_variant") || "",
       nt_variant: getParam("nt_variant") || "",
-      utm_source: getParam("utm_source") || "",
-      utm_medium: getParam("utm_medium") || "",
-      utm_campaign: getParam("utm_campaign") || "",
-      utm_id: getParam("utm_id") || "",
-      utm_content: getParam("utm_content") || "",
-      utm_term: getParam("utm_term") || ""
+      utm_source: attribution.utm_source,
+      utm_medium: attribution.utm_medium,
+      utm_campaign: attribution.utm_campaign,
+      utm_id: attribution.utm_id,
+      utm_content: attribution.utm_content,
+      utm_term: attribution.utm_term
     };
   }
 
@@ -329,6 +332,51 @@
 
   function getParam(name) {
     return new URLSearchParams(location.search).get(name);
+  }
+
+  function persistAttribution() {
+    const attribution = readUrlAttribution();
+    if (!hasAttribution(attribution)) return;
+    try {
+      sessionStorage.setItem(attributionKey, JSON.stringify(attribution));
+    } catch (error) {}
+  }
+
+  function getAttribution() {
+    const current = readUrlAttribution();
+    if (hasAttribution(current)) return current;
+    try {
+      const stored = JSON.parse(sessionStorage.getItem(attributionKey) || "{}");
+      return normalizeAttribution(stored);
+    } catch (error) {
+      return normalizeAttribution({});
+    }
+  }
+
+  function readUrlAttribution() {
+    return normalizeAttribution({
+      utm_source: getParam("utm_source"),
+      utm_medium: getParam("utm_medium"),
+      utm_campaign: getParam("utm_campaign"),
+      utm_id: getParam("utm_id"),
+      utm_content: getParam("utm_content"),
+      utm_term: getParam("utm_term")
+    });
+  }
+
+  function normalizeAttribution(value) {
+    return {
+      utm_source: value.utm_source || "",
+      utm_medium: value.utm_medium || "",
+      utm_campaign: value.utm_campaign || "",
+      utm_id: value.utm_id || "",
+      utm_content: value.utm_content || "",
+      utm_term: value.utm_term || ""
+    };
+  }
+
+  function hasAttribution(value) {
+    return Boolean(value.utm_source || value.utm_medium || value.utm_campaign || value.utm_id || value.utm_content || value.utm_term);
   }
 
   function isModifiedClick(event) {
