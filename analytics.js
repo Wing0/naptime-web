@@ -250,6 +250,7 @@
       utm_source: params.utm_source || "",
       utm_medium: params.utm_medium || "",
       utm_campaign: params.utm_campaign || "",
+      utm_id: params.utm_id || "",
       utm_content: params.utm_content || ""
     };
   }
