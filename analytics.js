@@ -75,8 +75,12 @@
 
   function bindTrackedLinks() {
     document.querySelectorAll("a[href]").forEach(function (element) {
-      element.addEventListener("click", function () {
+      element.addEventListener("click", function (event) {
         const details = classifyLink(element);
+        const shouldDelayNavigation = details.type === "app_store" && !isModifiedClick(event) && !opensNewContext(element);
+        if (shouldDelayNavigation) {
+          event.preventDefault();
+        }
         trackEvent(details.eventName, {
           cta_location: element.dataset.ctaLocation || details.location,
           destination: details.href,
@@ -85,6 +89,11 @@
           link_type: details.type,
           engagement_target: "link"
         });
+        if (shouldDelayNavigation) {
+          window.setTimeout(function () {
+            location.assign(details.href);
+          }, 180);
+        }
       });
     });
   }
@@ -320,6 +329,15 @@
 
   function getParam(name) {
     return new URLSearchParams(location.search).get(name);
+  }
+
+  function isModifiedClick(event) {
+    return event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey;
+  }
+
+  function opensNewContext(element) {
+    const target = (element.getAttribute("target") || "").toLowerCase();
+    return target && target !== "_self";
   }
 
   function getDestinationPath(destination) {
