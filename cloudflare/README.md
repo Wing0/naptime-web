@@ -72,6 +72,40 @@ const ENABLE_PAID_EXPERIMENT = true;
 ```
 
 Paid campaign pages are served through `https://naptime.info/android`. Free routing is intentionally pass-through because Naptime Free is not released yet.
+
+## Landing Arrival Logging
+
+The Worker emits a structured `landing_arrival` log for paid `/android*` experiment requests before GA4, Reddit Pixel, or cookie consent can affect measurement. This is intended to debug Reddit clicks vs GA4 sessions.
+
+The custom log payload intentionally excludes IP addresses, raw user agents, and raw `rdt_cid` values. It includes only campaign/variant fields and coarse request buckets:
+
+- experiment and variant
+- `utm_source`, `utm_medium`, `utm_campaign`, `utm_id`, `utm_content`
+- `rdt_cid` presence (`present` or `missing`)
+- country and Cloudflare colo
+- device bucket and browser bucket
+
+Tail live arrivals from `cloudflare/worker/`:
+
+```powershell
+npm exec -- wrangler tail naptime-experiments --format json
+```
+
+Then visit a test URL:
+
+```powershell
+curl.exe "https://naptime.info/android?nt_paid_variant=sleep-start&utm_source=reddit&utm_medium=paid&utm_campaign=tail-test&utm_id=tail-test&utm_content=tail-test&rdt_cid=tail-test"
+```
+
+Look for a log message like:
+
+```json
+{"event":"landing_arrival","path":"/android","experiment":"paid_reddit_landing_v1","variant":"sleep-start","source":"reddit","medium":"paid","campaign":"tail-test","campaignId":"tail-test","adContent":"tail-test","rdtCid":"present","traffic":"reddit_related","country":"CH","colo":"ZRH","device":"desktop","browser":"other"}
+```
+
+Wrangler tail may show Cloudflare request metadata around the log event; do not copy or persist that request metadata if it includes IP addresses.
+
+Optional persistent aggregate counters are supported in `worker/src/index.js` if a KV namespace is later bound as `LANDING_COUNTS`. The current local Cloudflare token could deploy Workers but could not create a KV namespace (`Authentication error [code: 10000]`), so persistent counters still need a dashboard-created KV namespace or a broader token with Workers KV permissions.
 ## Testing Variants
 
 Force a paid variant with:
