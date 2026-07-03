@@ -6,6 +6,10 @@ compatibility_date = "2026-06-27"
 # Deploy from this directory or pass:
 # npm exec wrangler -- deploy --config cloudflare/worker/wrangler.toml
 
+[[analytics_engine_datasets]]
+binding = "LANDING_ANALYTICS"
+dataset = "naptime_landing_events"
+
 [[routes]]
 pattern = "naptime.info/free.html*"
 zone_name = "naptime.info"

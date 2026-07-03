@@ -73,11 +73,21 @@ const ENABLE_PAID_EXPERIMENT = true;
 
 Paid campaign pages are served through `https://naptime.info/android`. Free routing is intentionally pass-through because Naptime Free is not released yet.
 
-## Landing Arrival Logging
+## Landing Arrival Tracking
 
-The Worker emits a structured `landing_arrival` log for paid `/android*` experiment requests before GA4, Reddit Pixel, or cookie consent can affect measurement. This is intended to debug Reddit clicks vs GA4 sessions.
+The Worker records paid `/android*` experiment requests before GA4, Reddit Pixel, or cookie consent can affect measurement. This is intended to debug Reddit clicks vs GA4 sessions.
 
-The custom log payload intentionally excludes IP addresses, raw user agents, and raw `rdt_cid` values. It includes only campaign/variant fields and coarse request buckets:
+Durable tracking uses Workers Analytics Engine:
+
+```toml
+[[analytics_engine_datasets]]
+binding = "LANDING_ANALYTICS"
+dataset = "naptime_landing_events"
+```
+
+The Worker also emits a structured `landing_arrival` log for live smoke tests with `wrangler tail`.
+
+The custom Analytics Engine/log payload intentionally excludes IP addresses, raw user agents, and raw `rdt_cid` values. It includes only campaign/variant fields and coarse request buckets:
 
 - experiment and variant
 - `utm_source`, `utm_medium`, `utm_campaign`, `utm_id`, `utm_content`

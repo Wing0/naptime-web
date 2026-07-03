@@ -82,6 +82,38 @@ function logLandingEvent(request, url, experiment, variant, env, ctx) {
   const event = buildLandingEvent(request, url, experiment, variant);
   console.log(JSON.stringify(event));
 
+  if (env?.LANDING_ANALYTICS) {
+    try {
+      env.LANDING_ANALYTICS.writeDataPoint({
+        indexes: [`${event.experiment}|${event.source || "none"}`],
+        blobs: [
+          event.event,
+          event.host,
+          event.path,
+          event.experiment,
+          event.variant,
+          event.source,
+          event.medium,
+          event.campaign,
+          event.campaignId,
+          event.adContent,
+          event.rdtCid,
+          event.traffic,
+          event.country,
+          event.colo,
+          event.device,
+          event.browser,
+        ],
+        doubles: [1],
+      });
+    } catch (error) {
+      console.log(JSON.stringify({
+        event: "landing_analytics_error",
+        message: error?.message || "unknown_error",
+      }));
+    }
+  }
+
   if (env?.LANDING_COUNTS) {
     const counterWrite = incrementLandingCounters(env.LANDING_COUNTS, event).catch((error) => {
       console.log(JSON.stringify({
