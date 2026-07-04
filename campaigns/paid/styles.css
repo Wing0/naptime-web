@@ -80,3 +80,197 @@ h1 { font-size: clamp(3rem, 7vw, 6.6rem); line-height: .94; letter-spacing: 0; m
 .btn-cookie-deny { background: transparent; color: #fff; border: 1px solid var(--line); }
 @media (max-width: 860px) { .site-nav { padding: 0 .9rem; gap: .75rem; } .brand { font-size: 1.25rem; flex: 0 0 auto; } .nav-actions { min-width: 0; gap: .5rem; } .nav-cta { padding: 0 .8rem; font-size: .88rem; } .nav-download { max-width: 42vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } .hero { grid-template-columns: minmax(0, 1fr); min-height: auto; padding: 2.6rem 1rem 2.2rem; gap: 1.25rem; overflow: hidden; } .hero-copy { width: 100%; overflow: hidden; } h1 { font-size: clamp(2.25rem, 10.4vw, 2.85rem); line-height: 1.04; max-width: 11.5ch; } .subhead { font-size: 1.02rem; max-width: 34ch; } .privacy-line { max-width: 34ch; } .hero-visual { min-height: 0; } .hero-visual img { width: min(100%, 380px); max-height: min(34vh, 330px); } .signal-strip, .story-section, .use-case-band, .comparison-band, .feature-pair, .comparison-rail { grid-template-columns: 1fr; } .comparison-rail div + div { border-left: 0; border-top: 1px solid var(--line); } .story-section, .use-case-band, .comparison-band, .final-cta, .signal-strip { padding-left: 1rem; padding-right: 1rem; } .cookie-content { flex-direction: column; align-items: stretch; } }
 @media (max-width: 520px) { .site-nav { min-height: 68px; justify-content: flex-start; position: sticky; } .nav-actions { position: absolute; right: .9rem; top: 50%; transform: translateY(-50%); } .nav-cta.secondary { display: none; } .nav-cta.nav-download { font-size: 0 !important; width: auto; max-width: none; min-width: 84px; padding-left: .95rem; padding-right: .95rem; flex: 0 0 auto; } .nav-cta.nav-download::after { content: "Download"; font-size: .88rem; } }
+
+/* Android portrait campaign layer: optimize the paid landing variants for mobile traffic first. */
+body { min-width: 320px; }
+.site-nav {
+  min-height: 64px;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 0 14px;
+  justify-content: space-between;
+}
+.brand { font-size: 1.22rem; }
+.nav-actions { gap: 0; }
+.nav-cta.secondary { display: none; }
+.nav-cta.nav-download {
+  min-width: 104px;
+  max-width: none;
+  min-height: 42px;
+  padding: 0 1rem;
+  font-size: 0 !important;
+  white-space: nowrap;
+}
+.nav-cta.nav-download::after {
+  content: "Download";
+  font-size: .9rem;
+}
+main {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.hero {
+  min-height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.35rem;
+  padding: 2rem 16px 1.6rem;
+  max-width: 520px;
+  overflow: hidden;
+}
+h1 {
+  max-width: 12.5ch;
+  margin-bottom: 1rem;
+  font-size: clamp(2.1rem, 9.8vw, 3rem);
+  line-height: 1.02;
+  text-wrap: balance;
+}
+.subhead {
+  max-width: 34ch;
+  margin-bottom: 1.25rem;
+  font-size: 1.03rem;
+  line-height: 1.48;
+}
+.cta-row {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: .72rem;
+}
+.btn {
+  width: 100%;
+  min-height: 52px;
+  border-radius: 999px;
+  padding: 0 1rem;
+  font-size: .98rem;
+}
+.privacy-line {
+  max-width: 34ch;
+  margin-top: 1rem;
+  font-size: .88rem;
+  line-height: 1.45;
+}
+.hero-visual {
+  min-height: 0;
+  place-items: center;
+}
+.hero-visual img {
+  width: min(100%, 330px);
+  max-height: 260px;
+  border-radius: 22px;
+}
+.signal-strip,
+.story-section,
+.use-case-band,
+.comparison-band,
+.final-cta {
+  max-width: 520px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.signal-strip {
+  grid-template-columns: 1fr;
+  gap: .9rem;
+  padding-top: .4rem;
+  padding-bottom: 2.4rem;
+}
+.signal-strip div {
+  padding-top: .85rem;
+}
+.signal-strip p {
+  font-size: .94rem;
+}
+.story-section,
+.use-case-band,
+.comparison-band {
+  grid-template-columns: 1fr;
+  gap: 1.45rem;
+  padding-top: 2.4rem;
+  padding-bottom: 2.6rem;
+}
+.story-copy h2,
+.use-case-copy h2,
+.comparison-copy h2,
+.final-cta h2 {
+  font-size: clamp(1.8rem, 7.2vw, 2.45rem);
+  line-height: 1.04;
+  text-wrap: balance;
+}
+.story-copy p,
+.use-case-copy p,
+.comparison-copy p {
+  font-size: 1rem;
+}
+.flow-list {
+  gap: .75rem;
+  margin-top: 1.4rem;
+}
+.flow-list li {
+  grid-template-columns: 2rem 1fr;
+  gap: .72rem;
+  font-size: .98rem;
+}
+.flow-list li::before {
+  width: 2rem;
+  height: 2rem;
+}
+.secondary-visual img {
+  width: min(100%, 300px);
+  max-height: 320px;
+  border-radius: 20px;
+}
+.feature-pair,
+.comparison-rail {
+  grid-template-columns: 1fr;
+}
+.feature-card {
+  padding: 1rem;
+}
+.feature-card h3 {
+  font-size: 1.15rem;
+}
+.comparison-rail div + div {
+  border-left: 0;
+  border-top: 1px solid var(--line);
+}
+.comparison-rail div {
+  padding: 1rem;
+}
+.comparison-rail strong {
+  font-size: 1.12rem;
+}
+.final-cta {
+  padding-top: 3rem;
+  padding-bottom: 6rem;
+}
+.final-cta .cta-row {
+  margin-top: 1.4rem;
+}
+.cookie-banner {
+  left: 10px;
+  right: 10px;
+  bottom: -260px;
+  padding: .9rem;
+}
+.cookie-banner.visible {
+  bottom: 10px;
+}
+.cookie-content {
+  display: grid;
+  gap: .85rem;
+}
+.cookie-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.btn-cookie-accept,
+.btn-cookie-deny {
+  min-height: 44px;
+}
+@media (min-width: 521px) {
+  body {
+    background: #07050d;
+  }
+}
