@@ -10,5 +10,6 @@
 - Use `CLOUDFLARE_API_TOKEN` from the local environment for Wrangler if available. Never print, commit, or request the token value in chat.
 - Run Wrangler from `cloudflare/worker/` so it discovers `wrangler.toml`, for example: `npm exec wrangler -- deploy`.
 - After deploying, verify live behavior with `https://naptime.info/android?nt_paid_variant=<variant>` before sending traffic.
+- After pushing website HTML/CSS/JS changes and confirming GitHub Pages has rebuilt, purge Cloudflare cache for the changed URLs/assets before final live verification. Experiment-routed `/android` origin fetches are configured with `cache-control: no-cache`, but static assets and previously cached pages can still stay stale.
 - Analytics and consent setup is documented in ANALYTICS.md.
 
