@@ -428,8 +428,10 @@ h1 {
   place-items: center;
 }
 .hero-visual img {
-  width: min(100%, 330px);
-  max-height: 260px;
+  width: auto;
+  height: clamp(390px, 58vh, 540px);
+  max-width: min(92vw, 390px);
+  max-height: none;
   border-radius: 22px;
 }
 .signal-strip,
@@ -488,8 +490,10 @@ h1 {
   height: 2rem;
 }
 .secondary-visual img {
-  width: min(100%, 300px);
-  max-height: 320px;
+  width: auto;
+  height: clamp(420px, 62vh, 560px);
+  max-width: min(92vw, 390px);
+  max-height: none;
   border-radius: 20px;
 }
 .feature-pair,
