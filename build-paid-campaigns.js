@@ -189,28 +189,28 @@ const variants = [
   {
     file: 'deadline.html',
     variant: 'deadline',
-    bodyClass: 'theme-deadline',
-    title: 'Naptime for Android - Smart naps with a hard wake deadline',
-    description: 'A deadline-safe Android nap alarm for lunch breaks, shift work, study sessions, and pre-meeting recovery.',
-    h1: 'Nap safely inside your schedule.',
-    subhead: 'Naptime starts timing after sleep is detected, but still wakes you by your hard cutoff if sleep takes too long.',
+    bodyClass: 'theme-reset',
+    title: 'Naptime for Android - Wake up clearer from short naps',
+    description: 'A private Android smart nap alarm for people who want short breaks to become real sleep and a clearer return to work, study, or life.',
+    h1: 'Wake clearer from short naps.',
+    subhead: 'A regular alarm wakes you at a time. Naptime helps the nap itself count by starting the timer after sleep begins, not while you are still settling in.',
     image: '/screenshot_monitoring.png',
     secondaryImage: '/screenshot_nap_analytics.png',
-    sectionH2: 'For naps that cannot accidentally expand',
-    sectionBody: 'Use Naptime when you want real sleep but still need to be back for a meeting, class, pickup, shift, or training block.',
-    useCaseH2: 'A nap alarm with boundaries',
-    useCaseBody: 'You can let the app protect your sleep time without giving it permission to overrun the rest of your day.',
-    comparisonH2: 'Smart timing, strict boundary',
-    comparisonBody: 'A normal timer protects the end time but may waste the nap. Naptime protects the sleep window while still respecting the latest time you can wake up.',
-    finalH2: 'Rest better without gambling with your schedule.',
+    sectionH2: 'Protect the part that changes how you feel afterward',
+    sectionBody: 'The useful part of a nap is not the timer. It is the sleep. Naptime uses phone movement on the mattress to detect when you have settled, then gives you the rest window you chose.',
+    useCaseH2: 'Built for the next thing on your day',
+    useCaseBody: 'Use it before a difficult task, between study blocks, after a bad night, or when you want to return to people and work with a steadier head.',
+    comparisonH2: 'A better short break than waiting for a bell',
+    comparisonBody: 'A physical alarm clock only controls when noise happens. Naptime controls what the countdown means: sleep time, not time spent trying to fall asleep.',
+    finalH2: 'Turn the next break into a real reset.',
     flow: [
-      'Set the nap you want.',
-      'Add the latest time you can wake up.',
-      'Sleep if you can; wake on time either way.'
+      'Choose the nap length that usually leaves you refreshed.',
+      'Place your phone on the mattress and let yourself settle.',
+      'Wake after the sleep window, with a hard cutoff still protecting your day.'
     ],
     features: [
-      ['Latest wake time', 'Even if sleep is not detected, the alarm fires by your cutoff.'],
-      ['Quiet dark UI', 'Designed to sit beside you without lighting up the room.']
+      ['Post-nap ratings', 'Log how you feel after waking so you can find the duration that leaves you clear, not groggy.'],
+      ['Private patterns', 'Compare tags like coffee, stress, workouts, or noise without sending paid-app session data off your phone.']
     ]
   },
   {
@@ -286,11 +286,11 @@ const css = `:root {
 html, body { max-width: 100%; overflow-x: hidden; }
 body { margin: 0; color: var(--text); background: var(--bg); line-height: 1.5; }
 body::before { content: ""; position: fixed; inset: 0; z-index: -1; background: var(--campaign-bg); }
-.theme-electric, .theme-private, .theme-deadline, .theme-warm, .theme-caffeine {
+.theme-electric, .theme-private, .theme-reset, .theme-warm, .theme-caffeine {
   --campaign-bg: radial-gradient(circle at 12% 16%, rgba(139,45,242,.46), transparent 29%), radial-gradient(circle at 88% 12%, rgba(114,73,255,.24), transparent 27%), radial-gradient(circle at 70% 88%, rgba(122,242,183,.10), transparent 26%), linear-gradient(145deg, #07050d, #13091c 58%, #07050d);
 }
 .theme-private { --campaign-bg: radial-gradient(circle at 14% 18%, rgba(139,45,242,.44), transparent 28%), radial-gradient(circle at 86% 78%, rgba(122,89,255,.30), transparent 30%), radial-gradient(circle at 74% 16%, rgba(122,242,183,.10), transparent 24%), linear-gradient(145deg, #07050d, #13091c 60%, #07050d); }
-.theme-deadline { --campaign-bg: radial-gradient(circle at 14% 78%, rgba(139,45,242,.44), transparent 28%), radial-gradient(circle at 88% 18%, rgba(114,73,255,.30), transparent 31%), radial-gradient(circle at 72% 82%, rgba(114,215,255,.12), transparent 24%), linear-gradient(145deg, #07050d, #120b1d 60%, #07050d); }
+.theme-reset { --campaign-bg: radial-gradient(circle at 14% 78%, rgba(139,45,242,.44), transparent 28%), radial-gradient(circle at 88% 18%, rgba(114,73,255,.30), transparent 31%), radial-gradient(circle at 72% 82%, rgba(122,242,183,.12), transparent 24%), linear-gradient(145deg, #07050d, #120b1d 60%, #07050d); }
 .theme-warm { --campaign-bg: radial-gradient(circle at 12% 12%, rgba(139,45,242,.44), transparent 28%), radial-gradient(circle at 86% 82%, rgba(116,63,219,.36), transparent 31%), radial-gradient(circle at 76% 12%, rgba(255,211,106,.12), transparent 24%), linear-gradient(145deg, #08050d, #15091d 58%, #07050d); }
 .theme-caffeine { --campaign-bg: radial-gradient(circle at 16% 14%, rgba(139,45,242,.44), transparent 28%), radial-gradient(circle at 90% 82%, rgba(122,89,255,.32), transparent 30%), radial-gradient(circle at 76% 16%, rgba(122,242,183,.12), transparent 24%), linear-gradient(145deg, #07050d, #12091b 58%, #07050d); }
 a { color: inherit; }
