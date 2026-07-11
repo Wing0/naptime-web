@@ -181,6 +181,12 @@
                 separate random per-install upload credential that authorizes uploads and deletion requests. Neither is
                 derived from your hardware or account. The server stores one-way hashes of these values rather than the
                 raw values.</p>
+            <p>Before accepting production contributions, the app uses Google Play Integrity to check that enrollment
+                comes from the Play-recognized Naptime Free app, a licensed Play installation, and a device meeting
+                Google's integrity requirements. Google processes the app package/version/signing information, Play
+                license status, a hash binding the enrollment request, and device-integrity signals for this check. We
+                store only the returned verdict categories and verification timestamps, not a Google account identifier
+                or the encrypted integrity token.</p>
 
             <h3>Operational Network Security</h3>
             <p>Like any internet service, our server necessarily processes the source network address to deliver a
@@ -196,8 +202,9 @@
                     does create the random installation identifier described above.</li>
                 <li>No location data, contacts, microphone audio, or content from other apps.</li>
                 <li>No raw accelerometer recordings.</li>
-                <li>No third-party analytics, advertising, or tracking SDKs of any kind (no Firebase, Google Analytics,
-                    crash-reporting SDKs, etc.). All uploads go only to our own servers.</li>
+                <li>No in-app analytics, advertising, or third-party crash-reporting SDKs. Session and diagnostic
+                    contributions go only to our servers. The Google Play Integrity security library communicates with
+                    Google only for the installation-verification check described above.</li>
             </ul>
 
             <h2>4. Pseudonymisation and Identification Risk</h2>
@@ -237,13 +244,14 @@
             <h2>6. Where the Data Is Stored & Who Processes It</h2>
             <p>Uploaded data is transmitted over an encrypted HTTPS connection and stored on servers we operate. A
                 random per-install credential authorizes uploads and deletion requests; the server stores its one-way
-                SHA-256 hash rather than the raw credential. This authenticates the enrolled installation, not the
-                identity of the user, and is not a guarantee that the client software is an unmodified official copy.
-                HTTPS protects the credential and payload in transit.</p>
+                SHA-256 hash rather than the raw credential. Google Play Integrity additionally verifies production
+                enrollment as described in Section 3; it does not identify the user to us. HTTPS protects the credential
+                and payload in transit.</p>
             <p>Our servers are hosted in European data centres operated by <strong>Hetzner Online GmbH</strong>, which
                 acts as our hosting provider. Hetzner stores the data on our behalf but has no independent right to use
-                it. Research partners or other third parties may receive pseudonymous records or aggregate results as
-                described in Section 5.</p>
+                it. Google processes the limited integrity-check information described in Section 3 as our app-security
+                provider. Research partners or other third parties may receive pseudonymous records or aggregate results
+                as described in Section 5.</p>
 
             <h2>7. Your Right to Retract Your Data</h2>
             <p>You can request deletion of the pseudonymous records associated with your installation identifier. Local
