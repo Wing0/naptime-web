@@ -189,14 +189,16 @@
                 individually separated out or removed. Records that still carry the installation link remain
                 pseudonymous and are covered by the deletion request.</p>
             <p>After an accepted server deletion, all linked session, crash, app, and device metadata is erased. Minimal
-                one-way credential/installation hashes and deletion-request status and timestamps may remain for up to
-                24 hours solely to make retries safe and prevent reuse of a deleted credential. They are then removed.</p>
+                one-way credential/installation hashes and deletion-request status and timestamps are normally removed
+                within 24 hours solely to make retries safe and prevent reuse of a deleted credential. A service outage
+                may delay that cleanup.</p>
 
             <h2>Data retention period</h2>
             <p>We retain the data associated with your installation identifier until you delete it as described above;
                 there is no fixed expiry. Once the server accepts deletion, the linked session, crash, app, and device
                 records are removed from our active systems and cannot be recovered. The limited security hashes and
-                deletion receipt described above expire within 24 hours. We do not currently keep backups of this data;
+                deletion receipt described above are normally removed within 24 hours; a service outage may delay that
+                cleanup. We do not currently keep backups of this data;
                 should we introduce backups in the future, deleted data will be purged from them within 30 days.</p>
 
             <h2>If you have already uninstalled the app</h2>

@@ -250,8 +250,8 @@
                     server deletes all linked session, crash, app, and device metadata once it successfully receives and
                     accepts that request. A working connection is required; contact us if you need help confirming
                     server-side deletion. Minimal one-way credential/installation hashes and deletion-request status
-                    and timestamps may remain for up to 24 hours solely to make retries safe and prevent a deleted
-                    credential from being reused; they are then removed.</li>
+                    and timestamps are normally removed within 24 hours solely to make retries safe and prevent a
+                    deleted credential from being reused; a service outage may delay that cleanup.</li>
             </ul>
             <p>Using <strong>"Delete my data"</strong> is also how you stop future contributions: it clears your consent,
                 so the app stops uploading and will ask for your consent again before any further data is contributed.
