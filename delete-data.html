@@ -172,9 +172,14 @@
             <ul>
                 <li>All nap and sleep session records and history.</li>
                 <li>App settings, alarm and snooze state, and tags.</li>
-                <li>Crash logs and the consent and installation-identifier records.</li>
+                <li>Crash logs and consent state.</li>
                 <li>Any session data files (e.g. CSV exports) created by the app in your Downloads folder.</li>
             </ul>
+            <p>If server deletion is still pending, Naptime temporarily retains the random installation identifier and a
+                deletion credential in app-private storage excluded from backup and device transfer. A
+                network-constrained background job uses them only to retry the request and removes them after the server
+                confirms deletion. Keep Naptime installed and connect it to the internet until confirmation; uninstalling
+                first removes that retry credential and may prevent the app from completing server deletion.</p>
             <p>On our servers, the same action permanently and irreversibly removes all data associated with your
                 installation identifier, including:</p>
             <ul>
