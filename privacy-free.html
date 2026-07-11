@@ -116,7 +116,7 @@
             <a href="index.html" class="back-link">← Back to Home</a>
 
             <h1>Privacy Policy — Naptime Free</h1>
-            <p><strong>Effective Date:</strong> June 14, 2026</p>
+            <p><strong>Effective Date:</strong> July 11, 2026</p>
 
             <div class="callout">
                 <p>This policy applies <strong>only to the free, donation-supported edition of Naptime</strong>
@@ -125,21 +125,22 @@
                         style="color: var(--primary);">standard Privacy Policy</a> instead.</p>
             </div>
 
-            <p>Naptime Free is offered to you at no cost. In exchange, you agree to contribute anonymous data about how
-                you sleep, which we are free to use as described below. This is the trade that keeps the free edition
-                free. This policy explains, in plain terms, exactly what we collect, how we keep it anonymous, what we
-                do with it, and how you can take it all back at any time.</p>
+            <p>Naptime Free is offered to you at no cost. In exchange, you agree to contribute pseudonymous data about
+                app use, sleep sessions, and app stability, which we may use as described below. This is the trade that
+                keeps the free edition free. The data is not linked to an account or direct identity fields, but it is
+                linked over time by a random installation identifier and is therefore <strong>not anonymous</strong>.
+                This policy explains what we collect, the resulting risks, what we do with it, and your deletion options.</p>
 
             <h2>1. Your Consent</h2>
             <p>When you first open Naptime Free, you are shown a screen explaining what the app collects, that the data
-                is anonymous, and that it may be shared with research partners and other third parties.
+                is pseudonymous, and that it may be shared with research partners and other third parties.
                 <strong>Agreeing to these data-donation terms is required to use the free edition</strong> — no data is
                 uploaded until you have agreed, but the free edition cannot be used without agreeing. If you prefer not
                 to share your data, you can use the <strong>paid edition</strong> of Naptime instead, which keeps all
                 session data on your device and uploads nothing.</p>
             <p>Using Naptime Free with data contribution enabled constitutes your agreement that we may collect, store,
-                analyze, and otherwise exploit the anonymized data described in this policy without restriction and
-                without further compensation to you, for as long as it remains in our systems.</p>
+                analyze, and use the pseudonymous data described in this policy, without further compensation to you,
+                for the purposes and retention period described below.</p>
 
             <h2>2. Website Analytics and Ad Measurement</h2>
             <p>On the Naptime website, we may use Google Analytics and Reddit Pixel after cookie consent to understand
@@ -160,6 +161,8 @@
                 </li>
                 <li><strong>Sleep quality signals:</strong> detected wake events, micro-arousals/twitches, sleep
                     efficiency, snooze events, and any star/emoji rating or manual corrections you make to a session.</li>
+                <li><strong>Tags:</strong> names of automatic, selected, or custom tags attached to the session. Because
+                    custom tag names are uploaded as entered, do not put names or other identifying details in them.</li>
                 <li><strong>Session settings snapshot:</strong> the relevant app settings in effect for that session
                     (e.g. alarm sound, sensitivity, nap duration, wake-up time, tracking toggles, Do Not Disturb
                     status).</li>
@@ -168,72 +171,87 @@
             </ul>
 
             <h3>Stability & Crash Data</h3>
-            <p>To keep the app reliable, we upload technical records of crashes and abnormal process exits (e.g. the
-                reason the app was terminated, memory usage at the time, and whether a session was active). These
-                contain no personal content from your sessions beyond the device metadata listed above.</p>
+            <p>To keep the app reliable, we upload technical records of crashes and abnormal process exits. These may
+                include the exact exit time, reason and description, stack trace, memory/process status, recent in-app
+                event breadcrumbs, whether a nap or sleep session was active, that session's start time, app version,
+                and the device metadata listed above. Diagnostics are linked to the same installation identifier.</p>
+
+            <h3>Installation & Security Identifiers</h3>
+            <p>The app creates a random installation identifier so records from one installation can be grouped, plus a
+                separate random per-install upload credential that authorizes uploads and deletion requests. Neither is
+                derived from your hardware or account. The server stores one-way hashes of these values rather than the
+                raw values.</p>
 
             <h3>What We Do NOT Collect</h3>
             <ul>
                 <li>No account, name, email address, or phone number.</li>
-                <li>No advertising ID, Google account, or persistent personal identifier.</li>
+                <li>No advertising ID, Google account identifier, hardware serial, or account-based identifier. The app
+                    does create the random installation identifier described above.</li>
                 <li>No location data, contacts, microphone audio, or content from other apps.</li>
                 <li>No raw accelerometer recordings.</li>
                 <li>No third-party analytics, advertising, or tracking SDKs of any kind (no Firebase, Google Analytics,
                     crash-reporting SDKs, etc.). All uploads go only to our own servers.</li>
             </ul>
 
-            <h2>4. How We Keep It Anonymous</h2>
-            <p>Naptime Free is designed so that the data we receive cannot be traced back to you as an individual:</p>
+            <h2>4. Pseudonymisation and Identification Risk</h2>
+            <p>Naptime Free reduces direct identification but does not make contributed records anonymous:</p>
             <ul>
-                <li><strong>No identity is ever required or collected.</strong> You never create an account, and we
-                    never ask for anything that identifies you personally.</li>
+                <li><strong>No account or direct identity fields are required.</strong> You never create an account, and
+                    we do not ask for your name, email address, phone number, advertising ID, or location.</li>
                 <li><strong>Data is keyed only by a random installation identifier.</strong> The first time data is
                     uploaded, the app generates a random identifier (a UUID) for that installation. This number is not
                     derived from your hardware, your Google account, or any advertising ID, and it is generated freshly
                     if you reinstall or reset your data. It lets us group sessions from the same installation (for
                     example, to measure whether sleep improves over time) without knowing who you are.</li>
-                <li><strong>No cross-referencing.</strong> Because we hold no name, email, or device fingerprint, we have
-                    no practical means of linking a random installation identifier to a real person.</li>
+                <li><strong>Indirect identification remains possible.</strong> Exact session and diagnostic times,
+                    device/OS details, settings, tags, and repeated records can distinguish an installation and could be
+                    combined with information held elsewhere. We do not claim that re-identification is impossible.</li>
             </ul>
-            <p>The combination of these measures means the dataset we hold is anonymous: it describes how sleep happens,
-                not who slept.</p>
+            <p>Until the installation link has been irreversibly removed and the records have been aggregated so that
+                individuals are no longer reasonably distinguishable, we treat the contributed dataset as
+                <strong>pseudonymous data</strong>, not anonymous data.</p>
 
             <h2>5. How We Use the Data — and Our Right to Exploit It</h2>
-            <p>In exchange for providing Naptime Free at no charge, you grant us a worldwide, royalty-free, perpetual,
-                and irrevocable right to use the anonymized and aggregated data we collect <strong>for any lawful
-                    purpose</strong>. This expressly includes, without limitation:</p>
+            <p>In exchange for providing Naptime Free at no charge, you grant us a worldwide, royalty-free right to use
+                the pseudonymous records while we lawfully retain them, and to use irreversibly anonymized aggregate
+                results, <strong>for any lawful purpose</strong>. This expressly includes, without limitation:</p>
             <ul>
                 <li>Improving Naptime's sleep-detection algorithms, features, and reliability.</li>
                 <li>Performing research and statistical analysis on sleep and rest.</li>
                 <li>Building, training, and validating models and other products derived from the data.</li>
                 <li>Producing and publishing aggregated insights, benchmarks, and reports.</li>
-                <li>Sharing, licensing, selling, or otherwise commercializing the anonymized and aggregated data with
-                    third parties, including partners and researchers.</li>
+                <li>Sharing, licensing, selling, or otherwise commercializing pseudonymous records or irreversibly
+                    anonymized aggregate results with third parties, including partners and researchers.</li>
             </ul>
-            <p>Because the data is anonymous, "your" contribution becomes part of a pooled dataset that we are free to
-                exploit as described. This right survives your deletion of the app, except with respect to data you
-                retract under Section 6 before it has been irretrievably aggregated.</p>
+            <p>Your deletion rights for records still linked to the installation identifier are described in Section 7.
+                Information that was irreversibly anonymized and aggregated before deletion is no longer associated
+                with that identifier and cannot be separated back into an individual contribution.</p>
 
             <h2>6. Where the Data Is Stored & Who Processes It</h2>
-            <p>Uploaded data is transmitted over an encrypted (HTTPS) connection and stored on servers we operate. Each
-                upload is cryptographically signed to ensure it genuinely came from the Naptime app and was not
-                tampered with in transit.</p>
+            <p>Uploaded data is transmitted over an encrypted HTTPS connection and stored on servers we operate. A
+                random per-install credential authorizes uploads and deletion requests; the server stores its one-way
+                SHA-256 hash rather than the raw credential. This authenticates the enrolled installation, not the
+                identity of the user, and is not a guarantee that the client software is an unmodified official copy.
+                HTTPS protects the credential and payload in transit.</p>
             <p>Our servers are hosted in European data centres operated by <strong>Hetzner Online GmbH</strong>, which
                 acts as our hosting provider. Hetzner stores the data on our behalf but has no independent right to use
-                it. Because the data we collect is anonymous and we retain unrestricted rights over it, no further data
-                processors need to be named for the purposes of using this data.</p>
+                it. Research partners or other third parties may receive pseudonymous records or aggregate results as
+                described in Section 5.</p>
 
             <h2>7. Your Right to Retract Your Data</h2>
-            <p>Even though the data is anonymous, you remain fully in control and can withdraw it at any time. You have
-                two independent ways to do this:</p>
+            <p>You can request deletion of the pseudonymous records associated with your installation identifier. Local
+                and server-side deletion work differently:</p>
             <ul>
                 <li><strong>From your device:</strong> Uninstalling the app, or tapping <strong>"Delete my
                         data"</strong> in the app's settings, permanently erases all sleep records, session history,
                     crash logs, consent state, and the random installation identifier from your device.</li>
-                <li><strong>From our servers:</strong> The same <strong>"Delete my data"</strong> action also sends a
-                    deletion request to our servers, which permanently and irreversibly removes <strong>all</strong>
-                    sessions, crash logs, and metadata associated with your installation identifier. Once deleted, this
-                    data cannot be re-linked or recovered.</li>
+                <li><strong>From our servers:</strong> The same <strong>"Delete my data"</strong> action sends a deletion
+                    request for sessions, crash logs, and metadata associated with your installation identifier. The
+                    server deletes all linked session, crash, app, and device metadata once it successfully receives and
+                    accepts that request. A working connection is required; contact us if you need help confirming
+                    server-side deletion. Minimal one-way credential/installation hashes and deletion-request status
+                    and timestamps may remain for up to 24 hours solely to make retries safe and prevent a deleted
+                    credential from being reused; they are then removed.</li>
             </ul>
             <p>Using <strong>"Delete my data"</strong> is also how you stop future contributions: it clears your consent,
                 so the app stops uploading and will ask for your consent again before any further data is contributed.
@@ -242,14 +260,15 @@
             <p>If you would like assistance retracting your data, contact us using the details below.</p>
 
             <h2>8. Data Sharing</h2>
-            <p>We do not sell or share information that identifies you, because we never collect any. We may freely
-                share, license, or sell the <strong>anonymized and aggregated</strong> data as described in Section 4.</p>
+            <p>We do not collect account-based identity fields. We may share, license, or sell
+                <strong>pseudonymous records or irreversibly anonymized aggregate results</strong> as described in
+                Section 5. Sharing pseudonymous records can increase indirect identification risk.</p>
 
             <h2>9. Children's Privacy</h2>
             <p>Naptime Free is not directed to children under the age of digital consent in their jurisdiction. We do not
-                knowingly collect data from such children. Because we collect no identifying information, we cannot
-                determine a user's age; if you believe a child has used the app, you may retract the associated data as
-                described in Section 6.</p>
+                knowingly collect data from such children. Because the app has no account or age field, we generally
+                cannot determine a user's age; if you believe a child has used the app, you may request deletion as
+                described in Section 7.</p>
 
             <h2>10. Changes to This Policy</h2>
             <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new

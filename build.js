@@ -16,8 +16,12 @@ const variants = [
       CANONICAL_URL:     'https://naptime.info/',
       OG_URL:            'https://naptime.info/',
       STORE_URL:         'https://play.google.com/store/apps/details?id=com.naptime.app',
+      CTA_ANALYTICS_EVENT:'play_store_click',
       PRICE:             '1.99',
       DOWNLOAD_TAGLINE:  'Smart naps, night sleep tracking, tag analytics, and regular alarms. Private by design and built for Android.',
+      AVAILABILITY_BADGE:'Now Available',
+      AVAILABILITY_NOTE: 'Currently available in Finland, Ireland, Slovenia &amp; Switzerland &mdash; expanding soon.',
+      HERO_AVAILABILITY:'Available in Finland, Ireland, Slovenia &amp; Switzerland',
       CROSSLINK_URL:     '/free.html',
       CROSSLINK_LABEL:   'Naptime Free',
     },
@@ -33,9 +37,13 @@ const variants = [
       CONTENT_VARIANT:   'main-free',
       CANONICAL_URL:     'https://naptime.info/free.html',
       OG_URL:            'https://naptime.info/free.html',
-      STORE_URL:         'https://play.google.com/store/apps/details?id=com.naptime.app.free',
+      STORE_URL:         '/early-access.html',
+      CTA_ANALYTICS_EVENT:'early_access_click',
       PRICE:             '0',
-      DOWNLOAD_TAGLINE:  'Smart naps, night sleep tracking, tag analytics, and regular alarms. Built for Android.',
+      DOWNLOAD_TAGLINE:  'Join the closed test for smart naps, night sleep tracking, tag analytics, and regular alarms on Android.',
+      AVAILABILITY_BADGE:'Closed Testing',
+      AVAILABILITY_NOTE: 'Naptime Free is currently in Google Play closed testing; Play access requires joining the test.',
+      HERO_AVAILABILITY:'Google Play closed testing &mdash; join the tester group first',
       CROSSLINK_URL:     '/',
       CROSSLINK_LABEL:   'Naptime (paid)',
     },
@@ -56,6 +64,9 @@ for (const { outputFile, keepBlock, dropBlock, vars } of variants) {
   for (const [key, value] of Object.entries(vars)) {
     html = html.replace(new RegExp(`\\{\\{${key}\\}\\}`, 'g'), value);
   }
+
+  // Removing flavor blocks can leave indentation-only lines in generated files.
+  html = html.replace(/[ \t]+$/gm, '');
 
   fs.writeFileSync(outputFile, html);
   console.log(`Built ${outputFile}`);

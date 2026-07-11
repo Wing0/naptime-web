@@ -15,7 +15,7 @@ Tracking URL pattern:
 - Lead with the unique job: the nap timer starts after sleep begins.
 - Keep the first line plain enough to work in a Reddit feed.
 - Do not position Naptime as a broad sleep suite or audio relaxation app.
-- Mention trust clearly for free testing: anonymous usage/session data is collected only if a nap or sleep session is started.
+- Mention trust clearly for free testing: after consent, pseudonymous completed-session records and crash/process-exit diagnostics are linked by a random installation ID. Diagnostics may upload on a later app launch even when no new session is started.
 - Avoid medical claims. Keep research and performance claims out of first-test ad creative unless the landing page explains them.
 
 ## Creative Candidates
@@ -106,7 +106,7 @@ Hook:
 
 Body:
 
-> Quick install/open helps. Optional: try one nap. Anonymous data is collected only if you start a session.
+> Quick install/open helps. Optional: try one nap. After consent, completed sessions and any available crash diagnostics may contribute pseudonymous data linked by a random installation ID; see the Free Privacy Policy.
 
 Best audience:
 
@@ -118,7 +118,7 @@ Why test:
 
 Suggested Reddit ad text:
 
-> I need Android closed testers for Naptime Free. Staying opted in for 14 days helps; starting a nap is optional. Anonymous usage/session data is collected only if a nap or sleep session is started.
+> I need Android closed testers for Naptime Free. Staying opted in for 14 days helps; starting a nap is optional. After consent, completed sessions and any available crash diagnostics may contribute pseudonymous data linked by a random installation ID; see the Free Privacy Policy.
 
 UTM content:
 

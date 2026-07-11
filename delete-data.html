@@ -153,17 +153,19 @@
             </div>
 
             <h2>How to request deletion</h2>
-            <p>Naptime Free does not require an account, and your data is associated only with an anonymous, randomly
-                generated installation identifier. You do not need to know or provide this identifier — the app handles
-                it for you. To delete your data:</p>
+            <p>Naptime Free does not require an account. Uploaded data is associated with a randomly generated,
+                pseudonymous installation identifier so records from the same installation can be grouped over time.
+                You do not need to know or provide this identifier — the app handles it for you. To request deletion:</p>
             <ol class="steps">
                 <li>Open the <strong>Naptime</strong> app on your device.</li>
                 <li>Go to <strong>Settings</strong>.</li>
                 <li>Tap <strong>"Delete my data"</strong>.</li>
                 <li>Confirm by typing <strong>DELETE</strong> when prompted.</li>
             </ol>
-            <p>This single action erases your data both <strong>on your device</strong> and <strong>on our
-                    servers</strong>. No further steps are required.</p>
+            <p>This action erases data on your device and sends a server-side deletion request for records linked to the
+                installation identifier. Server deletion requires a working connection and a successful server
+                response. If you are unsure that the request succeeded, keep the app installed and contact us before
+                clearing app data or uninstalling.</p>
 
             <h2>What is deleted</h2>
             <p>On your device, the following is permanently removed:</p>
@@ -182,23 +184,28 @@
             </ul>
 
             <h2>What is kept</h2>
-            <p>Data that has already been irreversibly aggregated or anonymized into a pooled dataset before your
+            <p>Data that has already been irreversibly anonymized and aggregated into a pooled dataset before your
                 deletion request can no longer be linked to your installation identifier, and therefore cannot be
-                individually separated out or removed. This residual data contains no information that identifies you.</p>
+                individually separated out or removed. Records that still carry the installation link remain
+                pseudonymous and are covered by the deletion request.</p>
+            <p>After an accepted server deletion, all linked session, crash, app, and device metadata is erased. Minimal
+                one-way credential/installation hashes and deletion-request status and timestamps may remain for up to
+                24 hours solely to make retries safe and prevent reuse of a deleted credential. They are then removed.</p>
 
             <h2>Data retention period</h2>
             <p>We retain the data associated with your installation identifier until you delete it as described above;
-                there is no fixed expiry. Once you request deletion, the records associated with your installation
-                identifier are removed from our active systems and cannot be recovered. We do not currently keep
-                backups of this data; should we introduce backups in the future, deleted data will be purged from them
-                within 30 days.</p>
+                there is no fixed expiry. Once the server accepts deletion, the linked session, crash, app, and device
+                records are removed from our active systems and cannot be recovered. The limited security hashes and
+                deletion receipt described above expire within 24 hours. We do not currently keep backups of this data;
+                should we introduce backups in the future, deleted data will be purged from them within 30 days.</p>
 
             <h2>If you have already uninstalled the app</h2>
-            <p>Because Naptime Free never collects your name, email address, or any other personal identifier, data on
-                our servers is anonymous and cannot be traced back to you once the app — and the installation identifier
-                it stored — has been removed from your device. Reinstalling the app generates a new identifier and does
-                not reconnect you to the previous data. As a result, any residual data is already anonymous and cannot
-                be linked to you as an individual.</p>
+            <p>Reinstalling the app generates a new installation identifier and does not automatically reconnect the new
+                installation to records uploaded under the previous identifier. However, those older records remain
+                pseudonymous rather than anonymous: exact times, device/OS details, tags, and diagnostics may still
+                create indirect identification risk. Once the previous identifier has been removed from your device,
+                the app may no longer be able to target those records for deletion. Contact us for assistance, although
+                without the previous identifier we may be unable to locate the specific records.</p>
             <p>If you have questions or need assistance, contact us at
                 <a href="mailto:nate.naptime@gmail.com" style="color: var(--primary);">nate.naptime@gmail.com</a>.</p>
         </div>

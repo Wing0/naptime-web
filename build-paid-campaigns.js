@@ -60,7 +60,7 @@ const template = `<!doctype html>
           <a class="btn primary" href="${playUrl}" data-analytics-event="play_store_click" data-cta-location="hero" target="_blank" rel="noopener">Download for Android</a>
           <a class="btn secondary" href="/" data-analytics-event="learn_more_click" data-cta-location="hero">Learn more</a>
         </div>
-        <p class="privacy-line">One-time paid app. No account. No anonymous uploads. Session data stays on your device.</p>
+        <p class="privacy-line">One-time paid app. No account. No session uploads. Session data stays on your device.</p>
       </div>
       <div class="hero-visual" aria-hidden="true">
         <img src="__IMAGE__" alt="" loading="eager" decoding="async">
@@ -156,7 +156,7 @@ const variants = [
     ],
     features: [
       ['True-duration naps', 'A 20-minute nap means roughly 20 minutes asleep, not 20 minutes since you opened the app.'],
-      ['On-device paid app', 'No account, no subscription, and no anonymous session uploads in the paid version.']
+      ['On-device paid app', 'No account, no subscription, and no session uploads in the paid version.']
     ]
   },
   {
@@ -164,7 +164,7 @@ const variants = [
     variant: 'private',
     bodyClass: 'theme-private',
     title: 'Naptime for Android - Private nap insights, no account',
-    description: 'Paid Android nap and sleep tracking with all session data kept on your device. No account, no wearable, no anonymous uploads.',
+    description: 'Paid Android nap and sleep tracking with all session data kept on your device. No account, no wearable, and no session uploads.',
     h1: 'Private nap insights without an account.',
     subhead: 'Naptime helps you time naps around when sleep begins, then keeps your nap and night history on your Android device.',
     image: '/screenshot_nap_analytics.png',
@@ -237,7 +237,7 @@ const variants = [
     ],
     features: [
       ['Sleep-start countdown', 'Your nap starts after sleep begins, not while you are still awake.'],
-      ['One-time purchase', 'No subscription, no account, and no anonymous session uploads in the paid app.']
+      ['One-time purchase', 'No subscription, no account, and no session uploads in the paid app.']
     ]
   },
   {

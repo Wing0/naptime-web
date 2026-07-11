@@ -242,4 +242,4 @@ Recommended properties:
 - These pages are standalone experiment files under `experiments/paid/`.
 - They do not modify `_template.html`, `index.html`, or `free.html`.
 - If a paid winner is selected, adapt the winning copy into `_template.html` and run `node build.js`.
-- Preserve paid/free differences: paid page may promise no session uploads; free page must explain anonymous, consent-gated data donation.
+- Preserve paid/free differences: paid page may promise no session uploads; free page must explain pseudonymous, consent-gated data donation and its stable installation ID.

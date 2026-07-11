@@ -68,7 +68,7 @@ Most persuaded by:
 
 Concern:
 
-- "Anonymous data donation" must be explained before the first CTA or immediately after it for free testing traffic.
+- Pseudonymous data donation must be explained before the first CTA or immediately after it for free testing traffic; do not call linked installation records anonymous.
 
 ### 5. Growth / Conversion Reviewer
 

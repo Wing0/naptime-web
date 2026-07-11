@@ -44,10 +44,10 @@ Keep competitors out of public-facing page copy unless explicitly creating compa
 
 Naptime has two Android flavors:
 
-- Paid: all session data stays on-device only. No anonymous uploads.
-- Free: anonymous, consent-gated data donation supports the free version.
+- Paid: all session data stays on-device only. No session uploads.
+- Free: pseudonymous, consent-gated data donation supports the free version.
 
-For Naptime Free, anonymous session/usage data is collected only when a nap or sleep session is started. Merely installing or opening the app should not be framed as contributing session data.
+For Naptime Free, pseudonymous session and diagnostic data may be uploaded after consent. The payload includes a stable random installation ID, exact session and diagnostic times, derived movement data, settings, ratings, corrections, selected or custom tags, device/OS metadata, and crash/process-exit diagnostics. It does not request a name, email, account, advertising ID, location, contacts, microphone audio, or raw continuous accelerometer stream. Do not call this data anonymous or identifier-free. Merely installing or opening the app does not contribute a completed session, but after consent any available crash/process-exit diagnostics may be uploaded on a later app launch.
 
 Trust is a major conversion factor. Copy must be clear, calm, and non-evasive about the free app's data donation model.
 
