@@ -22,12 +22,17 @@ If this is not the correct GA4 web stream for Naptime, update the Google tag sni
   - `ad_user_data`
   - `ad_personalization`
 - The cookie banner stores consent in `localStorage` as `naptime_cookie_consent`.
+- After an explicit accept, the banner also writes the first-party `naptime_analytics_consent=granted` cookie. The Worker uses it solely to decide whether it may persist an experiment-assignment cookie; declining removes it.
 - The banner UI is managed by `script.js` so privacy browsers that block `analytics.js` can still show the consent prompt.
 - `analytics.js` owns the analytics side of consent choices when it is available.
 - On accept, `analytics.js` updates Google Consent Mode to granted.
 - On accept, `analytics.js` sends a fresh granted `page_view` with `consent_refresh: granted_after_accept`, so first-time accepted visits are visible in GA Real-time without requiring a reload.
 - On accept, `analytics.js` initializes Reddit Pixel and sends the current page visit if it has not already been sent to Reddit.
-- On decline, the site remains usable and consent remains denied. The banner may reappear on a later page load until analytics is accepted, which keeps testing and consent recovery straightforward.
+- On decline, the site remains usable and consent remains denied. The decision persists and the banner stays hidden on later page loads.
+
+## First-party event safeguards
+
+Cloudflare Analytics Engine remains enabled for first-party measurement. The `/__nt_event` endpoint accepts only same-site POSTs with an allowlisted event, CTA location, link type, bounded dimensions, and a body of at most 4 KiB. It applies a short duplicate window and an edge-local per-client rate limit; neither stores raw IP addresses in analytics records. Browser-supplied experiment names and variants are ignored in favour of the Worker-issued assignment cookie. Forced-variant QA URLs and bot requests are not counted as experiment arrivals.
 
 ## Events
 

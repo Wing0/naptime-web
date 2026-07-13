@@ -77,7 +77,7 @@ Paid campaign pages are served through `https://naptime.info/android`. Free rout
 
 ## Landing Arrival Tracking
 
-The Worker records paid `/android*` experiment requests before GA4, Reddit Pixel, or cookie consent can affect measurement. It also accepts first-party browser events at `/__nt_event` from `analytics.js` for page views, landing clicks, and Play Store clicks.
+The Worker records eligible paid `/android*` experiment requests and accepts first-party browser events at `/__nt_event` for page views, landing clicks, and Play Store clicks. Experiment assignment is not persisted until the visitor explicitly accepts analytics cookies: the browser then sends `naptime_analytics_consent=granted`, which permits the Worker to set the 30-day sticky variant cookie. Before consent, landing measurement remains aggregate but no experiment cookie is retained.
 
 Durable tracking uses Workers Analytics Engine:
 
@@ -153,7 +153,7 @@ Force a paid variant with:
 - `https://naptime.info/android?nt_paid_variant=deadline`
 - `https://naptime.info/android?nt_paid_variant=full-nap`
 
-The Worker sets a sticky cookie named `nt_paid_landing_v1`, so normal visitors keep seeing the same paid variant.
+After analytics consent, the Worker sets a sticky cookie named `nt_paid_landing_v1`, so returning visitors keep seeing the same paid variant.
 
 ## Rollback
 

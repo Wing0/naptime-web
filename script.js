@@ -43,13 +43,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
     const consentKey = 'naptime_cookie_consent';
+    const analyticsConsentCookie = 'naptime_analytics_consent';
     const banner = document.getElementById('cookie-banner');
     const accept = document.getElementById('cookie-accept');
     const deny = document.getElementById('cookie-deny');
 
     if (!banner || !accept || !deny) return;
 
-    if (localStorage.getItem(consentKey) !== 'granted') {
+    const storedConsent = localStorage.getItem(consentKey);
+    if (storedConsent === 'granted') {
+        document.cookie = `${analyticsConsentCookie}=granted; Max-Age=31536000; Path=/; SameSite=Lax; Secure`;
+    } else if (storedConsent === null) {
         setTimeout(() => {
             banner.classList.add('visible');
         }, 600);
@@ -57,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     accept.addEventListener('click', () => {
         localStorage.setItem(consentKey, 'granted');
+        document.cookie = `${analyticsConsentCookie}=granted; Max-Age=31536000; Path=/; SameSite=Lax; Secure`;
         if (window.naptimeAnalytics) {
             window.naptimeAnalytics.consentChoice('granted');
         }
@@ -65,6 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     deny.addEventListener('click', () => {
         localStorage.setItem(consentKey, 'denied');
+        document.cookie = `${analyticsConsentCookie}=; Max-Age=0; Path=/; SameSite=Lax; Secure`;
         if (window.naptimeAnalytics) {
             window.naptimeAnalytics.consentChoice('denied');
         }

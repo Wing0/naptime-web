@@ -1,5 +1,20 @@
 const ENABLE_FREE_EXPERIMENT = false;
 const ENABLE_PAID_EXPERIMENT = true;
+const MAX_EVENT_BYTES = 4096;
+const MAX_EVENTS_PER_MINUTE = 30;
+const EVENT_DEDUPLICATION_SECONDS = 20;
+const ALLOWED_EVENTS = new Set([
+  "page_view",
+  "play_store_click",
+  "learn_more_click",
+  "navigation_click",
+  "anchor_navigation",
+  "outbound_click",
+  "early_access_click",
+  "consent_choice",
+]);
+const ALLOWED_CTA_LOCATIONS = new Set(["hero", "nav", "nav-logo", "download-section", "final", "cookie-banner", "auto", "explicit"]);
+const ALLOWED_LINK_TYPES = new Set(["app_store", "internal", "outbound", "anchor"]);
 
 const FREE_EXPERIMENT = {
   name: "free_landing_v1",
@@ -74,33 +89,47 @@ async function handleClientEvent(request, url, env) {
     return new Response("Method not allowed", { status: 405 });
   }
 
+  if (!isSameSiteRequest(request, url)) {
+    return new Response("Forbidden", { status: 403 });
+  }
+
   const contentLength = Number(request.headers.get("content-length") || 0);
-  if (contentLength > 8192) {
+  if (contentLength > MAX_EVENT_BYTES) {
     return new Response("Payload too large", { status: 413 });
   }
 
   let payload = {};
   try {
-    payload = await request.json();
+    payload = await readJsonBody(request, MAX_EVENT_BYTES);
   } catch {
     return new Response("Bad request", { status: 400 });
   }
 
   const event = buildClientEvent(request, url, payload);
+  if (!event) {
+    return new Response("Invalid event", { status: 400 });
+  }
+  if (await isRateLimited(request, MAX_EVENTS_PER_MINUTE)) {
+    return new Response("Too many requests", { status: 429 });
+  }
+  if (await isDuplicateEvent(request, event)) {
+    return emptyEventResponse();
+  }
   console.log(JSON.stringify(event));
   writeAnalyticsEvent(env, event);
 
-  return new Response(null, {
-    status: 204,
-    headers: {
-      "cache-control": "no-store",
-    },
-  });
+  return emptyEventResponse();
 }
 
 async function routeExperiment(request, url, experiment, env, ctx) {
+  if (!isEligibleExperimentRequest(request, url, experiment)) {
+    return fetch(request);
+  }
   const variant = chooseVariant(request, url, experiment);
-  logLandingEvent(request, url, experiment, variant, env, ctx);
+  const forcedVariant = hasForcedVariant(url, experiment);
+  if (!forcedVariant) {
+    logLandingEvent(request, url, experiment, variant, env, ctx);
+  }
   const originUrl = new URL(request.url);
   originUrl.pathname = variant.path;
 
@@ -115,9 +144,13 @@ async function routeExperiment(request, url, experiment, env, ctx) {
   const response = await fetch(originRequest);
   const headers = new Headers(response.headers);
 
-  headers.set("x-naptime-experiment", experiment.name);
-  headers.set("x-naptime-variant", variant.id);
-  headers.append("set-cookie", buildCookie(experiment, variant.id));
+  if (hasAnalyticsConsent(request)) {
+    headers.set("x-naptime-experiment", experiment.name);
+    headers.set("x-naptime-variant", variant.id);
+    headers.append("set-cookie", buildCookie(experiment, variant.id));
+  } else {
+    headers.append("set-cookie", clearCookie(experiment.cookie));
+  }
 
   return new Response(response.body, {
     status: response.status,
@@ -177,29 +210,36 @@ function buildLandingEvent(request, url, experiment, variant) {
 function buildClientEvent(request, url, payload) {
   const userAgent = request.headers.get("user-agent") || "";
   const cf = request.cf || {};
-  const source = cleanValue(payload.utm_source || payload.source || "");
+  const eventName = cleanValue(payload.event || "");
+  if (!ALLOWED_EVENTS.has(eventName)) return null;
+  const source = cleanDimension(payload.utm_source || payload.source || "");
   const hasRdtCid = payload.rdt_cid === "present" || payload.rdtCid === "present" || Boolean(payload.rdt_cid);
+  const ctaLocation = cleanValue(payload.cta_location || "");
+  const linkType = cleanValue(payload.link_type || "");
+  if (ctaLocation && !ALLOWED_CTA_LOCATIONS.has(ctaLocation)) return null;
+  if (linkType && !ALLOWED_LINK_TYPES.has(linkType)) return null;
+  const experiment = getServerExperiment(request);
 
   return {
-    event: cleanValue(payload.event || "client_event"),
+    event: eventName,
     host: url.hostname,
     path: cleanPath(payload.page_path || payload.path || ""),
-    experiment: cleanValue(payload.experiment_name || ""),
-    variant: cleanValue(payload.landing_variant || payload.content_variant || payload.experiment_variant || ""),
+    experiment: experiment.name,
+    variant: experiment.variant,
     source,
-    medium: cleanValue(payload.utm_medium || ""),
-    campaign: cleanValue(payload.utm_campaign || ""),
-    campaignId: cleanValue(payload.utm_id || ""),
-    adContent: cleanValue(payload.utm_content || ""),
+    medium: cleanDimension(payload.utm_medium || ""),
+    campaign: cleanDimension(payload.utm_campaign || ""),
+    campaignId: cleanDimension(payload.utm_id || ""),
+    adContent: cleanDimension(payload.utm_content || ""),
     rdtCid: hasRdtCid ? "present" : "missing",
     traffic: source === "reddit" || hasRdtCid ? "reddit_related" : "non_reddit",
     country: cf.country || "",
     colo: cf.colo || "",
     device: getDeviceBucket(userAgent),
     browser: getBrowserBucket(userAgent),
-    ctaLocation: cleanValue(payload.cta_location || ""),
-    linkType: cleanValue(payload.link_type || ""),
-    destinationHost: cleanValue(payload.destination_host || ""),
+    ctaLocation,
+    linkType,
+    destinationHost: cleanDestinationHost(payload.destination_host || ""),
     destinationPath: cleanPath(payload.destination_path || ""),
   };
 }
@@ -242,10 +282,121 @@ function writeAnalyticsEvent(env, event) {
   }
 }
 
+function emptyEventResponse() {
+  return new Response(null, {
+    status: 204,
+    headers: { "cache-control": "no-store" },
+  });
+}
+
+function isSameSiteRequest(request, url) {
+  const origin = request.headers.get("origin");
+  if (origin) return origin === url.origin;
+  const referer = request.headers.get("referer");
+  if (!referer) return false;
+  try {
+    return new URL(referer).origin === url.origin;
+  } catch {
+    return false;
+  }
+}
+
+async function readJsonBody(request, maxBytes) {
+  const reader = request.body?.getReader();
+  if (!reader) throw new Error("Missing request body");
+  const chunks = [];
+  let total = 0;
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    total += value.byteLength;
+    if (total > maxBytes) throw new RangeError("Payload too large");
+    chunks.push(value);
+  }
+  const bytes = new Uint8Array(total);
+  let offset = 0;
+  for (const chunk of chunks) {
+    bytes.set(chunk, offset);
+    offset += chunk.byteLength;
+  }
+  return JSON.parse(new TextDecoder().decode(bytes));
+}
+
+function isEligibleExperimentRequest(request, url, experiment) {
+  return request.method === "GET" && !hasForcedVariant(url, experiment) && !isBot(request);
+}
+
+function isBot(request) {
+  return /bot|crawler|spider|headless|lighthouse|facebookexternalhit|preview/i.test(request.headers.get("user-agent") || "");
+}
+
+function hasForcedVariant(url, experiment) {
+  const override = url.searchParams.get(experiment.overrideParam) || url.searchParams.get("nt_variant");
+  return experiment.variants.some((variant) => variant.id === override);
+}
+
+function hasAnalyticsConsent(request) {
+  return parseCookies(request.headers.get("cookie") || "").naptime_analytics_consent === "granted";
+}
+
+function getServerExperiment(request) {
+  const cookieVariant = parseCookies(request.headers.get("cookie") || "")[PAID_EXPERIMENT.cookie];
+  const variant = PAID_EXPERIMENT.variants.find((candidate) => candidate.id === cookieVariant);
+  return variant ? { name: PAID_EXPERIMENT.name, variant: variant.id } : { name: PAID_EXPERIMENT.name, variant: "" };
+}
+
+async function isRateLimited(request, limit) {
+  const key = await analyticsCacheKey(request, "rate");
+  if (!key) return false;
+  const cached = await caches.default.match(key);
+  const count = Number(cached?.headers.get("x-naptime-count") || "0");
+  if (count >= limit) return true;
+  await caches.default.put(key, new Response(null, {
+    headers: {
+      "cache-control": "public, max-age=60",
+      "x-naptime-count": String(count + 1),
+    },
+  }));
+  return false;
+}
+
+async function isDuplicateEvent(request, event) {
+  const fingerprint = [event.event, event.path, event.ctaLocation, event.destinationHost, event.destinationPath].join("|");
+  const key = await analyticsCacheKey(request, `dedupe:${fingerprint}`);
+  if (!key) return false;
+  if (await caches.default.match(key)) return true;
+  await caches.default.put(key, new Response(null, {
+    headers: { "cache-control": `public, max-age=${EVENT_DEDUPLICATION_SECONDS}` },
+  }));
+  return false;
+}
+
+async function analyticsCacheKey(request, suffix) {
+  const ip = request.headers.get("CF-Connecting-IP");
+  if (!ip) return null;
+  const input = new TextEncoder().encode(`${ip}|${suffix}`);
+  const digest = await crypto.subtle.digest("SHA-256", input);
+  const hash = Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, "0")).join("");
+  return new Request(`https://naptime.info/__nt_analytics_cache/${hash}`);
+}
+
+function clearCookie(name) {
+  return `${name}=; Max-Age=0; Path=/; SameSite=Lax; Secure`;
+}
+
 function cleanValue(value) {
   return String(value || "")
     .replace(/[\r\n\t]/g, " ")
     .slice(0, 180);
+}
+
+function cleanDimension(value) {
+  return cleanValue(value).toLowerCase().replace(/[^a-z0-9._-]/g, "").slice(0, 80);
+}
+
+function cleanDestinationHost(value) {
+  const host = cleanValue(value).toLowerCase();
+  return ["", "naptime.info", "www.naptime.info", "play.google.com"].includes(host) ? host : "";
 }
 
 function cleanPath(value) {
@@ -342,5 +493,6 @@ function buildCookie(experiment, value) {
     "Path=/",
     "SameSite=Lax",
     "Secure",
+    "HttpOnly",
   ].join("; ");
 }
