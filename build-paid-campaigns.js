@@ -28,6 +28,7 @@ const template = `<!doctype html>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
   <title>__TITLE__</title>
   <meta name="description" content="__DESCRIPTION__">
   <link rel="canonical" href="https://naptime.info/android">
@@ -581,7 +582,7 @@ for (const variant of variants) {
   fs.writeFileSync(path.join(outDir, variant.file), html);
 }
 
-const index = `<!doctype html><html lang="en" data-page-flavor="paid-campaign-index" data-variant="campaign-index"><head><script async src="https://www.googletagmanager.com/gtag/js?id=G-M9EH844KS8"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});gtag('js',new Date());gtag('config','G-M9EH844KS8',{anonymize_ip:true,send_page_view:false});</script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Naptime paid campaign variants</title><link rel="stylesheet" href="/campaigns/paid/styles.css"><script src="/analytics.js?v=20260703-4" defer></script></head><body><main class="final-cta"><h1>Naptime paid campaign pages</h1><div class="feature-pair">${variants.map(v => `<a class="btn secondary" href="/campaigns/paid/${v.file}">${v.variant}</a>`).join('')}</div></main><script src="/script.js?v=20260701-1"></script></body></html>`;
+const index = `<!doctype html><html lang="en" data-page-flavor="paid-campaign-index" data-variant="campaign-index"><head><script async src="https://www.googletagmanager.com/gtag/js?id=G-M9EH844KS8"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});gtag('js',new Date());gtag('config','G-M9EH844KS8',{anonymize_ip:true,send_page_view:false});</script><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow"><title>Naptime paid campaign variants</title><link rel="stylesheet" href="/campaigns/paid/styles.css"><script src="/analytics.js?v=20260703-4" defer></script></head><body><main class="final-cta"><h1>Naptime paid campaign pages</h1><div class="feature-pair">${variants.map(v => `<a class="btn secondary" href="/campaigns/paid/${v.file}">${v.variant}</a>`).join('')}</div></main><script src="/script.js?v=20260701-1"></script></body></html>`;
 fs.writeFileSync(path.join(outDir, 'index.html'), index);
 console.log('Built paid campaign pages');
 
