@@ -1137,8 +1137,12 @@ body {
 
 .app-screen,
 .phone-frame-small {
-    border: 1px solid rgba(235, 224, 255, 0.17);
-    box-shadow: 0 5px 0 rgba(53, 26, 95, 0.9), 0 28px 70px rgba(0, 0, 0, 0.48);
+    border: 0;
+    box-shadow: none;
+}
+
+.phone-frame-small::after {
+    content: none;
 }
 
 .card,
@@ -1202,16 +1206,6 @@ body {
     isolation: isolate;
     overflow: hidden;
     padding: 5rem 0;
-}
-
-.brand-divider::before {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    inset: 15% 12% 4%;
-    border-radius: 48% 52% 30% 70% / 58% 42% 58% 42%;
-    background: linear-gradient(140deg, rgba(139, 45, 242, 0.2), rgba(242, 175, 155, 0.08));
-    filter: blur(2px);
 }
 
 .brand-icon {
