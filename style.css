@@ -212,18 +212,8 @@ h4,
     max-width: 100%;
     height: auto;
     border-radius: 30px;
-    box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
     position: relative;
     z-index: 10;
-}
-
-.glow-effect {
-    position: absolute;
-    inset: 20px;
-    background: var(--primary);
-    filter: blur(80px);
-    opacity: 0.4;
-    z-index: 1;
 }
 
 /* Cards */
@@ -476,20 +466,6 @@ h4,
     height: auto;
     border-radius: 30px;
     overflow: visible;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
-    position: relative;
-}
-
-.phone-frame-small::after {
-    content: '';
-    position: absolute;
-    bottom: -40px;
-    left: 5%;
-    right: 5%;
-    height: 30px;
-    background: radial-gradient(ellipse at center, rgba(139, 45, 242, 0.4) 0%, transparent 70%);
-    filter: blur(15px);
-    z-index: -1;
 }
 
 .phone-frame-small img {
@@ -1135,27 +1111,45 @@ body {
     box-shadow: 0 3px 0 rgba(49, 24, 92, 0.32);
 }
 
-.app-screen,
-.phone-frame-small {
-    border: 0;
-    box-shadow: none;
-}
-
-.phone-frame-small::after {
-    content: none;
-}
-
 .card,
 .tag-card,
 .science-card,
 .comparison-item,
 .sleep-system-panel {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
     background:
         linear-gradient(145deg, rgba(255, 255, 255, 0.055), transparent 36%),
         linear-gradient(160deg, #20233a 0%, #15192b 100%);
     border: 1px solid var(--paper-edge);
     border-radius: 24px 10px 24px 10px;
     box-shadow: 0 6px 0 rgba(5, 7, 18, 0.42), 0 20px 38px rgba(0, 0, 0, 0.17);
+}
+
+.card::before,
+.tag-card::before,
+.science-card::before,
+.comparison-item::before,
+.sleep-system-panel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.13;
+    mix-blend-mode: soft-light;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='paper'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paper)' opacity='.65'/%3E%3C/svg%3E");
+    background-size: 160px 160px;
+}
+
+.card > *,
+.tag-card > *,
+.science-card > *,
+.comparison-item > *,
+.sleep-system-panel > * {
+    position: relative;
+    z-index: 1;
 }
 
 .card:hover,
