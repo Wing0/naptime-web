@@ -322,8 +322,11 @@ async function readJsonBody(request, maxBytes) {
   return JSON.parse(new TextDecoder().decode(bytes));
 }
 
-function isEligibleExperimentRequest(request, url, experiment) {
-  return request.method === "GET" && !hasForcedVariant(url, experiment) && !isBot(request);
+function isEligibleExperimentRequest(request) {
+  // Forced variants are still valid landing requests. They are excluded from
+  // arrival analytics in routeExperiment(), but must reach their experiment
+  // page instead of falling through to GitHub Pages' nonexistent /android file.
+  return request.method === "GET" && !isBot(request);
 }
 
 function isBot(request) {
