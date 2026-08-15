@@ -27,7 +27,7 @@ This regenerates all three outputs. `build.js` defines per-variant values (store
 
 | | `index.html` | `paid.html` |
 |---|---|---|
-| Store URL | Free closed-test page | `com.naptime.app` |
+| Store URL | `com.naptime.app.free` | `com.naptime.app` |
 | Privacy First section | ❌ removed | ✅ shown |
 | "Where does my data go?" FAQ | Free donation disclosure | Paid on-device disclosure |
 | FAQPage JSON-LD schema | ❌ removed | ✅ included |

@@ -73,7 +73,7 @@ const ENABLE_FREE_EXPERIMENT = false;
 const ENABLE_PAID_EXPERIMENT = true;
 ```
 
-Paid campaign pages are served through `https://naptime.info/android`. Free routing is intentionally pass-through because Naptime Free is not released yet.
+Paid campaign pages are served through `https://naptime.info/android`. Naptime Free is launched worldwide from the stable homepage, so the legacy Free experiment routing remains disabled.
 
 ## Landing Arrival Tracking
 
