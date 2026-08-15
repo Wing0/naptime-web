@@ -44,10 +44,10 @@ Current route setup:
 | `www.naptime.info/android*` | Canonicalizes to apex, then serves paid experiment |
 | `naptime.info/__nt_event*` | First-party browser event collection for page views and clicks |
 | `www.naptime.info/__nt_event*` | Canonicalizes to apex for browser event collection |
-| `naptime.info/free.html*` | Free route kept as pass-through safety |
+| `naptime.info/free.html*` | Legacy Free URL kept as pass-through to the homepage redirect |
 | `www.naptime.info/free.html*` | Canonicalizes to apex; Free experiment is currently disabled |
 
-Recommended paid campaign URL: `https://naptime.info/android`.
+Recommended paid campaign URL: `https://naptime.info/android`. The public Free page is `https://naptime.info/`, and the public paid page is `https://naptime.info/paid.html`.
 
 ## Local Wrangler Commands
 

@@ -9,27 +9,27 @@ Static marketing/policy site for the Naptime app, served via GitHub Pages from t
 
 ## Template system
 
-`index.html` (Naptime paid) and `free.html` (Naptime Free) are **generated files** — never edit them directly. Edit `_template.html` instead, then run:
+`index.html` (Naptime Free), `paid.html` (Naptime paid), and the legacy `free.html` redirect are **generated files** — never edit them directly. Edit `_template.html` or `build.js` instead, then run:
 
 ```
 node build.js
 ```
 
-This regenerates both pages. `build.js` defines per-variant values (store URL, page title, price, etc.).
+This regenerates all three outputs. `build.js` defines per-variant values (store URL, page title, price, etc.).
 
 ### Template markers
 
 - `{{VARIABLE}}` — replaced with a per-variant value defined in `build.js`
-- `<!-- PAID_ONLY -->…<!-- /PAID_ONLY -->` — included in `index.html`, stripped from `free.html`
-- `<!-- FREE_ONLY -->…<!-- /FREE_ONLY -->` — included in `free.html`, stripped from `index.html`
+- `<!-- PAID_ONLY -->…<!-- /PAID_ONLY -->` — included in `paid.html`, stripped from `index.html`
+- `<!-- FREE_ONLY -->…<!-- /FREE_ONLY -->` — included in `index.html`, stripped from `paid.html`
 
 ### What differs between paid and free
 
-| | `index.html` | `free.html` |
+| | `index.html` | `paid.html` |
 |---|---|---|
-| Store URL | `com.naptime.app` | `com.naptime.app.free` |
-| Privacy First section | ✅ shown | ❌ removed |
-| "Where does my data go?" FAQ | ✅ shown | ❌ removed |
-| FAQPage JSON-LD schema | ✅ included | ❌ removed |
-| Footer privacy link | Both policies | Free policy only |
-| Footer cross-link | → Naptime Free | → Naptime (paid) |
+| Store URL | Free closed-test page | `com.naptime.app` |
+| Privacy First section | ❌ removed | ✅ shown |
+| "Where does my data go?" FAQ | Free donation disclosure | Paid on-device disclosure |
+| FAQPage JSON-LD schema | ❌ removed | ✅ included |
+| Footer privacy link | Free policy only | Both policies |
+| Footer cross-link | → Naptime (paid) | → Naptime Free |

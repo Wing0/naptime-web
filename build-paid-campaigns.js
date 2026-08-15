@@ -3,6 +3,7 @@ const path = require('path');
 
 const outDir = path.join(__dirname, 'campaigns', 'paid');
 const playUrl = 'https://play.google.com/store/apps/details?id=com.naptime.app';
+const paidSiteUrl = '/paid.html';
 
 const template = `<!doctype html>
 <html lang="en" data-page-flavor="paid-campaign" data-variant="__VARIANT__">
@@ -45,9 +46,9 @@ const template = `<!doctype html>
 </head>
 <body class="__BODY_CLASS__">
   <header class="site-nav">
-    <a class="brand" href="/" data-analytics-event="learn_more_click" data-cta-location="nav">Naptime<span>.</span></a>
+    <a class="brand" href="${paidSiteUrl}" data-analytics-event="learn_more_click" data-cta-location="nav">Naptime<span>.</span></a>
     <nav class="nav-actions">
-      <a class="nav-cta secondary" href="/" data-analytics-event="learn_more_click" data-cta-location="nav">Learn more</a>
+      <a class="nav-cta secondary" href="${paidSiteUrl}" data-analytics-event="learn_more_click" data-cta-location="nav">Learn more</a>
       <a class="nav-cta primary nav-download" href="${playUrl}" data-analytics-event="play_store_click" data-cta-location="nav" target="_blank" rel="noopener">Download for Android</a>
     </nav>
   </header>
@@ -59,7 +60,7 @@ const template = `<!doctype html>
         <p class="subhead">__SUBHEAD__</p>
         <div class="cta-row">
           <a class="btn primary" href="${playUrl}" data-analytics-event="play_store_click" data-cta-location="hero" target="_blank" rel="noopener">Download for Android</a>
-          <a class="btn secondary" href="/" data-analytics-event="learn_more_click" data-cta-location="hero">Learn more</a>
+          <a class="btn secondary" href="${paidSiteUrl}" data-analytics-event="learn_more_click" data-cta-location="hero">Learn more</a>
         </div>
         <p class="privacy-line">One-time paid app. No account. No session uploads. Session data stays on your device.</p>
       </div>
@@ -112,7 +113,7 @@ const template = `<!doctype html>
       <h2>__FINAL_H2__</h2>
       <div class="cta-row center">
         <a class="btn primary" href="${playUrl}" data-analytics-event="play_store_click" data-cta-location="final" target="_blank" rel="noopener">Download for Android</a>
-        <a class="btn secondary" href="/" data-analytics-event="learn_more_click" data-cta-location="final">Learn more</a>
+        <a class="btn secondary" href="${paidSiteUrl}" data-analytics-event="learn_more_click" data-cta-location="final">Learn more</a>
       </div>
     </section>
   </main>

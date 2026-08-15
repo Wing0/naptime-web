@@ -168,7 +168,7 @@ Paid CTA should point to the paid Play Store listing. If candidate pages use sta
 
 This repo is a static GitHub Pages site.
 
-- `index.html` and `free.html` are generated files.
+- `index.html` (Free), `paid.html` (paid), and the legacy `free.html` redirect are generated files.
 - Edit `_template.html` for shared paid/free marketing page changes.
 - Run `node build.js` after template changes.
 - Preserve paid/free differences marked by `PAID_ONLY` and `FREE_ONLY`.

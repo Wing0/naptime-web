@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-page-flavor="{{PAGE_FLAVOR}}" data-variant="{{CONTENT_VARIANT}}">
+<html lang="en" data-page-flavor="paid-main" data-variant="main-paid">
 
 <head>
     <!-- Google tag (gtag.js) -->
@@ -23,24 +23,24 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{PAGE_TITLE}}</title>
+    <title>Naptime: Smart Nap Timer & Sleep Tracker for Android</title>
     <meta name="description"
         content="Naptime is the first alarm clock that starts your timer after you fall asleep. Smart nap timer, night sleep tracking, and tag analytics. Android only; core features run on-device.">
     <meta name="keywords"
         content="nap app, power nap, sleep tracker, smart alarm, nap timer, sleep efficiency, android alarm, sleep inertia, polyphasic sleep, best nap length, wake up refreshed">
-    <link rel="canonical" href="{{CANONICAL_URL}}">
+    <link rel="canonical" href="https://naptime.info/paid.html">
 
     <!-- Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
-      "name": "{{PAGE_NAME}}",
+      "name": "Naptime",
       "operatingSystem": "Android",
       "applicationCategory": "HealthApplication",
       "offers": {
         "@type": "Offer",
-        "price": "{{PRICE}}",
+        "price": "1.99",
         "priceCurrency": "USD"
       },
       "description": "The intelligent alarm clock for power nappers. Naptime uses motion detection to wake you up at the optimal time.",
@@ -55,16 +55,16 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="{{OG_URL}}">
-    <meta property="og:title" content="{{PAGE_NAME}} - Intelligent Power Napping">
+    <meta property="og:url" content="https://naptime.info/paid.html">
+    <meta property="og:title" content="Naptime - Intelligent Power Napping">
     <meta property="og:description"
         content="A motion-based nap timer that estimates sleep onset before starting your planned rest window.">
     <meta property="og:image" content="https://naptime.info/hero_bed.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="{{OG_URL}}">
-    <meta property="twitter:title" content="{{PAGE_NAME}} - Intelligent Power Napping">
+    <meta property="twitter:url" content="https://naptime.info/paid.html">
+    <meta property="twitter:title" content="Naptime - Intelligent Power Napping">
     <meta property="twitter:description"
         content="A motion-based nap timer that estimates sleep onset before starting your planned rest window.">
     <meta property="twitter:image" content="https://naptime.info/hero_bed.png">
@@ -119,7 +119,7 @@
     </script>
 
     <!-- FAQPage Schema -->
-    <!-- PAID_ONLY -->
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -192,7 +192,7 @@
       ]
     }
     </script>
-    <!-- /PAID_ONLY -->
+
 
     <script src="analytics.js?v=20260703-4" defer></script>
 </head>
@@ -200,12 +200,12 @@
 <body>
     <nav class="navbar">
         <div class="container nav-container">
-            <a href="{{HOME_URL}}" class="logo" data-cta-location="nav-logo">Naptime<span class="dot">.</span></a>
+            <a href="/paid.html" class="logo" data-cta-location="nav-logo">Naptime<span class="dot">.</span></a>
             <ul class="nav-links">
                 <li><a href="#features" data-cta-location="nav">Features</a></li>
                 <li><a href="#how-it-works" data-cta-location="nav">How It Works</a></li>
             </ul>
-            <a href="{{STORE_URL}}" class="btn btn-primary nav-cta" target="_blank" rel="noopener" data-analytics-event="{{CTA_ANALYTICS_EVENT}}" data-cta-location="nav">Get it on Android</a>
+            <a href="https://play.google.com/store/apps/details?id=com.naptime.app" class="btn btn-primary nav-cta" target="_blank" rel="noopener" data-analytics-event="play_store_click" data-cta-location="nav">Get it on Android</a>
         </div>
     </nav>
 
@@ -216,10 +216,10 @@
                 <p class="hero-subtitle">Stop guessing. Start resting. The first alarm clock that waits until you're
                     asleep to start the timer.</p>
                 <div class="cta-group">
-                    <a href="{{STORE_URL}}" target="_blank" rel="noopener" data-analytics-event="{{CTA_ANALYTICS_EVENT}}" data-cta-location="hero">
+                    <a href="https://play.google.com/store/apps/details?id=com.naptime.app" target="_blank" rel="noopener" data-analytics-event="play_store_click" data-cta-location="hero">
                         <img src="play_badge.png" alt="Get it on Google Play" class="store-badge">
                     </a>
-                    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted); opacity: 0.8;">{{HERO_AVAILABILITY}}</p>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-muted); opacity: 0.8;">Available in Finland, Ireland, Slovenia &amp; Switzerland</p>
                 </div>
             </div>
             <div class="hero-image">
@@ -235,32 +235,7 @@
         </div>
     </header>
 
-    <!-- FREE_ONLY -->
-    <section class="sleep-system">
-        <div class="container sleep-system-container">
-            <div class="sleep-system-copy">
-                <span class="badge">Naps + Nights</span>
-                <h2 class="section-title">Track the Whole Rest Cycle</h2>
-                <p>Use Naptime for short daytime sessions and full overnight sleep. See how long it takes to fall
-                    asleep, how efficient each session was, and whether your naps are helping or hurting your nights.</p>
-            </div>
-            <div class="sleep-system-panel">
-                <div class="sleep-metric">
-                    <span>Nap latency</span>
-                    <strong>8 min</strong>
-                </div>
-                <div class="sleep-metric">
-                    <span>Nap efficiency</span>
-                    <strong>86%</strong>
-                </div>
-                <div class="sleep-metric">
-                    <span>Best nap duration</span>
-                    <strong>25 min</strong>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- /FREE_ONLY -->
+
 
     <section class="tag-analytics">
         <div class="container">
@@ -527,12 +502,10 @@
                 </div>
                 <div class="faq-item">
                     <h3 class="faq-q">Does Naptime work without an internet connection?</h3>
-                    <!-- PAID_ONLY -->
+
                     <p class="faq-a">Yes. The app works fully offline. Sleep detection, alarms, analytics, and history all run locally on your device. An internet connection is never required.</p>
-                    <!-- /PAID_ONLY -->
-                    <!-- FREE_ONLY -->
-                    <p class="faq-a">Yes. Sleep detection, alarms, analytics, and history run locally, so you can use the core app offline. After you consent, Naptime Free queues pseudonymous session and diagnostic contributions while offline and sends them when a connection becomes available.</p>
-                    <!-- /FREE_ONLY -->
+
+
                 </div>
                 <div class="faq-item">
                     <h3 class="faq-q">What's the difference between Nap mode and Sleep mode?</h3>
@@ -542,18 +515,13 @@
                     <h3 class="faq-q">Will the alarm fire even if I never fall asleep?</h3>
                     <p class="faq-a">Set a latest wake-up time for a nap. Naptime schedules the alarm for that cutoff if sleep is not detected before then.</p>
                 </div>
-                <!-- PAID_ONLY -->
+
                 <div class="faq-item">
                     <h3 class="faq-q">Where does my sleep data go?</h3>
                     <p class="faq-a">It stays on your device. Naptime never transmits sleep data to any server. No account is required, and no data is shared with third parties. To delete everything, use the <strong>Delete My Data</strong> button in Settings or uninstall the app.</p>
                 </div>
-                <!-- /PAID_ONLY -->
-                <!-- FREE_ONLY -->
-                <div class="faq-item">
-                    <h3 class="faq-q">What data does Naptime Free upload?</h3>
-                    <p class="faq-a">After required consent, the app may upload completed-session records and crash or process-exit diagnostics. These can include exact times, derived movement statistics, settings, ratings, corrections, selected or custom tags, and device/OS details. Records are grouped with a random installation ID. We do not ask for a name, email, account, advertising ID, location, contacts, or microphone audio, but the linked records are <strong>pseudonymous, not anonymous</strong>. See the <a href="privacy-free.html">Free Privacy Policy</a> for full details.</p>
-                </div>
-                <!-- /FREE_ONLY -->
+
+
                 <div class="faq-item">
                     <h3 class="faq-q">How should I place my phone?</h3>
                     <p class="faq-a">Place your phone face-up on the mattress next to you — close enough that your body movements transfer through the mattress to the phone. It does not need to touch you directly. Avoid placing it on a hard surface like a nightstand.</p>
@@ -570,7 +538,7 @@
         </div>
     </section>
 
-    <!-- PAID_ONLY -->
+
     <section class="privacy-first">
         <div class="container">
             <div class="privacy-content text-center">
@@ -597,46 +565,19 @@
             </div>
         </div>
     </section>
-    <!-- /PAID_ONLY -->
 
-    <!-- FREE_ONLY -->
-    <section class="privacy-first">
-        <div class="container">
-            <div class="privacy-content text-center">
-                <span class="badge">Donation-Supported Free App</span>
-                <h2 class="section-title">A clear data tradeoff</h2>
-                <p class="privacy-intro">Naptime Free requires consent to contribute pseudonymous session and diagnostic data.</p>
-                <div class="privacy-grid">
-                    <div class="privacy-item">
-                        <div class="privacy-icon">📊</div>
-                        <h3>What is contributed</h3>
-                        <p>Exact session times, derived movement data, settings, ratings, corrections, tags, device/OS details, and diagnostics may be uploaded.</p>
-                    </div>
-                    <div class="privacy-item">
-                        <div class="privacy-icon">🔗</div>
-                        <h3>Pseudonymous, not anonymous</h3>
-                        <p>A random installation ID groups records over time. No account, name, email, advertising ID, location, contacts, or microphone audio is requested.</p>
-                    </div>
-                    <div class="privacy-item">
-                        <div class="privacy-icon">⚙️</div>
-                        <h3>Your options</h3>
-                        <p>Review the terms before consenting, request deletion in Settings, or choose the paid app if you do not want session uploads.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- /FREE_ONLY -->
+
+
 
     <section class="download-section">
         <div class="container download-content text-center">
-            <span class="badge">{{AVAILABILITY_BADGE}}</span>
+            <span class="badge">Now Available</span>
             <h2>Get the Sleep You Actually Asked For</h2>
-            <p>{{DOWNLOAD_TAGLINE}}</p>
-            <a href="{{STORE_URL}}" target="_blank" rel="noopener" data-analytics-event="{{CTA_ANALYTICS_EVENT}}" data-cta-location="download-section">
+            <p>Smart naps, night sleep tracking, tag analytics, and regular alarms. Private by design and built for Android.</p>
+            <a href="https://play.google.com/store/apps/details?id=com.naptime.app" target="_blank" rel="noopener" data-analytics-event="play_store_click" data-cta-location="download-section">
                 <img src="play_badge.png" alt="Get it on Google Play" class="store-badge">
             </a>
-            <p style="margin-top: 1.25rem; font-size: 0.875rem; color: var(--text-muted);">{{AVAILABILITY_NOTE}}</p>
+            <p style="margin-top: 1.25rem; font-size: 0.875rem; color: var(--text-muted);">Currently available in Finland, Ireland, Slovenia &amp; Switzerland &mdash; expanding soon.</p>
         </div>
     </section>
 
@@ -648,20 +589,17 @@
                     <p>The intelligent alarm for power nappers.</p>
                 </div>
                 <div class="footer-links" style="margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 1.25rem;">
-                    <!-- PAID_ONLY -->
+
                     <a href="privacy.html"
                         style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">Privacy Policy</a>
                     <a href="privacy-free.html"
                         style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">Privacy Policy (Free)</a>
-                    <!-- /PAID_ONLY -->
-                    <!-- FREE_ONLY -->
-                    <a href="privacy-free.html"
-                        style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">Privacy Policy</a>
-                    <!-- /FREE_ONLY -->
+
+
                     <a href="delete-data.html"
                         style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">Delete Your Data</a>
-                    <a href="{{CROSSLINK_URL}}"
-                        style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">{{CROSSLINK_LABEL}}</a>
+                    <a href="/"
+                        style="color: var(--text-muted); text-decoration: none; font-size: 0.9rem;">Naptime Free</a>
                 </div>
             </div>
             <div class="copyright">
@@ -685,5 +623,3 @@
 </body>
 
 </html>
-
-
