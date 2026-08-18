@@ -10,7 +10,7 @@ const variants = [
     dropBlock: 'PAID_ONLY',
     vars: {
       HOME_URL:         '/',
-      PAGE_TITLE:        'Naptime Free: Smart Nap Timer & Sleep Tracker for Android',
+      PAGE_TITLE:        'Naptime: Smart Nap Timer & Sleep Tracker for Android',
       PAGE_NAME:         'Naptime Free',
       PAGE_FLAVOR:       'free-main',
       CONTENT_VARIANT:   'main-free',
