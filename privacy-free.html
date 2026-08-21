@@ -116,7 +116,7 @@
             <a href="index.html" class="back-link">← Back to Home</a>
 
             <h1>Privacy Policy — Naptime Free</h1>
-            <p><strong>Effective Date:</strong> July 11, 2026</p>
+            <p><strong>Effective Date:</strong> August 21, 2026</p>
 
             <div class="callout">
                 <p>This policy applies <strong>only to the free, donation-supported edition of Naptime</strong>
@@ -188,6 +188,21 @@
                 store only the returned verdict categories and verification timestamps, not a Google account identifier
                 or the encrypted integrity token.</p>
 
+            <h3>Install Campaign Measurement</h3>
+            <p>After you accept the Free-edition disclosure, the app asks Google Play for the install
+                referrer. If a campaign led to the install, we retain only recognized, length-limited
+                fields such as the Google click ID or GBRAID, source, medium, campaign name/ID, content,
+                term, and Play's click/install timestamps. We do not retain or upload the raw referrer
+                string. These fields are linked to the random installation identifier and let us compare
+                attributed installs with installations that complete a valid nap or sleep session.</p>
+            <p>For Google Ads-attributed installs, our server may send Google one coarse custom event named
+                <strong>“first_valid_session_completed”</strong>. That request can include the Play click ID,
+                app and Android version, country, event/install time, and the source network address Google
+                requires for conversion attribution. It contains no advertising ID, account identifier,
+                sleep time, movement data, rating, tag, or other sleep-session detail. We set advertising
+                personalization off and use Google's click-ID-only measurement mode. Naptime does not store
+                the raw network address in campaign or conversion records.</p>
+
             <h3>Operational Network Security</h3>
             <p>Like any internet service, our server necessarily processes the source network address to deliver a
                 response and prevent abuse. We do not include the raw address in contributed session or crash records and
@@ -202,9 +217,10 @@
                     does create the random installation identifier described above.</li>
                 <li>No location data, contacts, microphone audio, or content from other apps.</li>
                 <li>No raw accelerometer recordings.</li>
-                <li>No in-app analytics, advertising, or third-party crash-reporting SDKs. Session and diagnostic
-                    contributions go only to our servers. The Google Play Integrity security library communicates with
-                    Google only for the installation-verification check described above.</li>
+                <li>No general-purpose in-app analytics, in-app advertising, or third-party crash-reporting SDKs.
+                    Session and diagnostic contributions go only to our servers. The Google Play Integrity and Install
+                    Referrer libraries perform the limited security and campaign functions described above. Only the
+                    coarse attributed-conversion event described above may be forwarded from our server to Google Ads.</li>
             </ul>
 
             <h2>4. Pseudonymisation and Identification Risk</h2>
@@ -249,9 +265,9 @@
                 and payload in transit.</p>
             <p>Our servers are hosted in European data centres operated by <strong>Hetzner Online GmbH</strong>, which
                 acts as our hosting provider. Hetzner stores the data on our behalf but has no independent right to use
-                it. Google processes the limited integrity-check information described in Section 3 as our app-security
-                provider. Research partners or other third parties may receive pseudonymous records or aggregate results
-                as described in Section 5.</p>
+                it. Google processes the limited integrity-check and attributed-conversion information described in
+                Section 3 as our app-security and campaign-measurement provider. Research partners or other third
+                parties may receive pseudonymous records or aggregate results as described in Section 5.</p>
 
             <h2>7. Your Right to Retract Your Data</h2>
             <p>You can request deletion of the pseudonymous records associated with your installation identifier. Local
@@ -265,7 +281,8 @@
                     installed and connect it to the internet until confirmation; uninstalling first removes the retry
                     credential and may prevent the app from completing server deletion.</li>
                 <li><strong>From our servers:</strong> The same <strong>"Delete my data"</strong> action sends a deletion
-                    request for sessions, crash logs, and metadata associated with your installation identifier. The
+                    request for sessions, crash logs, campaign attribution, conversion status, and metadata associated
+                    with your installation identifier. The
                     server deletes all linked session, crash, app, and device metadata once it successfully receives and
                     accepts that request. A working connection is required; contact us if you need help confirming
                     server-side deletion. Minimal one-way credential/installation hashes and deletion-request status
@@ -279,7 +296,8 @@
             <p>If you would like assistance retracting your data, contact us using the details below.</p>
 
             <h2>8. Data Sharing</h2>
-            <p>We do not collect account-based identity fields. We may share, license, or sell
+            <p>We do not collect account-based identity fields. Google receives the limited attributed-conversion
+                information described in Section 3 for campaign measurement. We may also share, license, or sell
                 <strong>pseudonymous records or irreversibly anonymized aggregate results</strong> as described in
                 Section 5. Sharing pseudonymous records can increase indirect identification risk.</p>
 
