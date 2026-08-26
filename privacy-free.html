@@ -116,7 +116,7 @@
             <a href="index.html" class="back-link">← Back to Home</a>
 
             <h1>Privacy Policy — Naptime Free</h1>
-            <p><strong>Effective Date:</strong> August 21, 2026</p>
+            <p><strong>Effective Date:</strong> August 26, 2026</p>
 
             <div class="callout">
                 <p>This policy applies <strong>only to the free, donation-supported edition of Naptime</strong>
@@ -188,6 +188,14 @@
                 store only the returned verdict categories and verification timestamps, not a Google account identifier
                 or the encrypted integrity token.</p>
 
+            <h3>Consent & Coarse Country Signals</h3>
+            <p>When you agree to the Free-edition disclosure, the app sends a consent event to our server. We record
+                the server receipt time, app version, whether it is a debug build, and a two-letter country code
+                derived from the request's source network address. We also derive the same country-level code when a
+                session is uploaded. This lets us measure consent, meaningful app activity, and aggregate country
+                distribution without requesting device location permission. We do not retain the raw network address
+                with the consent or session record.</p>
+
             <h3>Install Campaign Measurement</h3>
             <p>After you accept the Free-edition disclosure, the app asks Google Play for the install
                 referrer. If a campaign led to the install, we retain only recognized, length-limited
@@ -215,7 +223,9 @@
                 <li>No account, name, email address, or phone number.</li>
                 <li>No advertising ID, Google account identifier, hardware serial, or account-based identifier. The app
                     does create the random installation identifier described above.</li>
-                <li>No location data, contacts, microphone audio, or content from other apps.</li>
+                <li>No precise location data or location permission. We retain only the country-level code derived
+                    from a consent or session request as described above.</li>
+                <li>No contacts, microphone audio, or content from other apps.</li>
                 <li>No raw accelerometer recordings.</li>
                 <li>No general-purpose in-app analytics, in-app advertising, or third-party crash-reporting SDKs.
                     Session and diagnostic contributions go only to our servers. The Google Play Integrity and Install
@@ -227,7 +237,7 @@
             <p>Naptime Free reduces direct identification but does not make contributed records anonymous:</p>
             <ul>
                 <li><strong>No account or direct identity fields are required.</strong> You never create an account, and
-                    we do not ask for your name, email address, phone number, advertising ID, or location.</li>
+                    we do not ask for your name, email address, phone number, advertising ID, or precise location.</li>
                 <li><strong>Data is keyed only by a random installation identifier.</strong> The first time data is
                     uploaded, the app generates a random identifier (a UUID) for that installation. This number is not
                     derived from your hardware, your Google account, or any advertising ID, and it is generated freshly
