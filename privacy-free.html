@@ -170,6 +170,17 @@
                     plus whether the build was a debug build.</li>
             </ul>
 
+            <p>When you consent, the app also shares a device and software snapshot: manufacturer, brand,
+                model, device/product and hardware names, Android version and SDK level, firmware build ID,
+                display version and incremental version, security-patch date, language/region setting,
+                total memory and Android's low-memory-device classification. These technical details help
+                diagnose recording reliability before a first session is uploaded. They do not include a
+                serial number, IMEI, Android ID or advertising ID. The language/region setting is not your
+                location; country is derived separately from the network request as described below.</p>
+            <p>An already-consented installation may supply this snapshot after an app update. We record
+                when the server first receives it separately from the original consent time. The first
+                snapshot is retained for this installation; it is not a continuous firmware inventory.</p>
+
             <h3>Stability & Crash Data</h3>
             <p>To keep the app reliable, we upload technical records of crashes and abnormal process exits. These may
                 include the exact exit time, reason and description, stack trace, memory/process status, recent in-app
