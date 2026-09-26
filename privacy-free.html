@@ -150,6 +150,11 @@
             <h2>3. What We Collect in the App</h2>
 
             <h3>Sleep & Nap Session Data</h3>
+            <p>When a consented nap or overnight sleep session enters settling, the app records its type and start
+                time and sends them to our server, even if the session never reaches a saved result. The event is
+                linked to the same random app-installation ID as completed sessions. If offline, it is queued for
+                a later retry. Comparing starts with completed sessions helps identify recording failures. The
+                event contains no movement samples, rating, tags, or alarm label.</p>
             <p>When you complete a nap or an overnight sleep session and have consented, the app uploads a summary of
                 that session. This includes:</p>
             <ul>
