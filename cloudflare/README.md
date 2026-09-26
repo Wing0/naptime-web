@@ -2,9 +2,9 @@
 
 `naptime.info` uses Cloudflare DNS/proxy and a Worker in front of the GitHub Pages origin. Treat the repository configuration and verified live behavior as authoritative; this file records the operating workflow, not the completed onboarding history.
 
-## Routing and pending deployment
+## Live routing
 
-The source revision below is committed and validated locally but has not been deployed. The live Worker may still serve Paid experiments on `/android`; verify live responses. Production deployment requires explicit approval.
+The retired Paid-route revision is deployed. On 26 September 2026, `/paid.html`, `/android`, and a representative `/campaigns/paid/*` URL returned a 301 to `/`; `www` canonicalized to the apex first. Verify live responses after future changes. Production deployments require explicit approval.
 
 | Route | Purpose |
 | --- | --- |
@@ -12,10 +12,10 @@ The source revision below is committed and validated locally but has not been de
 | `www.naptime.info/android*` | Canonicalizes to apex, then redirects to `/`. |
 | `naptime.info/__nt_event*` | First-party page/click events. |
 | `www.naptime.info/__nt_event*` | Canonicalizes event traffic to apex. |
-| `naptime.info/free.html*` | Legacy Free URL; pass-through to the homepage redirect. |
+| `naptime.info/free.html*` | Legacy Free URL; pass-through to the origin's HTML meta-refresh to `/`. |
 | `www.naptime.info/free.html*` | Canonicalizes to apex; Free experiment is disabled. |
 
-The supported product page is `https://naptime.info/`. The committed Worker revision redirects retired `/paid.html`, `/android`, `/campaigns/paid/*`, and `/experiments/paid/*` paths there after deployment. The Paid privacy policy remains available for existing users.
+The supported product page is `https://naptime.info/`. The live Worker redirects retired `/paid.html`, `/android`, `/campaigns/paid/*`, and `/experiments/paid/*` paths there. The Paid privacy policy remains available at `/privacy.html` for existing users.
 
 Current source flags in `cloudflare/worker/src/index.js`:
 
