@@ -2,7 +2,9 @@
 
 `naptime.info` uses Cloudflare DNS/proxy and a Worker in front of the GitHub Pages origin. Treat the repository configuration and verified live behavior as authoritative; this file records the operating workflow, not the completed onboarding history.
 
-## Current routing
+## Routing and pending deployment
+
+The source revision below is committed and validated locally but has not been deployed. The live Worker may still serve Paid experiments on `/android`; verify live responses. Production deployment requires explicit approval.
 
 | Route | Purpose |
 | --- | --- |
@@ -13,7 +15,7 @@
 | `naptime.info/free.html*` | Legacy Free URL; pass-through to the homepage redirect. |
 | `www.naptime.info/free.html*` | Canonicalizes to apex; Free experiment is disabled. |
 
-The supported product page is `https://naptime.info/`. Retired `/paid.html`, `/android`, `/campaigns/paid/*`, and `/experiments/paid/*` paths redirect there. The Paid privacy policy remains available for existing users.
+The supported product page is `https://naptime.info/`. The committed Worker revision redirects retired `/paid.html`, `/android`, `/campaigns/paid/*`, and `/experiments/paid/*` paths there after deployment. The Paid privacy policy remains available for existing users.
 
 Current source flags in `cloudflare/worker/src/index.js`:
 
