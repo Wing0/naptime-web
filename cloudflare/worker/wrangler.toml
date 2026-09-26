@@ -26,6 +26,30 @@ pattern = "www.naptime.info/android*"
 zone_name = "naptime.info"
 
 [[routes]]
+pattern = "naptime.info/paid.html*"
+zone_name = "naptime.info"
+
+[[routes]]
+pattern = "www.naptime.info/paid.html*"
+zone_name = "naptime.info"
+
+[[routes]]
+pattern = "naptime.info/campaigns/paid/*"
+zone_name = "naptime.info"
+
+[[routes]]
+pattern = "www.naptime.info/campaigns/paid/*"
+zone_name = "naptime.info"
+
+[[routes]]
+pattern = "naptime.info/experiments/paid/*"
+zone_name = "naptime.info"
+
+[[routes]]
+pattern = "www.naptime.info/experiments/paid/*"
+zone_name = "naptime.info"
+
+[[routes]]
 pattern = "naptime.info/__nt_event*"
 zone_name = "naptime.info"
 

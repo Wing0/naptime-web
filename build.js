@@ -1,4 +1,4 @@
-// Generates index.html (Free) and paid.html from _template.html.
+// Generates the supported Free homepage and redirects retired edition URLs.
 // Run: node build.js
 const fs = require('fs');
 const template = fs.readFileSync('_template.html', 'utf8');
@@ -23,31 +23,6 @@ const variants = [
       AVAILABILITY_BADGE:'Available Worldwide',
       AVAILABILITY_NOTE: 'Naptime Free is now available worldwide on Google Play.',
       HERO_AVAILABILITY:'Available worldwide on Google Play',
-      CROSSLINK_URL:     '/paid.html',
-      CROSSLINK_LABEL:   'Naptime (paid)',
-    },
-  },
-  {
-    outputFile: 'paid.html',
-    keepBlock: 'PAID_ONLY',
-    dropBlock: 'FREE_ONLY',
-    vars: {
-      HOME_URL:         '/paid.html',
-      PAGE_TITLE:        'Naptime: Private Nap Timer & Sleep Tracker (One-Time Purchase)',
-      PAGE_NAME:         'Naptime',
-      PAGE_FLAVOR:       'paid-main',
-      CONTENT_VARIANT:   'main-paid',
-      CANONICAL_URL:     'https://naptime.info/paid.html',
-      OG_URL:            'https://naptime.info/paid.html',
-      STORE_URL:         'https://play.google.com/store/apps/details?id=com.naptime.app',
-      CTA_ANALYTICS_EVENT:'play_store_click',
-      PRICE:             '1.99',
-      DOWNLOAD_TAGLINE:  'Smart naps, night sleep tracking, tag analytics, and regular alarms. Private by design and built for Android.',
-      AVAILABILITY_BADGE:'Now Available',
-      AVAILABILITY_NOTE: 'Currently available in Finland, Ireland, Slovenia &amp; Switzerland &mdash; expanding soon.',
-      HERO_AVAILABILITY:'Available in Finland, Ireland, Slovenia &amp; Switzerland',
-      CROSSLINK_URL:     '/',
-      CROSSLINK_LABEL:   'Naptime Free',
     },
   },
 ];
@@ -91,3 +66,20 @@ fs.writeFileSync('free.html', `<!doctype html>
 </html>
 `);
 console.log('Built free.html compatibility redirect');
+
+fs.writeFileSync('paid.html', `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <link rel="canonical" href="https://naptime.info/">
+  <meta http-equiv="refresh" content="0; url=/">
+  <title>Naptime</title>
+</head>
+<body>
+  <p>This edition has moved to the <a href="/">Naptime homepage</a>.</p>
+</body>
+</html>
+`);
+console.log('Built paid.html compatibility redirect');

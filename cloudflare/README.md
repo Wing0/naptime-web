@@ -6,23 +6,22 @@
 
 | Route | Purpose |
 | --- | --- |
-| `naptime.info/android*` | Paid landing-page experiment. |
-| `www.naptime.info/android*` | Canonicalizes to apex, then serves the paid experiment. |
+| `naptime.info/android*` | Redirects retired Paid landing traffic to `/`. |
+| `www.naptime.info/android*` | Canonicalizes to apex, then redirects to `/`. |
 | `naptime.info/__nt_event*` | First-party page/click events. |
 | `www.naptime.info/__nt_event*` | Canonicalizes event traffic to apex. |
 | `naptime.info/free.html*` | Legacy Free URL; pass-through to the homepage redirect. |
 | `www.naptime.info/free.html*` | Canonicalizes to apex; Free experiment is disabled. |
 
-The public Free page is `https://naptime.info/`; the paid page is `https://naptime.info/paid.html`; paid campaigns use `https://naptime.info/android`.
+The supported product page is `https://naptime.info/`. Retired `/paid.html`, `/android`, `/campaigns/paid/*`, and `/experiments/paid/*` paths redirect there. The Paid privacy policy remains available for existing users.
 
 Current source flags in `cloudflare/worker/src/index.js`:
 
 ```js
 const ENABLE_FREE_EXPERIMENT = false;
-const ENABLE_PAID_EXPERIMENT = true;
 ```
 
-Verify these flags, `wrangler.toml`, and live forced variants before changing or describing production state.
+Verify the flag, `wrangler.toml`, and live redirects before changing or describing production state.
 
 ## Access and deployment
 
@@ -37,27 +36,16 @@ npm exec -- wrangler deploy
 After deploy:
 
 1. Confirm the Worker deployment succeeded.
-2. Test the stable homepage and paid page.
-3. Test every forced paid variant.
+2. Test the stable homepage and retired Paid redirects.
+3. Test a representative old campaign URL.
 4. Confirm `www` canonicalization and the legacy Free redirect.
 5. Tail a synthetic event when analytics behavior changed.
 
-After GitHub Pages HTML/CSS/JS changes, confirm the Pages build, purge relevant Cloudflare URLs/assets, then repeat live verification. The `/android` origin fetch is configured not to cache, but static assets and older pages may remain cached.
+After GitHub Pages HTML/CSS/JS changes, confirm the Pages build, purge relevant Cloudflare URLs/assets, then repeat live verification. Static assets and older pages may remain cached.
 
 ## Experiment behavior
 
-Force paid variants with `nt_paid_variant`:
-
-- `sleep-start`
-- `private`
-- `deadline`
-- `full-nap`
-
-Example: `https://naptime.info/android?nt_paid_variant=sleep-start`.
-
-Forced variants must still route to their campaign pages even when arrival analytics are suppressed. Falling through to GitHub Pages `/android` produces a 404 and can lose paid traffic.
-
-After analytics consent, the Worker sets the 30-day `nt_paid_landing_v1` cookie so returning visitors keep the assigned variant. Before consent, no experiment cookie is retained.
+The Free experiment code remains disabled. Old Paid experiment URLs redirect to the supported homepage, including URLs with `nt_paid_variant`.
 
 ## First-party analytics
 
@@ -94,4 +82,4 @@ The code supports optional aggregate KV counters through `LANDING_COUNTS`, but n
 
 Preferred rollback is to deploy a known-good Worker revision or disable the affected experiment flag. If the Worker itself must be bypassed, remove/disable its route in Cloudflare. Switching DNS records to DNS-only is an emergency measure because it bypasses all Cloudflare proxy features.
 
-After rollback, verify the homepage, paid page, `/android`, legacy Free redirect, and event endpoint from both apex and `www`.
+After rollback, verify the homepage, retired Paid redirects, legacy Free redirect, and event endpoint from both apex and `www`.

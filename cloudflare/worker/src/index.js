@@ -1,5 +1,4 @@
 const ENABLE_FREE_EXPERIMENT = false;
-const ENABLE_PAID_EXPERIMENT = true;
 const MAX_EVENT_BYTES = 4096;
 const MAX_EVENTS_PER_MINUTE = 30;
 const EVENT_DEDUPLICATION_SECONDS = 20;
@@ -29,20 +28,6 @@ const FREE_EXPERIMENT = {
   ],
 };
 
-const PAID_EXPERIMENT = {
-  name: "paid_reddit_landing_v1",
-  cookie: "nt_paid_landing_v1",
-  overrideParam: "nt_paid_variant",
-  maxAgeSeconds: 60 * 60 * 24 * 30,
-  variants: [
-    { id: "sleep-start", weight: 30, path: "/campaigns/paid/sleep-start.html" },
-    { id: "private", weight: 22, path: "/campaigns/paid/private.html" },
-    { id: "deadline", weight: 18, path: "/campaigns/paid/deadline.html" },
-    { id: "full-nap", weight: 18, path: "/campaigns/paid/full-nap.html" },
-    { id: "caffeine-alternative", weight: 12, path: "/campaigns/paid/caffeine-alternative.html" },
-  ],
-};
-
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
@@ -56,8 +41,8 @@ export default {
       return handleClientEvent(request, url, env);
     }
 
-    if (ENABLE_PAID_EXPERIMENT && isPaidLandingPath(url.pathname)) {
-      return routeExperiment(request, url, PAID_EXPERIMENT, env, ctx);
+    if (isRetiredPaidPath(url.pathname)) {
+      return Response.redirect(new URL("/", url), 301);
     }
 
     if (ENABLE_FREE_EXPERIMENT && isFreeLandingPath(url.pathname)) {
@@ -68,8 +53,10 @@ export default {
   },
 };
 
-function isPaidLandingPath(pathname) {
-  return pathname === "/android" || pathname === "/android.html";
+function isRetiredPaidPath(pathname) {
+  return pathname === "/android" || pathname === "/android.html" ||
+    pathname === "/paid.html" || pathname.startsWith("/campaigns/paid/") ||
+    pathname.startsWith("/experiments/paid/");
 }
 
 function isFreeLandingPath(pathname) {
@@ -323,9 +310,7 @@ async function readJsonBody(request, maxBytes) {
 }
 
 function isEligibleExperimentRequest(request) {
-  // Forced variants are still valid landing requests. They are excluded from
-  // arrival analytics in routeExperiment(), but must reach their experiment
-  // page instead of falling through to GitHub Pages' nonexistent /android file.
+  // Forced variants are excluded from arrival analytics in routeExperiment().
   return request.method === "GET" && !isBot(request);
 }
 
@@ -343,9 +328,9 @@ function hasAnalyticsConsent(request) {
 }
 
 function getServerExperiment(request) {
-  const cookieVariant = parseCookies(request.headers.get("cookie") || "")[PAID_EXPERIMENT.cookie];
-  const variant = PAID_EXPERIMENT.variants.find((candidate) => candidate.id === cookieVariant);
-  return variant ? { name: PAID_EXPERIMENT.name, variant: variant.id } : { name: PAID_EXPERIMENT.name, variant: "" };
+  const cookieVariant = parseCookies(request.headers.get("cookie") || "")[FREE_EXPERIMENT.cookie];
+  const variant = FREE_EXPERIMENT.variants.find((candidate) => candidate.id === cookieVariant);
+  return variant ? { name: FREE_EXPERIMENT.name, variant: variant.id } : { name: FREE_EXPERIMENT.name, variant: "" };
 }
 
 async function isRateLimited(request, limit) {
